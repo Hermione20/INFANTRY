@@ -1,0 +1,108 @@
+T5DA4 005:717.475   SEGGER J-Link V7.82 Log File
+T5DA4 005:717.555   DLL Compiled: Oct 13 2022 13:32:51
+T5DA4 005:717.578   Logging started @ 2024-05-06 11:50
+T5DA4 005:717.600 - 35.193ms
+T5DA4 005:717.627 JLINK_SetWarnOutHandler(...)
+T5DA4 005:717.649 - 0.031ms
+T5DA4 005:717.670 JLINK_OpenEx(...)
+T5DA4 005:719.272   Firmware: J-Link V11 compiled Jul 13 2022 16:55:04
+T5DA4 005:719.704   Firmware: J-Link V11 compiled Jul 13 2022 16:55:04
+T5DA4 005:739.634   Hardware: V11.00
+T5DA4 005:739.707   S/N: 601012352
+T5DA4 005:739.753   OEM: SEGGER
+T5DA4 005:739.798   Feature(s): RDI, FlashBP, FlashDL, JFlash, GDB
+T5DA4 005:741.686   USB speed mode: High speed (480 MBit/s)
+T5DA4 005:742.025   TELNET listener socket opened on port 19021
+T5DA4 005:749.241   Device "STM32F405RG" selected.
+T5DA4 005:750.023   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T5DA4 005:750.143   WEBSRV Webserver running on local port 19080
+T5DA4 005:757.656 - 40.022ms returns "O.K."
+T5DA4 005:757.708 JLINK_GetEmuCaps()
+T5DA4 005:757.721 - 0.019ms returns 0xB9FF7BBF
+T5DA4 005:757.736 JLINK_TIF_GetAvailable(...)
+T5DA4 005:757.950 - 0.227ms
+T5DA4 005:757.973 JLINK_SetErrorOutHandler(...)
+T5DA4 005:757.984 - 0.017ms
+T5DA4 005:758.011 JLINK_ExecCommand("ProjectFile = "E:\Infantry\Infrantry0504\INFANTRY_DOWN_NEWCAP\USER\JLinkSettings.ini"", ...). 
+T5DA4 005:759.109   Device "STM32F405RG" selected.
+T5DA4 005:759.363 - 1.359ms returns 0x00
+T5DA4 005:759.663 JLINK_ExecCommand("Device = STM32F405RGTx", ...). 
+T5DA4 005:760.158   Device "STM32F405RG" selected.
+T5DA4 005:760.503 - 0.813ms returns 0x00
+T5DA4 005:760.522 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T5DA4 005:760.537 - 0.006ms returns 0x01
+T5DA4 005:760.550 JLINK_GetHardwareVersion()
+T5DA4 005:760.562 - 0.017ms returns 110000
+T5DA4 005:760.574 JLINK_GetDLLVersion()
+T5DA4 005:760.586 - 0.017ms returns 78200
+T5DA4 005:760.599 JLINK_GetOEMString(...)
+T5DA4 005:760.611 JLINK_GetFirmwareString(...)
+T5DA4 005:760.623 - 0.017ms
+T5DA4 005:760.638 JLINK_GetDLLVersion()
+T5DA4 005:760.650 - 0.017ms returns 78200
+T5DA4 005:760.662 JLINK_GetCompileDateTime()
+T5DA4 005:760.673 - 0.017ms
+T5DA4 005:760.687 JLINK_GetFirmwareString(...)
+T5DA4 005:760.698 - 0.017ms
+T5DA4 005:760.711 JLINK_GetHardwareVersion()
+T5DA4 005:760.722 - 0.017ms returns 110000
+T5DA4 005:760.736 JLINK_GetSN()
+T5DA4 005:760.747 - 0.017ms returns 601012352
+T5DA4 005:760.760 JLINK_GetOEMString(...)
+T5DA4 005:760.774 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T5DA4 005:761.665 - 0.904ms returns 0x00
+T5DA4 005:761.687 JLINK_HasError()
+T5DA4 005:761.700 JLINK_SetSpeed(10000)
+T5DA4 005:761.837 - 0.149ms
+T5DA4 005:762.087 JLINK_HasError()
+T5DA4 005:762.102 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T5DA4 005:762.113 - 0.016ms returns JLINKARM_RESET_TYPE_NORMAL
+T5DA4 005:762.125 JLINK_Reset()
+T5DA4 005:762.726   InitTarget() start
+T5DA4 005:762.792    J-Link Script File: Executing InitTarget()
+T5DA4 005:865.655   Can not attach to CPU. Trying connect under reset.
+T5DA4 006:017.552   Connecting to CPU via connect under reset failed.
+T5DA4 006:069.616   InitTarget() end
+T5DA4 006:114.688   InitTarget() start
+T5DA4 006:114.860    J-Link Script File: Executing InitTarget()
+T5DA4 006:217.585   Can not attach to CPU. Trying connect under reset.
+T5DA4 006:369.346   Connecting to CPU via connect under reset failed.
+T5DA4 006:419.784   InitTarget() end
+T5DA4 006:419.833 - 657.716ms
+T5DA4 006:419.862 JLINK_GetId()
+T5DA4 006:420.175   InitTarget() start
+T5DA4 006:420.214    J-Link Script File: Executing InitTarget()
+T5DA4 006:522.144   Can not attach to CPU. Trying connect under reset.
+T5DA4 006:675.243   Connecting to CPU via connect under reset failed.
+T5DA4 006:726.582   InitTarget() end
+T5DA4 006:754.514   InitTarget() start
+T5DA4 006:754.691    J-Link Script File: Executing InitTarget()
+T5DA4 006:857.652   Can not attach to CPU. Trying connect under reset.
+T5DA4 007:010.870   Connecting to CPU via connect under reset failed.
+T5DA4 007:061.377   InitTarget() end
+T5DA4 007:061.493 - 641.649ms returns 0x00000000
+T5DA4 007:061.661 JLINK_GetId()
+T5DA4 007:062.098   InitTarget() start
+T5DA4 007:062.183    J-Link Script File: Executing InitTarget()
+T5DA4 007:165.255   Can not attach to CPU. Trying connect under reset.
+T5DA4 007:318.536   Connecting to CPU via connect under reset failed.
+T5DA4 007:370.055   InitTarget() end
+T5DA4 007:414.521   InitTarget() start
+T5DA4 007:414.595    J-Link Script File: Executing InitTarget()
+T5DA4 007:485.562   
+  ***** Error: 
+T5DA4 007:485.699   Communication timed out: Requested 4 bytes, received 0 bytes !
+T5DA4 007:516.153   Can not attach to CPU. Trying connect under reset.
+T5DA4 007:566.896   Connecting to CPU via connect under reset failed.
+T5DA4 007:618.020   InitTarget() end
+T5DA4 007:618.070 - 556.415ms returns 0x00000000
+T1230 007:618.151   
+  ***** Error: Connection to emulator lost!
+T5DA4 007:619.542 JLINK_GetFirmwareString(...)
+T5DA4 007:619.564 - 0.027ms
+T5DA4 007:624.471 JLINK_IsOpen()
+T5DA4 007:624.523 - 0.058ms returns 0x01
+T5DA4 007:632.116 JLINK_Close()
+T5DA4 007:641.474 - 9.378ms
+T5DA4 007:641.501   
+T5DA4 007:641.513   Closed
