@@ -6,7 +6,7 @@ void BSP_Init(void)
 
 NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
 
-
+LED_Init();
 	//	
 #if EN_USART1
 	usart1_init(100000);	//初始化串口波特率为115200

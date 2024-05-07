@@ -132,7 +132,7 @@ typedef struct
 void gimbal_parameter_Init(void);
 float gimbal_yaw_loop_task(pid_t *Outer_loop_pid,pid_t *Inner_loop_pid,float angle_ref,float angle_fdb,float speed_Feedforward);
 float gimbal_pit_loop_task(pid_t *Outer_loop_pid,pid_t *Inner_loop_pid,float angle_ref,float angle_fdb,float speed_Feedforward);
-
+double convert_ecd_angle_to_0_2pi1(double ecd_angle,float _0_2pi_angle);
 void gimbal_task(void);
 void gimbal_init_handle	( void );
 void gimbal_follow_gyro_handle(void);
@@ -141,7 +141,6 @@ void auto_big_buff_handle(void);
 void security_gimbal_handle(void);
 void gimbal_auto_angle_handle(void);
 float raw_data_to_pitch_angle(float ecd_angle_pit);
-
 extern gimbal_t gimbal_data;
 extern float yaw_angle_ref_aim,pit_angle_ref_aim;
 extern float pitch_max,pitch_min;

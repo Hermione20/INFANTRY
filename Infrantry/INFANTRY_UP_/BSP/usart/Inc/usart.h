@@ -127,4 +127,12 @@ void Uart4DmaSendDataProc(DMA_Stream_TypeDef *DMA_Streamx,u16 ndtr);
 void Uart4SendByteInfoProc(u8 nSendInfo);
 void Uart4SendBytesInfoProc(u8* pSendInfo, u16 nSendCount);
 
+void MYDMA_Enable(DMA_Stream_TypeDef *DMA_Streamx,u16 ndtr);
+void Uart5SendBytesInfoProc(u8* pSendInfo, u16 nSendCount);
+void Uart5DmaSendDataProc(DMA_Stream_TypeDef *DMA_Streamx,u16 ndtr);
+void data_upload_handle(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf);
+
+uint8_t* protocol_packet_pack(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf);  
+
+
 #endif

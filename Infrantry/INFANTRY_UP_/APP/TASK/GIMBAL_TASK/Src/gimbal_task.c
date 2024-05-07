@@ -336,22 +336,25 @@ void gimbal_parameter_Init(void)
     PID_struct_init(&gimbal_data.pid_auto_yaw_speed, POSITION_PID, 2000, 50,  
                     19, 0.1, 1.9f);
 #elif STANDARD == 3
+		
+		PID_struct_init(&pid_chassis_angle, POSITION_PID, 600, 10, 200,0,0); 
+		
     // 初始化下的参数
     PID_struct_init(&gimbal_data.pid_init_pit_Angle, POSITION_PID, 500, 4,
-                    15, 0.01f, 8); //15, 0.01f, 8
+                    18, 0.01f, 8); //15, 0.01f, 8
     PID_struct_init(&gimbal_data.pid_init_pit_speed, POSITION_PID, 27000, 20000,
                     150, 0.001, 60); //170, 0.001f, 60
     //------------------------------------------------
     PID_struct_init(&gimbal_data.pid_init_yaw_Angle, POSITION_PID, 500, 4,
-                    7, 0.15f, 8); 
+                    9.5, 0.15f, 8); 
     PID_struct_init(&gimbal_data.pid_init_yaw_speed, POSITION_PID, 29000, 10000,
-                    150, 0.8f, 40); 
+                    300, 0.8f, 40); 
 
     // 跟随陀螺仪下的参数
     PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 500, 30,
-                    18, 0.01f, 0); //15, 0.01f, 8
+                    15, 0.0f, 0); //15, 0.01f, 8
     PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 27000, 20000,
-                    250, 0.001, 0); //170, 0.001f, 60
+                    150, 0.001f, 0); //170, 0.001f, 60
 //	 PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 300, 30,
 //                    20, 0.0f, 16); //15, 0.01f, 8
 //    PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 27000, 20000,
@@ -368,7 +371,7 @@ void gimbal_parameter_Init(void)
 	PID_struct_init(&gimbal_data.pid_yaw_Angle, POSITION_PID, 400, 8,
                     9.5, 0.0f, 0);
     PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
-                    300, 0.1f, 0);
+                    350, 0.1f, 0);
 
     //自瞄下参数
     PID_struct_init ( &gimbal_data.pid_pit_follow, POSITION_PID, 200, 10, 15
@@ -602,7 +605,14 @@ void gimbal_init_handle	( void )
 
 
 
+double convert_ecd_angle_to_0_2pi1(double ecd_angle,float _0_2pi_angle)
+{
+	_0_2pi_angle=fmod(YAW_POLARITY*ecd_angle*ANGLE_TO_RAD,2*PI);	
+	if(_0_2pi_angle<0)
+		 _0_2pi_angle+=2*PI;
 
+	return _0_2pi_angle;
+}
 
 
 
@@ -613,10 +623,10 @@ void gimbal_init_handle	( void )
 	 =============================================================================
  **/
 
-//float K_X = 5.0;
-//float K_Y = 5.0f;
 float K_X = 4.0;
-float K_Y = 4.0f;
+float K_Y = 3.0f;
+//float K_X = 4.0;
+//float K_Y = 3.0f;
 
 float Error;
 float Error_2;
@@ -624,9 +634,22 @@ float Pol;
 float K_S=-0.8;
 float K_V=6;
 float K_3=-0.1;
-
+float K_yaw=0;
+float yaw_angle=0;
+float yaw_angle360=0;
+float get_speedw=-1.1f;
 void gimbal_follow_gyro_handle(void)
 {
+	
+	 yaw_angle=convert_ecd_angle_to_0_2pi1(yaw_Encoder.ecd_angle ,yaw_angle);
+		if(yaw_angle>=PI)
+		{	yaw_angle360=(yaw_angle-(2*PI));}
+		else
+		{	yaw_angle360=yaw_angle;	}
+		get_speedw = -pid_calc_filter(&pid_chassis_angle,yaw_angle360,0, 15*ANGLE_TO_RAD);
+//		yaw_angle360*=RAD_TO_ANGLE;
+//if(yaw_angle>=180)yaw_angle-=360;
+	 
 	Error_2=Error=*gimbal_data.pid_yaw_Angle.err;
 	if(fabs(Error)>30)
 		Error=30*fabs(Error)/Error;
@@ -718,18 +741,18 @@ void gimbal_follow_gyro_handle(void)
 			//pitch轴与yaw轴双环pid计算
 			
     gimbal_data.gim_ref_and_fdb.yaw_motor_input = K_S*pow(Error,2)*Pol+K_V*gimbal_data.gim_ref_and_fdb.yaw_speed_fdb+K_3*pow(Error_2,3)+
-														 pid_double_loop_cal(&gimbal_data.pid_yaw_Angle,
+																																			pid_double_loop_cal(&gimbal_data.pid_yaw_Angle,
                                                                       &gimbal_data.pid_yaw_speed,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																	&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
+																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      K_X*RC_CtrlData.mouse.x )*YAW_MOTOR_POLARITY;
+                                                                      K_X*RC_CtrlData.mouse.x+K_yaw*get_speedw )*YAW_MOTOR_POLARITY;
     gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
                                                                       &gimbal_data.pid_pit_speed,
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																	&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
+																																	&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
                                                                       K_Y*RC_CtrlData.mouse.y )*PITCH_MOTOR_POLARITY;
 		}

@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\USER;..\README;..\HEADFILE;..\STLIB\inc;..\STLIB\src;..\APP\BAL\Ins;..\APP\RTOS\Ins;..\APP\TASK\CHASSIS_TASK\Inc;..\APP\TASK\GIMBAL_TASK\Ins;..\APP\TASK\SHOOT_TASK\Ins;..\BSP\can\Inc;..\BSP\delay\Inc;..\BSP\usart\Inc;..\BSP\sys\Inc;..\BSP\LED;..\EMBEDDED\CAN_BUS;..\EMBEDDED\senior\Auto_Shoot;..\EMBEDDED\senior\Auto_Shoot\proto;..\EMBEDDED\senior\Auto_Shoot\Protocol;..\EMBEDDED\senior\CH100;..\EMBEDDED\senior\DJI_MOTOR;..\EMBEDDED\senior\HI220;..\EMBEDDED\senior\HT430;..\EMBEDDED\senior\JUDGE;..\EMBEDDED\senior\LK_TECH;..\EMBEDDED\senior\PM01;..\EMBEDDED\senior_struct;..\EMBEDDED\senior\REMOTE;..\APP\TASK\MODE_SWITCH_TASK\Inc;..\BSP\timer\Inc;..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT;..\APP\TASK\SHOOT_TASK\Inc;..\EMBEDDED\chassis_transmit;..\EMBEDDED\senior\Auto_Shoot\proto;..\EMBEDDED\senior\Auto_Shoot\proto;..\EMBEDDED\senior\OLD_Auto_shoot;..\EMBEDDED\senior\OLD_Auto_shoot\proto</IncludePath>
+              <IncludePath>..\CORE;..\USER;..\README;..\HEADFILE;..\STLIB\inc;..\STLIB\src;..\APP\BAL\Ins;..\APP\RTOS\Ins;..\APP\TASK\CHASSIS_TASK\Inc;..\APP\TASK\GIMBAL_TASK\Ins;..\APP\TASK\SHOOT_TASK\Ins;..\BSP\can\Inc;..\BSP\delay\Inc;..\BSP\usart\Inc;..\BSP\sys\Inc;..\BSP\LED;..\EMBEDDED\CAN_BUS;..\EMBEDDED\senior\Auto_Shoot;..\EMBEDDED\senior\Auto_Shoot\proto;..\EMBEDDED\senior\Auto_Shoot\Protocol;..\EMBEDDED\senior\CH100;..\EMBEDDED\senior\DJI_MOTOR;..\EMBEDDED\senior\HI220;..\EMBEDDED\senior\HT430;..\EMBEDDED\senior\JUDGE;..\EMBEDDED\senior\LK_TECH;..\EMBEDDED\senior\PM01;..\EMBEDDED\senior_struct;..\EMBEDDED\senior\REMOTE;..\APP\TASK\MODE_SWITCH_TASK\Inc;..\BSP\timer\Inc;..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT;..\APP\TASK\SHOOT_TASK\Inc;..\EMBEDDED\chassis_transmit;..\EMBEDDED\senior\Auto_Shoot\proto;..\EMBEDDED\senior\Auto_Shoot\proto;..\EMBEDDED\senior\OLD_Auto_shoot;..\EMBEDDED\senior\OLD_Auto_shoot\proto;..\EMBEDDED\senior\CLIENT</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -471,14 +471,14 @@
               <FilePath>..\EMBEDDED\senior\Auto_Shoot\proto\Recieve.pb-c.c</FilePath>
             </File>
             <File>
-              <FileName>Send.pb-c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMBEDDED\senior\Auto_Shoot\proto\Send.pb-c.c</FilePath>
-            </File>
-            <File>
               <FileName>CanBus.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\CAN_BUS\CanBus.c</FilePath>
+            </File>
+            <File>
+              <FileName>Send.pb-c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMBEDDED\senior\Auto_Shoot\proto\Send.pb-c.c</FilePath>
             </File>
             <File>
               <FileName>CH100.c</FileName>
@@ -534,6 +534,11 @@
               <FileName>OLD_Auto_shoot.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\senior\OLD_Auto_shoot\OLD_Auto_shoot.c</FilePath>
+            </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMBEDDED\senior\CLIENT\client.c</FilePath>
             </File>
           </Files>
         </Group>

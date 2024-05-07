@@ -1,11 +1,11 @@
 ..\obj\system_stm32f4xx.o: system_stm32f4xx.c
 ..\obj\system_stm32f4xx.o: stm32f4xx.h
-..\obj\system_stm32f4xx.o: D:\APP\Keil\Application\Keil_v538a\ARM\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h
-..\obj\system_stm32f4xx.o: D:\APP\Keil\Application\Keil_v538a\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
-..\obj\system_stm32f4xx.o: D:\APP\Keil\Application\Keil_v538a\ARM\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h
-..\obj\system_stm32f4xx.o: D:\APP\Keil\Application\Keil_v538a\ARM\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h
-..\obj\system_stm32f4xx.o: D:\APP\Keil\Application\Keil_v538a\ARM\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h
-..\obj\system_stm32f4xx.o: D:\APP\Keil\Application\Keil_v538a\ARM\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h
+..\obj\system_stm32f4xx.o: T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h
+..\obj\system_stm32f4xx.o: T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+..\obj\system_stm32f4xx.o: T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h
+..\obj\system_stm32f4xx.o: T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h
+..\obj\system_stm32f4xx.o: T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h
+..\obj\system_stm32f4xx.o: T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h
 ..\obj\system_stm32f4xx.o: system_stm32f4xx.h
 ..\obj\system_stm32f4xx.o: stm32f4xx_conf.h
 ..\obj\system_stm32f4xx.o: ..\STLIB\inc\stm32f4xx_adc.h

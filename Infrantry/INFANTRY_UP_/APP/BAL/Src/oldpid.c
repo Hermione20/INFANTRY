@@ -160,6 +160,53 @@ float pid_calc1(pid_t *pid, float get, float set)
 
 }
 
+float pid_calc_filter(pid_t *pid, float get, float set, float delta)
+{
+  pid->get = get;
+  pid->set = set;
+  pid->err[NOW] = set - get;
+	if(fabs(pid->err[NOW])<delta)
+		pid->err[NOW]=0;
+	else if(pid->err[NOW]>delta)
+		pid->err[NOW]-=delta;
+	else if(pid->err[NOW]<-delta)
+		pid->err[NOW]+=delta;
+	if(fabs(set - get) < delta)
+		pid->err[NOW] = 0;
+  if ((pid->input_max_err != 0) && (fabs(pid->err[NOW]) > pid->input_max_err))
+      return 0;
+
+  if (pid->pid_mode == POSITION_PID) //position PID
+  {
+      pid->pout = pid->p * pid->err[NOW];
+      pid->iout += pid->i * pid->err[NOW];
+      pid->dout = pid->d * (pid->err[NOW] - pid->err[LAST]);
+    
+      abs_limit(&(pid->iout), pid->integral_limit);
+      pid->out = pid->pout + pid->iout + pid->dout;
+      abs_limit(&(pid->out), pid->max_out);
+  }
+  else if (pid->pid_mode == DELTA_PID) //delta PID
+  {
+      pid->pout = pid->p * (pid->err[NOW] - pid->err[LAST]);
+      pid->iout = pid->i * pid->err[NOW];
+      pid->dout = pid->d * (pid->err[NOW] - 2 * pid->err[LAST] + pid->err[LLAST]);
+
+      pid->out += pid->pout + pid->iout + pid->dout;
+      abs_limit(&(pid->out), pid->max_out);
+  }
+
+  pid->err[LLAST] = pid->err[LAST];
+  pid->err[LAST]  = pid->err[NOW];
+  
+  
+  if ((pid->output_deadband != 0) && (fabs(pid->out) < pid->output_deadband))
+    return 0;
+  else
+    return pid->out;
+
+}
+
 /**
   * @brief     initialize pid parameter
   * @retval    none

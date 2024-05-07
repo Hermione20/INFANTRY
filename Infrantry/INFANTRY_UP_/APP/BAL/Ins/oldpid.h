@@ -83,7 +83,7 @@ void PID_struct_init(
     float kp,
     float ki,
     float kd);
-
+float pid_calc_filter(pid_t *pid, float get, float set, float delta);
 float pid_calc(pid_t *pid, float fdb, float ref);
 float pid_calc1(pid_t *pid, float get, float set);
 void  pid_clr(pid_t *pid);
