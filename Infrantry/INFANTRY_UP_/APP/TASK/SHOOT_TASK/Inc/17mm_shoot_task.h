@@ -62,6 +62,16 @@ typedef struct
 
 typedef struct
 {
+	float Error_Mea;
+	float Error_Est;
+	float Error_Est_Last;
+	float Kalman_Gain;
+	float X_hat;
+	float X_hat_Last;
+} First_Order_Kalman_Filter_t;
+
+typedef struct
+{
   /* shoot task relevant param */
 	shoot_mode_selection_e  shoot_mode_selection;
   shoot_mode_e 						ctrl_mode;
@@ -82,7 +92,10 @@ typedef struct
 	float        limit_heart1;
   uint16_t     max_heart0;
   uint16_t     cooling_ratio;
+	First_Order_Kalman_Filter_t Bullet_Speed_Kalman;
 } shoot_t;
+
+
 
 void shot_param_init(void);
 void heat0_limit(void);
