@@ -307,7 +307,7 @@ int i;
       client_custom_character_voltage_num.grapic_data_struct.end_angle=4;
 			client_custom_character_voltage_num.grapic_data_struct.color=UI_PINK;
 			
-      sprintf(client_custom_character_voltage_num.data,"%f",capacitance_message.cap_voltage_filte);
+      sprintf(client_custom_character_voltage_num.data,"%f",usart_down_capacitance_message.cap_voltage);
 
       *(ext_client_custom_character_t*)(&ddata[6])=client_custom_character_voltage_num;
       data_upload_handle(STUDENT_INTERACTIVE_HEADER_DATA_ID, ddata,6+sizeof(client_custom_character_voltage_num),DN_REG_ID,tx_buf);
@@ -334,14 +334,14 @@ int i;
       client_custom_graphic_seven.grapic_data_struct[0].start_y=105;
       client_custom_graphic_seven.grapic_data_struct[0].end_y=105;
 			
-      if(capacitance_message.cap_voltage_filte>=0.0f&&capacitance_message.cap_voltage_filte<=13.0f)
+      if(usart_down_capacitance_message.cap_voltage>=0.0f&&usart_down_capacitance_message.cap_voltage<=13.0f)
         {
           client_custom_graphic_seven.grapic_data_struct[0].end_x=715;
           client_custom_graphic_seven.grapic_data_struct[0].color=UI_GREEN;//UI_PINK;
         }
-      else if(capacitance_message.cap_voltage_filte>13.0f)
+      else if(usart_down_capacitance_message.cap_voltage>13.0f)
         {
-          client_custom_graphic_seven.grapic_data_struct[0].end_x=725+((capacitance_message.cap_voltage_filte-13.0))*40;
+          client_custom_graphic_seven.grapic_data_struct[0].end_x=725+((usart_down_capacitance_message.cap_voltage-13.0))*40;
           client_custom_graphic_seven.grapic_data_struct[0].color=UI_GREEN;//UI_PINK;
         }
 
@@ -726,7 +726,7 @@ int i;
       client_custom_character_voltage_num.grapic_data_struct.width=WIDTH;
       client_custom_character_voltage_num.grapic_data_struct.start_angle=20;
       client_custom_character_voltage_num.grapic_data_struct.end_angle=4;
-      sprintf(client_custom_character_voltage_num.data,"%f",capacitance_message.cap_voltage_filte);
+      sprintf(client_custom_character_voltage_num.data,"%f",usart_down_capacitance_message.cap_voltage);
 
       *(ext_client_custom_character_t*)(&ddata[6])=client_custom_character_voltage_num;
       data_upload_handle(STUDENT_INTERACTIVE_HEADER_DATA_ID, ddata,6+sizeof(client_custom_character_voltage_num),DN_REG_ID,tx_buf);
@@ -752,14 +752,14 @@ int i;
       client_custom_graphic_seven.grapic_data_struct[0].start_y=90;
       client_custom_graphic_seven.grapic_data_struct[0].end_y=90;
 			
-      if(capacitance_message.cap_voltage_filte>=0.0f&&capacitance_message.cap_voltage_filte<=16.0f)
+      if(usart_down_capacitance_message.cap_voltage>=0.0f&&usart_down_capacitance_message.cap_voltage<=16.0f)
         {
           client_custom_graphic_seven.grapic_data_struct[0].end_x=715;
           client_custom_graphic_seven.grapic_data_struct[0].color=UI_RB;//UI_PINK;
         }
-      else if(capacitance_message.cap_voltage_filte>16.0f)
+      else if(usart_down_capacitance_message.cap_voltage>16.0f)
         {
-          client_custom_graphic_seven.grapic_data_struct[0].end_x=735+((capacitance_message.cap_voltage_filte-13.0))*50;
+          client_custom_graphic_seven.grapic_data_struct[0].end_x=735+((usart_down_capacitance_message.cap_voltage-13.0))*50;
           client_custom_graphic_seven.grapic_data_struct[0].color=UI_YELLOW;//UI_PINK;
         }
 

@@ -19,10 +19,11 @@ uint8_t _UART5_DMA_RX_BUF[100];
 //static uint8_t USART2_DMA_TX_BUF[USART2_TX_BUF_LENGTH];
 //static uint8_t USART3_DMA_TX_BUF[USART3_TX_BUF_LENGTH];
    uint8_t USART3_DMA_TX_BUF[USART3_TX_BUF_LENGTH];
-	 uint8_t USART2_DMA_TX_BUF[USART2_TX_BUF_LENGTH];
+
    uint8_t UART4_DMA_TX_BUF[UART4_TX_BUF_LENGTH];
 	 uint8_t UART5_DMA_TX_BUF[UART5_TX_BUF_LENGTH];
 //static uint8_t USART6_DMA_TX_BUF[USART6_TX_BUF_LENGTH];
+
 /*********************************************************************************************************/
 /*********************************************************************************************************/
 #if 0
@@ -275,9 +276,21 @@ void USART2_IRQHandler(void)
 }
 
 //开启一次DMA传输
-void USART2_dma_start(uart_cha_data_t *uart_cha_data)
+void USART2_dma_start(uart_cha_data_t *uart_cha_data,uint8_t* TX_BUF,uint16_t Counter)
 {
     memcpy(USART2_DMA_TX_BUF, uart_cha_data, sizeof(uart_cha_data_t));
+	while( DMA_GetFlagStatus(DMA1_Stream6,DMA_FLAG_TCIF6) == RESET ); 
+	DMA_ClearFlag(DMA1_Stream6,DMA_FLAG_TCIF6);
+	
+	DMA_Cmd(DMA1_Stream6, DISABLE);
+	while(DMA_GetCmdStatus(DMA1_Stream6) != DISABLE); // 判断别的数据流是否在操作
+	DMA_SetCurrDataCounter(DMA1_Stream6, USART2_TX_BUF_LENGTH);
+	DMA_Cmd(DMA1_Stream6, ENABLE);
+}
+
+void USART2_dma_start1(uart_cap_down_data_t *uart_cap_down_data,uint8_t* TX_BUF,uint16_t Counter)
+{
+    memcpy(USART2_DMA_TX_BUF, uart_cap_down_data, sizeof(uart_cap_down_data_t));
 	while( DMA_GetFlagStatus(DMA1_Stream6,DMA_FLAG_TCIF6) == RESET ); 
 	DMA_ClearFlag(DMA1_Stream6,DMA_FLAG_TCIF6);
 	

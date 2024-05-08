@@ -86,11 +86,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -261,11 +261,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -361,11 +361,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -460,11 +460,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -559,11 +559,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -658,11 +658,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -671,7 +671,7 @@ I (..\APP\TASK\CHASSIS_TASK\Inc\CHASSIS_TASK.H)(0x663A35BA)
 I (..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h)(0x663B52FE)
 I (..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h)(0x663A35BA)
 I (..\APP\RTOS\Ins\control_task.h)(0x663A35BA)
-F (..\APP\TASK\SHOOT_TASK\Src\17mm_shoot_task.c)(0x663B46AF)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\17mm_shoot_task.o --omf_browse ..\obj\17mm_shoot_task.crf --depend ..\obj\17mm_shoot_task.d)
+F (..\APP\TASK\SHOOT_TASK\Src\17mm_shoot_task.c)(0x663B6A83)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\17mm_shoot_task.o --omf_browse ..\obj\17mm_shoot_task.crf --depend ..\obj\17mm_shoot_task.d)
 I (..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h)(0x663B52FE)
 I (..\HEADFILE\public.h)(0x663A63E6)
 I (..\USER\stm32f4xx.h)(0x663A35BB)
@@ -757,11 +757,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -894,10 +894,10 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1007,11 +1007,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1113,11 +1113,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1212,11 +1212,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1311,11 +1311,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1410,11 +1410,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1424,7 +1424,7 @@ I (..\APP\TASK\CHASSIS_TASK\Inc\CHASSIS_TASK.H)(0x663A35BA)
 I (..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h)(0x663B52FE)
 I (..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h)(0x663A35BA)
 I (..\APP\RTOS\Ins\control_task.h)(0x663A35BA)
-F (..\EMBEDDED\senior\JUDGE\JUDGE.c)(0x663B5167)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\judge.o --omf_browse ..\obj\judge.crf --depend ..\obj\judge.d)
+F (..\EMBEDDED\senior\JUDGE\JUDGE.c)(0x663B6B9C)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\judge.o --omf_browse ..\obj\judge.crf --depend ..\obj\judge.d)
 I (..\EMBEDDED\senior\JUDGE\JUDGE.h)(0x65F5E9AD)
 I (..\HEADFILE\public.h)(0x663A63E6)
 I (..\USER\stm32f4xx.h)(0x663A35BB)
@@ -1509,11 +1509,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1608,11 +1608,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1707,11 +1707,11 @@ I (..\EMBEDDED\senior\LK_TECH\LK_TECH.h)(0x663A35BA)
 I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1806,11 +1806,11 @@ I (..\EMBEDDED\senior\LK_TECH\LK_TECH.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1905,11 +1905,11 @@ I (..\EMBEDDED\senior\LK_TECH\LK_TECH.h)(0x663A35BA)
 I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -1919,8 +1919,8 @@ I (..\APP\TASK\CHASSIS_TASK\Inc\CHASSIS_TASK.H)(0x663A35BA)
 I (..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h)(0x663B52FE)
 I (..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h)(0x663A35BA)
 I (..\APP\RTOS\Ins\control_task.h)(0x663A35BA)
-F (..\EMBEDDED\chassis_transmit\uart_cha_transmit.c)(0x663A35BA)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\uart_cha_transmit.o --omf_browse ..\obj\uart_cha_transmit.crf --depend ..\obj\uart_cha_transmit.d)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+F (..\EMBEDDED\chassis_transmit\uart_cha_transmit.c)(0x663B6AB0)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\uart_cha_transmit.o --omf_browse ..\obj\uart_cha_transmit.crf --depend ..\obj\uart_cha_transmit.d)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\HEADFILE\public.h)(0x663A63E6)
 I (..\USER\stm32f4xx.h)(0x663A35BB)
 I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x65FE4481)
@@ -2008,7 +2008,7 @@ I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -2098,11 +2098,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -2117,7 +2117,7 @@ I (..\EMBEDDED\senior\Auto_Shoot\proto\protobuf-c.h)(0x663A35BA)
 I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\assert.h)(0x5E8E3CC2)
 I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\stddef.h)(0x5E8E3CC2)
 I (..\EMBEDDED\senior\Auto_Shoot\proto\Recieve.pb-c.h)(0x663A35BA)
-F (..\EMBEDDED\senior\CLIENT\client.c)(0x660984BE)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\client.o --omf_browse ..\obj\client.crf --depend ..\obj\client.d)
+F (..\EMBEDDED\senior\CLIENT\client.c)(0x663BB132)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\client.o --omf_browse ..\obj\client.crf --depend ..\obj\client.d)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\HEADFILE\public.h)(0x663A63E6)
 I (..\USER\stm32f4xx.h)(0x663A35BB)
@@ -2202,11 +2202,111 @@ I (..\EMBEDDED\senior\LK_TECH\LK_TECH.h)(0x663A35BA)
 I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
+I (..\BSP\LED\led.h)(0x663A35BA)
+I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
+I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
+I (..\APP\TASK\GIMBAL_TASK\Ins\gimbal_task.h)(0x663AB4CA)
+I (..\APP\TASK\GIMBAL_TASK\Ins\buff_karman_filter.h)(0x663A35BA)
+I (..\APP\TASK\CHASSIS_TASK\Inc\CHASSIS_TASK.H)(0x663A35BA)
+I (..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h)(0x663B52FE)
+I (..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h)(0x663A35BA)
+I (..\APP\RTOS\Ins\control_task.h)(0x663A35BA)
+F (..\EMBEDDED\senior\OT7213\OT7213.c)(0x663BB454)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\ot7213.o --omf_browse ..\obj\ot7213.crf --depend ..\obj\ot7213.d)
+I (..\EMBEDDED\senior\OT7213\OT7213.h)(0x663BB454)
+I (..\HEADFILE\public.h)(0x663A63E6)
+I (..\USER\stm32f4xx.h)(0x663A35BB)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x65FE4481)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x65FE4481)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x65FE4481)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h)(0x65FE4481)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x65FE4481)
+I (..\USER\system_stm32f4xx.h)(0x663A35BB)
+I (..\USER\stm32f4xx_conf.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_adc.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_crc.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_dbgmcu.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_dma.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_exti.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_flash.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_gpio.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_i2c.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_iwdg.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_pwr.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_rcc.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_rtc.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_sdio.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_spi.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_syscfg.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_tim.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_usart.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_wwdg.h)(0x663A35BB)
+I (..\STLIB\inc\misc.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_cryp.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_hash.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_rng.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_can.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_dac.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_dcmi.h)(0x663A35BB)
+I (..\STLIB\inc\stm32f4xx_fsmc.h)(0x663A35BB)
+I (..\USER\stm32f4xx_it.h)(0x663A35BB)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\math.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\arm_math.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\arm_math_types.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\string.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\float.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\limits.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\arm_math_memory.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\none.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\utils.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\basic_math_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\interpolation_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\bayes_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\statistics_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\fast_math_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\matrix_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\complex_math_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\controller_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\support_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\distance_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\svm_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\svm_defines.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\transform_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\filtering_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\quaternion_math_functions.h)(0x64E2E2DE)
+I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include\dsp\window_functions.h)(0x64E2E2DE)
+I (..\BSP\delay\Inc\delay.h)(0x663A35BA)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\stdarg.h)(0x5E8E3CC2)
+I (..\APP\BAL\Ins\oldpid.h)(0x663AB30D)
+I (..\EMBEDDED\CAN_BUS\CanBus.h)(0x663A35BA)
+I (..\EMBEDDED\senior\CH100\CH100.h)(0x663A35BA)
+I (..\EMBEDDED\senior\JUDGE\JUDGE.h)(0x65F5E9AD)
+I (..\EMBEDDED\senior\DJI_MOTOR\DJI_MOTOR.h)(0x663A35BA)
+I (..\EMBEDDED\senior\HI220\HI220.h)(0x663A35BA)
+I (..\EMBEDDED\senior\HT430\HT430.h)(0x663A35BA)
+I (..\EMBEDDED\senior\Auto_Shoot\Auto_shoot.h)(0x663A35BA)
+I (..\EMBEDDED\senior\OLD_Auto_shoot\OLD_Auto_shoot.h)(0x663A35BA)
+I (..\EMBEDDED\senior\Auto_Shoot\proto\send.pb-c.h)(0x663A35BA)
+I (..\EMBEDDED\senior\Auto_Shoot\proto\protobuf-c.h)(0x663A35BA)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\assert.h)(0x5E8E3CC2)
+I (T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\include\stddef.h)(0x5E8E3CC2)
+I (..\EMBEDDED\senior\Auto_Shoot\proto\Recieve.pb-c.h)(0x663A35BA)
+I (..\EMBEDDED\senior\LK_TECH\LK_TECH.h)(0x663A35BA)
+I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
+I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
+I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
+I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
+I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
+I (..\USER\BSP.h)(0x663A35BB)
+I (..\BSP\can\Inc\can.h)(0x663A35BA)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -2302,10 +2402,10 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -2400,11 +2500,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
@@ -2538,11 +2638,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\timer\Inc\timer.h)(0x663A35BA)
 I (..\APP\TASK\GIMBAL_TASK\Ins\gimbal_task.h)(0x663AB4CA)
 I (..\APP\TASK\GIMBAL_TASK\Ins\buff_karman_filter.h)(0x663A35BA)
@@ -2551,7 +2651,7 @@ I (..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h)(0x663B52FE)
 I (..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h)(0x663A35BA)
 I (..\APP\RTOS\Ins\control_task.h)(0x663A35BA)
 F (..\BSP\usart\Src\usart.c)(0x663B4CE7)(--c99 -c --cpu Cortex-M4.fp.sp -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\APP\TASK\MODE_SWITCH_TASK\Inc -I ..\BSP\timer\Inc -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\APP\TASK\SHOOT_TASK\Inc -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\OLD_Auto_shoot -I ..\EMBEDDED\senior\OLD_Auto_shoot\proto -I ..\EMBEDDED\senior\CLIENT-I.\RTE\_Template-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\HEADFILE\public.h)(0x663A63E6)
 I (..\USER\stm32f4xx.h)(0x663A35BB)
 I (T:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x65FE4481)
@@ -2636,7 +2736,7 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
@@ -2735,11 +2835,11 @@ I (..\EMBEDDED\senior\REMOTE\REMOTE.h)(0x663A35BA)
 I (..\EMBEDDED\senior\PM01\PM01.h)(0x663A35BA)
 I (..\EMBEDDED\senior\CLIENT\client.h)(0x6607EB38)
 I (..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT\can_chassis_transmit.h)(0x663A35BA)
-I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663A35BA)
+I (..\EMBEDDED\chassis_transmit\uart_cha_transmit.h)(0x663BB132)
 I (..\EMBEDDED\senior_struct\senior.h)(0x663A35BA)
 I (..\USER\BSP.h)(0x663A35BB)
 I (..\BSP\can\Inc\can.h)(0x663A35BA)
-I (..\BSP\usart\Inc\usart.h)(0x663A652A)
+I (..\BSP\usart\Inc\usart.h)(0x663B9D6E)
 I (..\BSP\LED\led.h)(0x663A35BA)
 I (..\BSP\sys\Inc\sys.h)(0x663A35BA)
 I (..\APP\TASK\GIMBAL_TASK\Ins\gimbal_task.h)(0x663AB4CA)

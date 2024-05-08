@@ -25,7 +25,7 @@ void control_task(void)
 	{
 //        Set_GM6020_IQ1(CAN2,0,0,0,0); // 2us
 		Set_GM6020_IQ1(CAN2,chassis.voltage[0],chassis.voltage[1],chassis.voltage[2],chassis.voltage[3]); // 2us
-        Set_GM6020_IQ1(CAN1, 0 ,0 ,0, chassis.voltage[3]);
+    Set_GM6020_IQ1(CAN1, 0 ,0 ,0, chassis.voltage[3]);
 	}
 	
 	if(time_tick%2 == 1)
@@ -37,6 +37,7 @@ void control_task(void)
     { 
 		POWER_Control(&Super_Cap_Send);
 //			CAN_POWER_Control(CAN1,&Super_Cap_Send);
+			Uart_down_to_up_send(&uart_cap_down_data);
     } 
 	if(time_tick%1000 == 0)
     { 

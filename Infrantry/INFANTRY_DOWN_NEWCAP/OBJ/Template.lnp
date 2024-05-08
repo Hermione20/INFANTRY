@@ -23,6 +23,7 @@
 "..\obj\protobuf-c.o"
 "..\obj\uart_cha_transmit.o"
 "..\obj\supercap.o"
+"..\obj\ot7213.o"
 "..\obj\can.o"
 "..\obj\delay.o"
 "..\obj\sys.o"

@@ -1,6 +1,8 @@
 #include "uart_cha_transmit.h"
 
 uart_cha_data_t uart_cha_data;
+usart_down_capacitance_message_t usart_down_capacitance_message;
+
 
 extern void USART2_dma_start(uart_cha_data_t *uart_cha_data);
 
@@ -29,8 +31,18 @@ void uart_cha_task(u8 RC_inputmode,
 	uart_cha_data.chassis_power = chassis_power;
 	uart_cha_data.chassis_power_buffer = chassis_power_buffer;
 	uart_cha_data.chassis_power_limit = chassis_power_limit;
-    
-    
-    USART2_dma_start(&uart_cha_data);
+
+  USART2_dma_start(&uart_cha_data);
 }
 
+
+/**
+ * @brief  超电接收数据处理
+ * @param  v： 接收超电数据结构体
+ * @param  data： 接收缓冲数组
+ * @call   USART2_IRQHandler()
+ * */
+void SuperCap_message_Process(volatile usart_down_capacitance_message_t *v,uint8_t *data)
+{
+	memcpy((uint8_t *)v,data,sizeof(usart_down_capacitance_message_t));
+}

@@ -493,9 +493,10 @@ void shoot_friction_handle()
 * @retval   : 
 * @Note     : 
 ************************************************************************************************************************
-**/
+**/	uint16_t friction_cnt=0;
 void shoot_state_mode_switch()
 {
+
 	 /****************************¼üÊóÉä»÷×´Ì¬¸üÐÂ**********************************************/		
 		switch(RC_CtrlData.inputmode)
 			{
@@ -523,13 +524,20 @@ void shoot_state_mode_switch()
 					else
 							shoot.poke_run=0;
 					 
-					if(RC_CtrlData.Key_Flag.Key_C_TFlag)
-					{shoot.fric_wheel_run=1;
-						LASER_ON();}
-					else
+					if(RC_CtrlData.Key_Flag.Key_C_Flag&&shoot.fric_wheel_run==0)
 					{
-						shoot.fric_wheel_run=0;
-						LASER_OFF();
+						shoot.fric_wheel_run=1;
+						LASER_ON();
+					}
+					else if(RC_CtrlData.Key_Flag.Key_C_Flag&&shoot.fric_wheel_run==1)
+					{
+						friction_cnt++;
+						if(friction_cnt>=1000)
+						{
+						 shoot.fric_wheel_run=0;
+						 LASER_OFF();
+						 friction_cnt=0;
+						}
 					}
 					 
 					if(RC_CtrlData.Key_Flag.Key_Q_TFlag)

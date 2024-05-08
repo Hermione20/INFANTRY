@@ -7,14 +7,14 @@
 
 #define EN_USART2       						  	1//Ä¬ÈÏË«»º³å
 
-#define EN_USART3												1//Ä¬ÈÏµ¥»º³å
+#define EN_USART3											1//Ä¬ÈÏµ¥»º³å
 
 #define EN_UART4												1//Ä¬ÈÏµ¥»º³å
 
 #define EN_UART5												1//¿ÉÑ¡»º³å
-#define EN_UART5_DMA_SECOND_FIFO 				1
+#define EN_UART5_DMA_SECOND_FIFO 		1
 
-#define EN_USART6												1//Ä¬ÈÏµ¥»º³å
+#define EN_USART6											1//Ä¬ÈÏµ¥»º³å
 
 /*
 *********************************************************************************************************
@@ -24,7 +24,7 @@
 #define USART1_Data_Receive_Process_0				do{RemoteDataPrcess(_USART1_DMA_RX_BUF[0],this_time_rx_len1);infantry_mode_switch_task();}while(0);																																															
 #define USART1_Data_Receive_Process_1				do{RemoteDataPrcess(_USART1_DMA_RX_BUF[1],this_time_rx_len1);infantry_mode_switch_task();}while(0);
 
-#define USART2_Data_Receive_Process_0				do{}while(0);
+#define USART2_Data_Receive_Process_0				do{SuperCap_message_Process(&usart_down_capacitance_message,_USART2_DMA_RX_BUF);}while(0);
 #define USART2_Data_Receive_Process_1				do{}while(0);
 	
 #define USART3_Data_Receive_Process					do{CH100_getDATA(_USART3_RX_BUF,&gimbal_gyro);}while(0);

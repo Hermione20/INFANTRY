@@ -141,4 +141,6 @@ void Uart4SendByteInfoProc(u8 nSendInfo);
 void Uart4SendBytesInfoProc(u8* pSendInfo, u16 nSendCount);
 
 extern uint8_t USART3_DMA_TX_BUF[USART3_TX_BUF_LENGTH];
+
+
 #endif

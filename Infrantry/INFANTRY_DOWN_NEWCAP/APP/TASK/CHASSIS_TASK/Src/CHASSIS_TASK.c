@@ -102,7 +102,7 @@ void chassis_param_init()//底盘参数初始化
 		PID_struct_init(&pid_cha_3508_speed[k], POSITION_PID,15000, 4000,90,0.0f, 0); //24 0.3 10    38.0f,3.0f, 40
     }
 //  PID_struct_init(&pid_chassis_angle, POSITION_PID, 600, 10, 150,0.05,50);//xisanhao
-    PID_struct_init(&pid_chassis_angle, POSITION_PID, 600, 10, 200,0,0);
+    PID_struct_init(&pid_chassis_angle, POSITION_PID, 600, 10, 300,0,50);
 	
 	
 }
@@ -321,7 +321,7 @@ void follow_gimbal_handle(void)
 		}
 		else
 		{
-			pid_chassis_angle_deathband = 15.0f * 3.14f / 180.0f;
+			pid_chassis_angle_deathband = 0;//15.0f * 3.14f / 180.0f;
 		}
 	Chassis_angle.get_speedw = -pid_calc_filter(&pid_chassis_angle,Chassis_angle.yaw_angle__pi_pi,0, pid_chassis_angle_deathband);
 }
@@ -440,9 +440,9 @@ void steering_wheel_calc2(void)
 	if(chassis.ctrl_mode==CHASSIS_ROTATE)
 	{
 		if(get_speedw_flag == 1)
-			relative_angle += 15.0f *PI/180.0f;		//13 6.5
+			relative_angle += 15.0f *ANGLE_TO_RAD;		//13 6.5
 		else if(get_speedw_flag == 0)
-			relative_angle -= 15.0f *PI/180.0f;		//13 6.5
+			relative_angle -= 15.0f *ANGLE_TO_RAD;		//13 6.5
 	}
 	for(uint8_t i = 0; i < 4; i++)
 	{

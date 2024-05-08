@@ -26,6 +26,7 @@
 "..\obj\uart_cha_transmit.o"
 "..\obj\old_auto_shoot.o"
 "..\obj\client.o"
+"..\obj\ot7213.o"
 "..\obj\can.o"
 "..\obj\delay.o"
 "..\obj\sys.o"

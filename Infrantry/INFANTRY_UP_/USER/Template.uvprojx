@@ -540,6 +540,11 @@
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\senior\CLIENT\client.c</FilePath>
             </File>
+            <File>
+              <FileName>OT7213.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMBEDDED\senior\OT7213\OT7213.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
