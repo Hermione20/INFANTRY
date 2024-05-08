@@ -369,9 +369,9 @@ void gimbal_parameter_Init(void)
 //    PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
 //                    420, 0.5f, 0); 
 	PID_struct_init(&gimbal_data.pid_yaw_Angle, POSITION_PID, 400, 8,
-                    9.5, 0.0f, 0);
+                    10.6, 0.0f, 0);
     PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
-                    350, 0.1f, 0);
+                    600, 0.1f, 0);
 
     //自瞄下参数
     PID_struct_init ( &gimbal_data.pid_pit_follow, POSITION_PID, 200, 10, 15
@@ -623,8 +623,8 @@ double convert_ecd_angle_to_0_2pi1(double ecd_angle,float _0_2pi_angle)
 	 =============================================================================
  **/
 
-float K_X = 4.0;
-float K_Y = 3.0f;
+float K_X = 1.6;
+float K_Y = 5.0f;
 //float K_X = 4.0;
 //float K_Y = 3.0f;
 
@@ -740,14 +740,14 @@ void gimbal_follow_gyro_handle(void)
 		{
 			//pitch轴与yaw轴双环pid计算
 			
-    gimbal_data.gim_ref_and_fdb.yaw_motor_input = K_S*pow(Error,2)*Pol+K_V*gimbal_data.gim_ref_and_fdb.yaw_speed_fdb+K_3*pow(Error_2,3)+
+    gimbal_data.gim_ref_and_fdb.yaw_motor_input = K_V*gimbal_data.gim_ref_and_fdb.yaw_speed_fdb+K_3*pow(Error_2,3)+K_S*pow(Error,2)+
 																																			pid_double_loop_cal(&gimbal_data.pid_yaw_Angle,
                                                                       &gimbal_data.pid_yaw_speed,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
 																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      K_X*RC_CtrlData.mouse.x+K_yaw*get_speedw )*YAW_MOTOR_POLARITY;
+                                                                      K_X*RC_CtrlData.mouse.x+K_yaw*get_speedw *Pol)*YAW_MOTOR_POLARITY;
     gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
                                                                       &gimbal_data.pid_pit_speed,
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     

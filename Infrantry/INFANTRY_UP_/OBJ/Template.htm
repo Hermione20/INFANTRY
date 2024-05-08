@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed May 08 07:51:06 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed May 08 18:25:06 2024
 <BR><P>
 <H3>Maximum Stack Usage =        920 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -426,7 +426,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control_task_Init
 </UL>
 
-<P><STRONG><a name="[aa]"></a>raw_data_to_pitch_angle</STRONG> (Thumb, 848 bytes, Stack size 160 bytes, gimbal_task.o(.text))
+<P><STRONG><a name="[aa]"></a>raw_data_to_pitch_angle</STRONG> (Thumb, 856 bytes, Stack size 160 bytes, gimbal_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = raw_data_to_pitch_angle &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
@@ -482,8 +482,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gimbal_follow_gyro_handle
 </UL>
 
-<P><STRONG><a name="[b7]"></a>gimbal_follow_gyro_handle</STRONG> (Thumb, 1868 bytes, Stack size 104 bytes, gimbal_task.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = gimbal_follow_gyro_handle &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
+<P><STRONG><a name="[b7]"></a>gimbal_follow_gyro_handle</STRONG> (Thumb, 1842 bytes, Stack size 88 bytes, gimbal_task.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 352<LI>Call Chain = gimbal_follow_gyro_handle &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pid_double_loop_cal
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pid_calc_filter
@@ -503,7 +503,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gimbal_task
 </UL>
 
-<P><STRONG><a name="[bd]"></a>gimbal_init_handle</STRONG> (Thumb, 672 bytes, Stack size 24 bytes, gimbal_task.o(.text))
+<P><STRONG><a name="[bd]"></a>gimbal_init_handle</STRONG> (Thumb, 678 bytes, Stack size 24 bytes, gimbal_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = gimbal_init_handle &rArr; pid_double_loop_cal &rArr; pid_calc &rArr; __aeabi_cdcmple
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pid_double_loop_cal
@@ -644,7 +644,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shoot_task
 </UL>
 
-<P><STRONG><a name="[d3]"></a>shoot_state_mode_switch</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, 17mm_shoot_task.o(.text))
+<P><STRONG><a name="[d3]"></a>shoot_state_mode_switch</STRONG> (Thumb, 206 bytes, Stack size 8 bytes, 17mm_shoot_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = shoot_state_mode_switch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1561,7 +1561,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart5DmaSendDataProc
 </UL>
 
-<P><STRONG><a name="[92]"></a>usart6_init</STRONG> (Thumb, 324 bytes, Stack size 96 bytes, usart.o(.text))
+<P><STRONG><a name="[92]"></a>usart6_init</STRONG> (Thumb, 320 bytes, Stack size 96 bytes, usart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = usart6_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init

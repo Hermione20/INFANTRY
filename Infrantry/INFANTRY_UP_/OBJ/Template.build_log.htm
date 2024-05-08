@@ -17,7 +17,7 @@ Library Manager: ArmAr.exe V5.06 update 7 (build 960)
 Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
 CPU DLL:         SARMCM3.DLL V5.39.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      CMSIS_AGDI.dll V1.33.16.0
+Target DLL:      Segger\JL2CM3.dll V2.99.43.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
@@ -27,9 +27,34 @@ Project File Date:  05/08/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'T:\SoftWare\Keil5.39\keil5.39\ARM\ARM_Compiler_5.06u7\Bin'
 Build target 'Template'
+compiling main.c...
+compiling buff_karman_filter.c...
+compiling CanBus.c...
+compiling senior.c...
+compiling LK_TECH.c...
+compiling HI220.c...
+compiling BSP.c...
+compiling HT430.c...
+compiling control_task.c...
+compiling DJI_MOTOR.c...
+compiling infantry_mode_switch_task.c...
+compiling CH100.c...
+compiling 17mm_shoot_task.c...
+compiling PM01.c...
 compiling gimbal_task.c...
+compiling JUDGE.c...
+compiling REMOTE.c...
+compiling uart_cha_transmit.c...
+compiling can_chassis_transmit.c...
+compiling OLD_Auto_shoot.c...
+compiling led.c...
+compiling timer.c...
+compiling can.c...
+compiling delay.c...
+compiling usart.c...
+compiling client.c...
 linking...
-Program Size: Code=97700 RO-data=3064 RW-data=964 ZI-data=15924  
+Program Size: Code=97692 RO-data=3064 RW-data=964 ZI-data=15924  
 FromELF: creating hex file...
 "..\OBJ\Template.axf" - 0 Error(s), 0 Warning(s).
 
@@ -70,44 +95,44 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE@5.5.0
 
    * Component: ARM::CMSIS:DSP&Source@1.15.0
-      Source file:   Source/ComplexMathFunctions/ComplexMathFunctionsF16.c
-      Source file:   Source/FastMathFunctions/FastMathFunctions.c
-      Source file:   Source/BayesFunctions/BayesFunctions.c
-      Include file:  Include/arm_common_tables.h
-      Source file:   Source/SupportFunctions/SupportFunctions.c
-      Include file:  Include/arm_common_tables_f16.h
-      Source file:   Source/CommonTables/CommonTables.c
       Source file:   Source/TransformFunctions/TransformFunctions.c
+      Source file:   Source/ComplexMathFunctions/ComplexMathFunctions.c
+      Source file:   Source/StatisticsFunctions/StatisticsFunctions.c
+      Source file:   Source/ControllerFunctions/ControllerFunctions.c
+      Source file:   Source/ComplexMathFunctions/ComplexMathFunctionsF16.c
+      Source file:   Source/BayesFunctions/BayesFunctions.c
+      Source file:   Source/FilteringFunctions/FilteringFunctionsF16.c
+      Source file:   Source/DistanceFunctions/DistanceFunctions.c
       Source file:   Source/BasicMathFunctions/BasicMathFunctionsF16.c
       Source file:   Source/TransformFunctions/TransformFunctionsF16.c
-      Source file:   Source/ComplexMathFunctions/ComplexMathFunctions.c
-      Source file:   Source/QuaternionMathFunctions/QuaternionMathFunctions.c
-      Source file:   Source/StatisticsFunctions/StatisticsFunctions.c
-      Source file:   Source/InterpolationFunctions/InterpolationFunctions.c
-      Source file:   Source/CommonTables/CommonTablesF16.c
-      Include file:  Include/arm_math.h
-      Source file:   Source/BasicMathFunctions/BasicMathFunctions.c
-      Source file:   Source/ControllerFunctions/ControllerFunctions.c
-      Include file:  Include/arm_math_f16.h
-      Source file:   Source/FilteringFunctions/FilteringFunctions.c
-      Source file:   Source/MatrixFunctions/MatrixFunctions.c
-      Source file:   Source/DistanceFunctions/DistanceFunctions.c
-      Source file:   Source/SVMFunctions/SVMFunctions.c
-      Source file:   Source/FilteringFunctions/FilteringFunctionsF16.c
+      Include file:  Include/arm_common_tables_f16.h
       Source file:   Source/MatrixFunctions/MatrixFunctionsF16.c
       Source file:   Source/InterpolationFunctions/InterpolationFunctionsF16.c
       Source file:   Source/StatisticsFunctions/StatisticsFunctionsF16.c
-      Include file:  Include/arm_const_structs_f16.h
+      Include file:  Include/arm_math_f16.h
+      Source file:   Source/BasicMathFunctions/BasicMathFunctions.c
+      Source file:   Source/CommonTables/CommonTables.c
+      Source file:   Source/FastMathFunctions/FastMathFunctions.c
+      Source file:   Source/QuaternionMathFunctions/QuaternionMathFunctions.c
+      Source file:   Source/MatrixFunctions/MatrixFunctions.c
+      Source file:   Source/SVMFunctions/SVMFunctions.c
       Include file:  Include/arm_const_structs.h
+      Source file:   Source/CommonTables/CommonTablesF16.c
+      Source file:   Source/SupportFunctions/SupportFunctions.c
+      Include file:  Include/arm_const_structs_f16.h
+      Source file:   Source/FilteringFunctions/FilteringFunctions.c
+      Source file:   Source/InterpolationFunctions/InterpolationFunctions.c
+      Include file:  Include/arm_math.h
+      Include file:  Include/arm_common_tables.h
+      Source file:   Source/SupportFunctions/SupportFunctionsF16.c
+      Source file:   Source/BayesFunctions/BayesFunctionsF16.c
+      Source file:   Source/FastMathFunctions/FastMathFunctionsF16.c
       Source file:   Source/DistanceFunctions/DistanceFunctionsF16.c
       Source file:   Source/SVMFunctions/SVMFunctionsF16.c
-      Source file:   Source/FastMathFunctions/FastMathFunctionsF16.c
-      Source file:   Source/BayesFunctions/BayesFunctionsF16.c
-      Source file:   Source/SupportFunctions/SupportFunctionsF16.c
 
    * Component: Keil::Compiler&ARM Compiler:I/O:STDERR&ITM@1.2.0
       Source file:   Source/retarget_io.c
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

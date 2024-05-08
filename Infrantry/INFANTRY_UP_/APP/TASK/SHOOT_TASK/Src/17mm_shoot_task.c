@@ -524,9 +524,13 @@ void shoot_state_mode_switch()
 							shoot.poke_run=0;
 					 
 					if(RC_CtrlData.Key_Flag.Key_C_TFlag)
-							shoot.fric_wheel_run=1;
+					{shoot.fric_wheel_run=1;
+						LASER_ON();}
 					else
-							shoot.fric_wheel_run=0;
+					{
+						shoot.fric_wheel_run=0;
+						LASER_OFF();
+					}
 					 
 					if(RC_CtrlData.Key_Flag.Key_Q_TFlag)
 						 {shoot.bulletspead_level=1;}
