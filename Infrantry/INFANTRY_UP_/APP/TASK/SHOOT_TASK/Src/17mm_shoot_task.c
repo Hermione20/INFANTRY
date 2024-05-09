@@ -524,19 +524,20 @@ void shoot_state_mode_switch()
 					else
 							shoot.poke_run=0;
 					 
-					if(RC_CtrlData.Key_Flag.Key_C_Flag&&shoot.fric_wheel_run==0)
+					if(RC_CtrlData.Key_Flag.Key_C_TFlag&&shoot.fric_wheel_run==0)
 					{
-						shoot.fric_wheel_run=1;
+						friction_cnt=0;
 						LASER_ON();
+						shoot.fric_wheel_run=1;
 					}
 					else if(RC_CtrlData.Key_Flag.Key_C_Flag&&shoot.fric_wheel_run==1)
 					{
 						friction_cnt++;
 						if(friction_cnt>=1000)
 						{
-						 shoot.fric_wheel_run=0;
 						 LASER_OFF();
-						 friction_cnt=0;
+						 shoot.fric_wheel_run=0;
+						 
 						}
 					}
 					 

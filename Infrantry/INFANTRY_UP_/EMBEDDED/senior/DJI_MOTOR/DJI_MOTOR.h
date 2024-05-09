@@ -24,6 +24,7 @@ typedef struct{
 	double ecd_angle;											//½Ç¶È
 	u32 temperature;
 	int16_t rate_rpm;
+	int16_t torque_current;
 	
 }Encoder;
 

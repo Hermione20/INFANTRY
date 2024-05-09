@@ -98,5 +98,6 @@
 ..\obj\uart_cha_transmit.o: ..\APP\TASK\GIMBAL_TASK\Ins\buff_karman_filter.h
 ..\obj\uart_cha_transmit.o: ..\APP\TASK\CHASSIS_TASK\Inc\CHASSIS_TASK.H
 ..\obj\uart_cha_transmit.o: ..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h
+..\obj\uart_cha_transmit.o: ..\APP\TASK\BULLET_HATCH_TASK\bullet_hatch_task.h
 ..\obj\uart_cha_transmit.o: ..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h
 ..\obj\uart_cha_transmit.o: ..\APP\RTOS\Ins\control_task.h

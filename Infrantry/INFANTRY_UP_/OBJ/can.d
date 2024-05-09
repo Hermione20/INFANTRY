@@ -98,5 +98,6 @@
 ..\obj\can.o: ..\APP\TASK\GIMBAL_TASK\Ins\buff_karman_filter.h
 ..\obj\can.o: ..\APP\TASK\CHASSIS_TASK\Inc\CHASSIS_TASK.H
 ..\obj\can.o: ..\APP\TASK\SHOOT_TASK\Inc\17mm_shoot_task.h
+..\obj\can.o: ..\APP\TASK\BULLET_HATCH_TASK\bullet_hatch_task.h
 ..\obj\can.o: ..\APP\TASK\MODE_SWITCH_TASK\Inc\infantry_mode_switch_task.h
 ..\obj\can.o: ..\APP\RTOS\Ins\control_task.h

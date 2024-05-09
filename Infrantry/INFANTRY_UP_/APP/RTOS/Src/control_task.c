@@ -29,6 +29,7 @@ void control_task(void)
 	if(time_tick%2==0)
 	{
 		   	shoot_task();
+				bullet_hatch_task();
 	}
 	if(time_tick%3 == 0)
 	{ 
@@ -52,4 +53,5 @@ void control_task_Init(void)
 {
 		gimbal_parameter_Init();
 		shot_param_init();
+		bullet_hatch_param_init();
 }

@@ -8,6 +8,7 @@
 "..\obj\infantry_mode_switch_task.o"
 "..\obj\buff_karman_filter.o"
 "..\obj\17mm_shoot_task.o"
+"..\obj\bullet_hatch_task.o"
 "..\obj\oldpid.o"
 "..\obj\senior.o"
 "..\obj\protobuf-c.o"

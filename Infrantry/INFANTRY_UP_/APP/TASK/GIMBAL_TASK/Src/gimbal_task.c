@@ -369,9 +369,9 @@ void gimbal_parameter_Init(void)
 //    PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
 //                    420, 0.5f, 0); 
 	PID_struct_init(&gimbal_data.pid_yaw_Angle, POSITION_PID, 400, 8,
-                    10.6, 0.0f, 0);
+                    4, 0.0f, 5);
     PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
-                    600, 0.1f, 0);
+                    600, 0.2f, 0);
 
     //自瞄下参数
     PID_struct_init ( &gimbal_data.pid_pit_follow, POSITION_PID, 200, 10, 15
@@ -623,7 +623,7 @@ double convert_ecd_angle_to_0_2pi1(double ecd_angle,float _0_2pi_angle)
 	 =============================================================================
  **/
 
-float K_X = 1.6;
+float K_X = 3.0;
 float K_Y = 5.0f;
 //float K_X = 4.0;
 //float K_Y = 3.0f;
@@ -631,9 +631,9 @@ float K_Y = 5.0f;
 float Error;
 float Error_2;
 float Pol;
-float K_S=-0.8;
-float K_V=6;
-float K_3=-0.1;
+float K_S=0;//-0.8;
+float K_V=0;//6
+float K_3=0;
 float K_yaw=0;
 float yaw_angle=0;
 float yaw_angle360=0;
@@ -716,14 +716,14 @@ void gimbal_follow_gyro_handle(void)
                                                                       &gimbal_data.pid_yaw_speed_follow,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																		&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
+																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
                                                                       0)*YAW_MOTOR_POLARITY;
         gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_follow,
                                                                       &gimbal_data.pid_pit_speed_follow,
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																	&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
+																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
                                                                       0 )*PITCH_MOTOR_POLARITY;
     }else

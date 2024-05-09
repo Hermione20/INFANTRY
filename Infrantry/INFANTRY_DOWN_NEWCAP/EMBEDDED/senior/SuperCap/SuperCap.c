@@ -51,7 +51,31 @@ void Can_SuperCap_message_Process(volatile can_capacitance_message_t *v,CanRxMsg
 			memcpy((uint8_t *)v,msg->Data,8);
 		}
 		break;
-
+			case 0x124:
+	{
+		memcpy((uint8_t *)v+8,msg->Data,8);
+	}
+	break;
+	case 0x125:
+	{
+		memcpy((uint8_t *)v+16,msg->Data,8);
+	}
+	break;
+	case 0x126:
+	{
+		memcpy((uint8_t *)v+24,msg->Data,8);
+	}
+	break;
+	case 0x127:
+	{
+		memcpy((uint8_t *)v+32,msg->Data,8);
+	}
+	break;
+	case 0x128:
+	{
+		memcpy((uint8_t *)v+40,msg->Data,8);
+	}
+	break;
 		default:
 			break;
 	}

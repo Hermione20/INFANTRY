@@ -39,7 +39,7 @@ friction_t general_friction = {0};
 /************************************poke_encoder*********************************************/
 poke_t general_poke = {0};
 
-
+volatile Encoder bullet_hatch_encoder={0};
 
 
 

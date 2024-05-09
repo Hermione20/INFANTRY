@@ -91,6 +91,7 @@ else if(val>=max)\
 
 #include "17mm_shoot_task.h"
 
+#include "bullet_hatch_task.h"
 
 #include "infantry_mode_switch_task.h"
 

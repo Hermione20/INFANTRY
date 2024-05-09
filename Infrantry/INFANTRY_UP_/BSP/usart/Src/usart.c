@@ -9,7 +9,7 @@ uint8_t _UART5_DMA_RX_BUF[100];
 #endif
 
 	static uint8_t _USART1_DMA_RX_BUF[2][BSP_USART1_DMA_RX_BUF_LEN];//双缓冲接收区
-	static uint8_t _USART2_DMA_RX_BUF[2][BSP_USART2_DMA_RX_BUF_LEN];//双缓冲接收区
+	 uint8_t _USART2_DMA_RX_BUF[BSP_USART2_DMA_RX_BUF_LEN];//双缓冲接收区
 	static uint8_t _USART3_RX_BUF[BSP_USART3_DMA_RX_BUF_LEN];//ch100单缓冲接收区
 	 uint8_t _UART4_DMA_RX_BUF[UART4_RX_BUF_LENGTH];	
 	static uint8_t _USART6_DMA_RX_BUF[BSP_USART6_RX_BUF_LENGTH];
@@ -242,15 +242,15 @@ void usart2_init(uint32_t baud)
     DMA_Cmd(DMA1_Stream5, ENABLE);
     
     /* NVIC */
-//    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 
-//	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
-//	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-//	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-//	NVIC_Init(&NVIC_InitStructure);
+	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_Init(&NVIC_InitStructure);
     
-//    USART_ITConfig(USART2, USART_IT_IDLE, ENABLE);
+    USART_ITConfig(USART2, USART_IT_IDLE, ENABLE);
     
 //    NVIC_InitStructure.NVIC_IRQChannel = DMA1_Stream6_IRQn;   // 发送DMA通道的中断配置
 //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;     // 优先级设置
@@ -263,9 +263,23 @@ void usart2_init(uint32_t baud)
     
     USART_Cmd(USART2, ENABLE);    
 }
+void USART2_IRQHandler(void)                               
+{   
+	if(USART_GetITStatus(USART2, USART_IT_IDLE) != RESET)
+    {
+		(void)USART2->SR;
+    	(void)USART2->DR;
 
+            USART2_Data_Receive_Process_0
+			
+			DMA_Cmd(DMA1_Stream5, DISABLE);
+			while(DMA_GetCmdStatus(DMA1_Stream5) != DISABLE); 
+			DMA_ClearFlag(DMA1_Stream5, DMA_FLAG_TCIF5 | DMA_FLAG_HTIF5);
+      DMA_SetCurrDataCounter(DMA1_Stream2,BSP_USART2_DMA_RX_BUF_LEN);
+			DMA_Cmd(DMA1_Stream5, ENABLE);
 
-
+    }
+}
 //开启一次DMA传输
 void USART2_dma_start(uart_cha_data_t *uart_cha_data)
 {
@@ -278,7 +292,6 @@ void USART2_dma_start(uart_cha_data_t *uart_cha_data)
 	DMA_SetCurrDataCounter(DMA1_Stream6, USART2_TX_BUF_LENGTH);
 	DMA_Cmd(DMA1_Stream6, ENABLE);
 }
-
 
 #endif
 

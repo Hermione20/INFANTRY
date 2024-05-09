@@ -33,6 +33,8 @@
 #define LEFT_POKE 0X00			//右一左二，只有一个用一
 #define RIGHT_POKE 0X00
 #define POKE 0X201
+
+#define BULLET_HATCH 0x204
 /*********************************舵轮上下板通信id*********************************/
 #define UP_CAN2_TO_DOWN_CAN1_1 0X407
 #define UP_CAN2_TO_DOWN_CAN1_2 0X408

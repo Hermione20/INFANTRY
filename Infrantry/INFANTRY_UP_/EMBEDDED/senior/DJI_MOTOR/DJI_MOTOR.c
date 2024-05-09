@@ -64,6 +64,7 @@ void EncoderProcess(volatile Encoder *v, CanRxMsg * msg)
 	}
 	v->filter_rate = (int32_t)(temp_sum/RATE_BUF_SIZE);		
 	v->rate_rpm = (msg->Data[2]<<8)|msg->Data[3];
+	v->torque_current = (msg->Data[4]<<8)|msg->Data[5];
 }
 
 void GM6020EncoderProcess(volatile Encoder *v, CanRxMsg * msg)
