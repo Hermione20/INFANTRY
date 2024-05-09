@@ -1,11 +1,63 @@
 #include "17mm_shoot_task.h"
 
+//#define FRIC_SPEED_R                      1050
+//#define FRIC_SPEED_L                     -1050
+//#define POCK_SPEED                       -400
+#define BULLET_SPEED_TARGET               27.5
+#define BULLET_SPEED_SELF_ADAPTATION_K    50
+
 /* Variables_definination-----------------------------------------------------------------------------------------------*/
-  shoot_t shoot;
+shoot_t shoot ={
+        .Bullet_Speed_Kalman.X_hat=27,
+        .Bullet_Speed_Kalman.Error_Mea=0.2,
+        .Bullet_Speed_Kalman.Error_Est=5,
+};
+
 	pid_t pid_trigger_angle[4] ={0};
 	pid_t pid_trigger_angle_buf={0};
 	pid_t pid_trigger_speed_buf={0};
 /*----------------------------------------------------------------------------------------------------------------------*/
+
+	
+/**
+ * @brief 卡尔曼滤波计算 
+ * */
+float First_Order_Kalman_Filter_Cal(First_Order_Kalman_Filter_t *_First_Order_Kalman_Filter,float _Z/*测量值*/)
+{
+        //更新上一次的值
+        _First_Order_Kalman_Filter->Error_Est_Last=_First_Order_Kalman_Filter->Error_Est;
+        _First_Order_Kalman_Filter->X_hat_Last=_First_Order_Kalman_Filter->X_hat;
+        //更新上一次的值
+        _First_Order_Kalman_Filter->Error_Est_Last=_First_Order_Kalman_Filter->Error_Est;
+        _First_Order_Kalman_Filter->X_hat_Last=_First_Order_Kalman_Filter->X_hat;
+        //Step1:Kalman_Gain计算
+        _First_Order_Kalman_Filter->Kalman_Gain=
+        _First_Order_Kalman_Filter->Error_Est_Last
+        /(_First_Order_Kalman_Filter->Error_Est_Last+_First_Order_Kalman_Filter->Error_Mea);
+        //Step2:计算预测值
+        _First_Order_Kalman_Filter->X_hat=
+        _First_Order_Kalman_Filter->X_hat_Last
+        +_First_Order_Kalman_Filter->Kalman_Gain*(_Z-_First_Order_Kalman_Filter->X_hat_Last);
+        //Step3:预测误差更新
+        _First_Order_Kalman_Filter->Error_Est=(1-_First_Order_Kalman_Filter->Kalman_Gain)
+        *_First_Order_Kalman_Filter->Error_Est_Last;
+        //返回预测值
+        return _First_Order_Kalman_Filter->X_hat;
+}
+
+
+/**
+ * @brief  弹速自适应实现函数
+ * */
+float Shooter_Bullet_Speed_Self_Adaptation(float Bullet_Speed)
+{
+        float static Bullet_Speed_Error;
+        Bullet_Speed_Error=(BULLET_SPEED_TARGET-Bullet_Speed);
+        
+        return Bullet_Speed_Error*BULLET_SPEED_SELF_ADAPTATION_K;
+}
+
+
 
 #if SHOOT_TYPE == 3//发射参数初始化
 void shot_param_init()
@@ -461,15 +513,15 @@ void shoot_bullet_handle1(void)
 }
 #endif
 
-
+                                
 
 #if SHOOT_TYPE == 3//摩擦轮 friction
 void shoot_friction_handle()
 {  
 	if(shoot.fric_wheel_run==1)
 	{
-		pid_rotate[0].set=-shoot.friction_pid.speed_ref[0];
-    pid_rotate[1].set= shoot.friction_pid.speed_ref[0];	
+		pid_rotate[0].set=-shoot.friction_pid.speed_ref[0] + Shooter_Bullet_Speed_Self_Adaptation(shoot.Bullet_Speed_Kalman.X_hat);
+		pid_rotate[1].set= shoot.friction_pid.speed_ref[0] - Shooter_Bullet_Speed_Self_Adaptation(shoot.Bullet_Speed_Kalman.X_hat);	
 	}
 	else
 	{
@@ -577,3 +629,4 @@ void shoot_task()
 	heat0_limit();
 #endif
 }
+

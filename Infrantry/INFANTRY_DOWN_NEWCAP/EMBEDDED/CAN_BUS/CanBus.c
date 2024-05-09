@@ -10,7 +10,7 @@ void Can1ReceiveMsgProcess(CanRxMsg * msg)
 //		cap_limit_mode_switch();
 	#endif
 //		PM01_message_Process(&capacitance_message,msg);
-//	 Can_SuperCap_message_Process(&can_capacitance_message,msg);
+	 Can_SuperCap_message_Process(&can_capacitance_message,msg);
     if(msg->StdId == GM4Encoder_MOTOR)
 		{
 			cnt[3]++;
