@@ -67,8 +67,8 @@ void shot_param_init()
 	PID_struct_init(&pid_trigger_speed[0],POSITION_PID,10000,10000,30,0,0);//150
 	PID_struct_init(&pid_trigger_speed[1],POSITION_PID,19000,10000,50,0.1,4);
 	
-	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 4000 , 200    ,  40, 0.001f  , 0);
-	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,  90 , 0  , 0 );
+	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 4000 , 200    ,  3, 0.001f  , 0);
+	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,  25 , 0  , 0 );
 	
   PID_struct_init(&pid_rotate[1], POSITION_PID,15500,11500,50,0,0);
   PID_struct_init(&pid_rotate[0], POSITION_PID,15500,11500,50,0,0);
@@ -204,32 +204,32 @@ void shoot_bullet_handle(void)
 //							 shoot.poke_run==1)	
 		{	
 /**/
-//			start_shooting_count++;
-//			if((start_shooting_count >= 250)&&(abs(general_poke.poke.filter_rate) < 3))
-//			{
-//				lock_rotor1 = 1;
-//				start_shooting_count = 0;
-//			}
-//			if(lock_rotor1 == 1)
-//			{
-//				start_reversal_count1++;
-//			if(start_reversal_count1 > 150)
-//			{
-//				lock_rotor1 = 0;
-//				start_reversal_count1 = 0;
-//			}
-//			shoot.poke_pid.angle_ref[0]=shoot.poke_pid.angle_fdb[0]+shoot.shoot_frequency*45*36/500;		//一秒shoot_frequency发，一发拨盘转45°，减速比是1：36。每两毫秒执行一次故除以500。	
-//			shoot.poke_pid.angle_fdb[0]=general_poke.poke.ecd_angle;
-//			shoot.poke_pid.speed_fdb[0]=general_poke.poke.filter_rate;
-//			shoot.poke_current[0]=pid_double_loop_cal(&pid_trigger_angle[0],&pid_trigger_speed[0],
-//																								  shoot.poke_pid.angle_ref[0],
-//																								  shoot.poke_pid.angle_fdb[0],
-//																								 &shoot.poke_pid.speed_ref[0],
-//																									shoot.poke_pid.speed_fdb[0],0);
-//			}
-//			if((shoot.fric_wheel_run)&&(lock_rotor1 == 0))
+			start_shooting_count++;
+			if((start_shooting_count >= 250)&&(abs(general_poke.poke.filter_rate) < 3))
+			{
+				lock_rotor1 = 1;
+				start_shooting_count = 0;
+			}
+			if(lock_rotor1 == 1)
+			{
+				start_reversal_count1++;
+			if(start_reversal_count1 > 150)
+			{
+				lock_rotor1 = 0;
+				start_reversal_count1 = 0;
+			}
+			shoot.poke_pid.angle_ref[0]=shoot.poke_pid.angle_fdb[0]-shoot.shoot_frequency*45*36/500;		//一秒shoot_frequency发，一发拨盘转45°，减速比是1：36。每两毫秒执行一次故除以500。	
+			shoot.poke_pid.angle_fdb[0]=general_poke.poke.ecd_angle;
+			shoot.poke_pid.speed_fdb[0]=general_poke.poke.filter_rate;
+			shoot.poke_current[0]=pid_double_loop_cal(&pid_trigger_angle[0],&pid_trigger_speed[0],
+																								  shoot.poke_pid.angle_ref[0],
+																								  shoot.poke_pid.angle_fdb[0],
+																								 &shoot.poke_pid.speed_ref[0],
+																									shoot.poke_pid.speed_fdb[0],0);
+			}
+			if((shoot.fric_wheel_run)&&(lock_rotor1 == 0))
 
-//			{	
+			{	
 /**/
 			shoot.poke_pid.angle_ref[0]=shoot.poke_pid.angle_fdb[0]+shoot.shoot_frequency*45*36/500;		//一秒shoot_frequency发，一发拨盘转45°，减速比是1：36。每两毫秒执行一次故除以500。	
 			shoot.poke_pid.angle_fdb[0]=general_poke.poke.ecd_angle;
@@ -242,7 +242,7 @@ void shoot_bullet_handle(void)
 																									shoot.poke_pid.speed_fdb[0],0);
 //			shoot.poke_pid.speed_ref[0]=-250;
 //			shoot.poke_current[0]=pid_calc(&pid_trigger_speed[0],shoot.poke_pid.speed_fdb[0],shoot.poke_pid.speed_ref[0]);
-//			}
+			}
 		}
 		else
 		{

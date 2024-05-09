@@ -735,6 +735,8 @@ void start_chassis_6020()
 * @Note     :功率控制切换限制
 ************************************************************************************************************************
 **/
+/* 停止时间 */
+uint32_t stop_time;
 void set_3508current_6020voltage()
 {		
 	/* 6020 speed ref 计算 */
@@ -756,14 +758,22 @@ void set_3508current_6020voltage()
 		pid_calc(&pid_cha_3508_speed[i],chassis.cha_pid_3508.speed_fdb[i],chassis.cha_pid_3508.speed_ref[i]);
 		#endif	
 		/* 去除急刹 */		
-		if(chassis.vx == 0 && chassis.vy == 0  && fabs(Chassis_angle.get_speedw) < 0.5)
+		if(chassis.vx == 0 && chassis.vy == 0  && fabs(Chassis_angle.get_speedw) < 50)
 		{
-			for(uint8_t i = 0; i < 4; i++)
-			{
-				pid_cha_6020_speed[i].out = 0;
+			stop_time ++;
+			if(stop_time < 500)
+			{	/*不自锁*/
+				for(uint8_t i = 0; i < 4; i++)
+				{
+					pid_cha_6020_speed[i].out = 0;
+				}
 			}
 		}
-	}
+		else if(!(chassis.vx == 0 && chassis.vy == 0 ))
+		{
+			stop_time = 0;
+		}
+	}++
 	/* 死区处理 */
 	for (int i = 0; i < 4; i++)
 	{   

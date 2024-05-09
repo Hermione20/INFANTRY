@@ -351,10 +351,10 @@ void gimbal_parameter_Init(void)
                     300, 0.8f, 40); 
 
     // 跟随陀螺仪下的参数
-    PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 500, 30,
-                    15, 0.0f, 0); //15, 0.01f, 8
-    PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 27000, 20000,
-                    150, 0.001f, 0); //170, 0.001f, 60
+    PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 200, 8,
+                    18, 0.0f, 0); //15, 0.01f, 8
+    PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 25000, 2000,
+                    200, 0.001f, 0); //170, 0.001f, 60
 //	 PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 300, 30,
 //                    20, 0.0f, 16); //15, 0.01f, 8
 //    PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 27000, 20000,
@@ -368,10 +368,10 @@ void gimbal_parameter_Init(void)
 //                    12.8, 0.015f, 0);
 //    PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
 //                    420, 0.5f, 0); 
-	PID_struct_init(&gimbal_data.pid_yaw_Angle, POSITION_PID, 400, 8,
-                    4, 0.0f, 5);
-    PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
-                    600, 0.2f, 0);
+	PID_struct_init(&gimbal_data.pid_yaw_Angle, POSITION_PID, 260, 8,
+                    10, 0.0f, 5);
+    PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 3000,
+                    300, 0.01f, 0);
 
     //自瞄下参数
     PID_struct_init ( &gimbal_data.pid_pit_follow, POSITION_PID, 200, 10, 15
@@ -623,8 +623,8 @@ double convert_ecd_angle_to_0_2pi1(double ecd_angle,float _0_2pi_angle)
 	 =============================================================================
  **/
 
-float K_X = 3.0;
-float K_Y = 5.0f;
+float K_X = 2.8f;
+float K_Y = 2.8f;
 //float K_X = 4.0;
 //float K_Y = 3.0f;
 
