@@ -2,7 +2,7 @@
 
 
 int time_tick = 0;
-
+float auto_aim_rotate_yaw=0;
 void control_task(void)
 {
 	time_tick++;
@@ -29,19 +29,24 @@ void control_task(void)
 	if(time_tick%2==0)
 	{
 		   	shoot_task();
-				bullet_hatch_task();
+			bullet_hatch_task();
 	}
 	if(time_tick%3 == 0)
 	{ 
 			gimbal_task();
-
 			can_bus_send_task();
 	}
 		if(time_tick%5 == 0)
 	{
-		send_protocol(gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
-	 //send_protocol_New(gimbal_gyro.yaw_Angle,gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF); 
-	}
+		if(gimbal_data.auto_aim_rotate_flag==0)
+		send_protocol(-gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
+		else
+		{
+		auto_aim_rotate_yaw = convert_ecd_angle_to__pi_pi(gimbal_gyro.yaw_Angle,auto_aim_rotate_yaw);
+		send_protocol(auto_aim_rotate_yaw,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
+		}
+		//send_protocol_New(gimbal_gyro.yaw_Angle,gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF); 
+	}//
 		if(time_tick%100==1)
 	{
 		Client_send_handle();

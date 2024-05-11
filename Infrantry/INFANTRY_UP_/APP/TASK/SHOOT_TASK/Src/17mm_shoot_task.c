@@ -67,8 +67,8 @@ void shot_param_init()
 	PID_struct_init(&pid_trigger_speed[0],POSITION_PID,10000,10000,30,0,0);//150
 	PID_struct_init(&pid_trigger_speed[1],POSITION_PID,19000,10000,50,0.1,4);
 	
-	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 4000 , 200    ,  3, 0.001f  , 0);
-	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,  25 , 0  , 0 );
+	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 2000 , 50    ,  12, 0.01f  , 0);
+	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,  18 , 0  , 0 );
 	
   PID_struct_init(&pid_rotate[1], POSITION_PID,15500,11500,50,0,0);
   PID_struct_init(&pid_rotate[0], POSITION_PID,15500,11500,50,0,0);
@@ -129,7 +129,7 @@ void heat_shoot_frequency_limit()//步兵射频限制部分
 			 }
 			 else if(shoot.shoot_frequency>13)
 			 {
-				 shoot.will_time_shoot=(shoot.remain_bullets-3.5)*1000/shoot.shoot_frequency;
+				 shoot.will_time_shoot=(shoot.remain_bullets-3.5)*1000/shoot.shoot_frequency;//3.5
 			 }
 			 else
 			 {

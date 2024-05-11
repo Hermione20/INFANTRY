@@ -20,8 +20,8 @@ typedef enum
 
 typedef struct
 {
+	uint16_t b_cnt;
 	u8 bullet_hatch_init_flag;
-	u8 bullet_hatch_lock;
 	hatch_ref_and_fdb_t hatch_ref_and_fdb;
 	bullet_hatch_mode_e bullet_hatch_mode;
 	

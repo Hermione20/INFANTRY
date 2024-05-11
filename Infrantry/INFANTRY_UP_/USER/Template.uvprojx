@@ -550,6 +550,11 @@
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\senior\OT7213\OT7213.c</FilePath>
             </File>
+            <File>
+              <FileName>Auto_shoot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMBEDDED\senior\Auto_Shoot\Auto_shoot.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

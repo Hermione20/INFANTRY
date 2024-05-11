@@ -69,11 +69,11 @@ void vision_process_general_message(unsigned char* address, unsigned int length)
 			new_location.pitch_speed = Uart4_Protobuf_Receive_Gimbal_Angle->pitch_speed;
 			new_location.yaw_speed = Uart4_Protobuf_Receive_Gimbal_Angle->yaw_speed;
 			new_location.flag = 1;
-			if (fabs(new_location.x - gimbal_gyro.yaw_Angle) > 45 || fabs(new_location.y - gimbal_gyro.pitch_Angle) > 70)
-			{
+//			if (fabs(new_location.x - gimbal_gyro.yaw_Angle) > 45 || fabs(new_location.y - gimbal_gyro.pitch_Angle) > 70)
+//			{
 
-					new_location.flag = 0;
-			}
+//					new_location.flag = 0;
+//			}
 		}else
 		{
 			new_location.flag = 0;
@@ -130,11 +130,16 @@ DeviceToHost__Frame msg;
 u8 DateLength;
 #define GIMBAL_AUTO_SMALL_BUFF 11
 #define GIMBAL_AUTO_BIG_BUFF 12
+#define GIMBAL_AUTO_AIM_ROTATE 13
 void send_protocol(float x, float y, float r, int id, float ammo_speed, int gimbal_mode, u8 *data)
 {
 	device_to_host__frame__init(&msg);
 
-	if (gimbal_mode == GIMBAL_AUTO_SMALL_BUFF)
+	if(gimbal_mode == GIMBAL_FOLLOW_ZGYRO && gimbal_data.auto_aim_rotate_flag==1)
+	{
+		msg.mode_ = 3; 
+	}
+	else if (gimbal_mode == GIMBAL_AUTO_SMALL_BUFF)
 	{
 		msg.mode_ = 2;
 	}

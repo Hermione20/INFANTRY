@@ -58,17 +58,17 @@ void infantry_mode_switch_task(void)
 			//遥控器模式的模式选择从这里开始
 			if(gimbal_data.if_finish_Init == 1)
 			{
-				gimbal_data.ctrl_mode = GIMBAL_FOLLOW_ZGYRO;
+				 gimbal_data.ctrl_mode = GIMBAL_FOLLOW_ZGYRO;
 				
 				if (RC_CtrlData.RemoteSwitch.s3to2)
         {
 
-            chassis.ctrl_mode = CHASSIS_ROTATE;
+          chassis.ctrl_mode = CHASSIS_ROTATE;
 					chassis.ChassisSpeed_Ref.rotate_ref = 550;
         }
         else
         {
-            chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
+          chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
 					chassis.ChassisSpeed_Ref.rotate_ref = 0;
         }
 			}
@@ -175,14 +175,22 @@ void infantry_mode_switch_task(void)
                 }
 								
 								if (RC_CtrlData.Key_Flag.Key_CTRL_TFlag)
-            {
+								{
 
                 chassis.ctrl_mode = CHASSIS_ROTATE;
-            }
-            else
-            {
+								}
+						    else
+							  {
                 chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
-            }
+							  }
+								if (RC_CtrlData.Key_Flag.Key_G_TFlag)
+								{
+										gimbal_data.auto_aim_rotate_flag=1;
+								}
+								else
+								{
+										gimbal_data.auto_aim_rotate_flag=0;
+								}
 
 			}
         

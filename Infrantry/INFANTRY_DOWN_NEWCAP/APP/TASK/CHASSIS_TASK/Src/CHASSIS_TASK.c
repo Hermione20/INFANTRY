@@ -773,9 +773,9 @@ void set_3508current_6020voltage()
 		{
 			stop_time = 0;
 		}
-	}++
+	}
 	/* ËÀÇø´¦Àí */
-	for (int i = 0; i < 4; i++)
+	for(int i = 0; i < 4; i++)
 	{   
 		if((chassis.ctrl_mode==MANUAL_FOLLOW_GIMBAL||chassis.ctrl_mode==CHASSIS_ROTATE))				
 				chassis.current[i] = 1.0f * pid_cha_3508_speed[i].out;		

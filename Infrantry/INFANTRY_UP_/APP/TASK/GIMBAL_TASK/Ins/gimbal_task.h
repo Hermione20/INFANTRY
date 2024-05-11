@@ -31,7 +31,7 @@ typedef enum
   GIMBAL_PATROL_MODE   = 5,			//未实际意义
   GIMBAL_SHOOT_BUFF    = 6,			//未实际意义
   GIMBAL_POSITION_MODE = 7,			//未实际意义
-  GIMBAL_AUTO_AIM	   = 8,				//哨兵自动云台
+  GIMBAL_AUTO_AIM_ROTATE= 8,				//哨兵自动云台
   GIMBAL_AUTO_SUP      = 9,			//未实际意义
   GIMBAL_REVERSE       = 10,		//未实际意义
   GIMBAL_AUTO_SMALL_BUFF   = 11,//小buff
@@ -91,6 +91,7 @@ typedef struct
 	
 	u8 if_finish_Init;
 	u8 if_auto_shoot;
+	u8 auto_aim_rotate_flag;
 	
   pid_t pid_init_yaw_Angle; 
   pid_t pid_init_pit_Angle; 
@@ -102,11 +103,11 @@ typedef struct
   pid_t pid_yaw_speed; 
   pid_t pid_pit_speed;
 
-  //英雄吊射模式下的参数
-  pid_t pid_auto_yaw_Angle; 
-  pid_t pid_auto_pit_Angle; 
-  pid_t pid_auto_yaw_speed; 
-  pid_t pid_auto_pit_speed; 
+  //自瞄打小陀螺模式下的参数
+  pid_t pid_rotate_yaw_Angle; 
+  pid_t pid_rotate_pit_Angle; 
+  pid_t pid_rotate_yaw_speed; 
+  pid_t pid_rotate_pit_speed; 
 
   // 小符下的PID参数
   pid_t pid_yaw_small_buff;
@@ -144,7 +145,7 @@ float raw_data_to_pitch_angle(float ecd_angle_pit);
 extern gimbal_t gimbal_data;
 extern float yaw_angle_ref_aim,pit_angle_ref_aim;
 extern float pitch_max,pitch_min;
-
+extern float yaw_angle360;
 
 
 
