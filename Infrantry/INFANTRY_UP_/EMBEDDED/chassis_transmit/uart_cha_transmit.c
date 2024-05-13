@@ -17,7 +17,8 @@ void uart_cha_task(u8 RC_inputmode,
                 int16_t rotate_speed,
                 int16_t chassis_power,
                 uint16_t chassis_power_buffer,
-                u8 chassis_power_limit)
+                u8 chassis_power_limit,
+								u8 mains_power_chassis_output)
 {
 	uart_cha_data.RC_inputmode = RC_inputmode;
 	uart_cha_data.if_follow_gim = if_follow_gim;
@@ -31,7 +32,7 @@ void uart_cha_task(u8 RC_inputmode,
 	uart_cha_data.chassis_power = chassis_power;
 	uart_cha_data.chassis_power_buffer = chassis_power_buffer;
 	uart_cha_data.chassis_power_limit = chassis_power_limit;
-
+  uart_cha_data.mains_power_chassis_output=mains_power_chassis_output;
   USART2_dma_start(&uart_cha_data);
 }
 

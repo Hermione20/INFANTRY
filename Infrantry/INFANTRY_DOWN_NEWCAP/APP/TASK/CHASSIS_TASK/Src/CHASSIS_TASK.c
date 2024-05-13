@@ -117,14 +117,25 @@ void chassis_param_init()//底盘参数初始化
 * @Note     : 
 ************************************************************************************************************************
 **///舵轮
+u8 power_mode=0;
 void power_limit_handle()
 {
-	max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);
-
+	
+	if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
+	{
+	max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
 	get_6020power();
-
-	power_limit_rate2=get_the_limite_rate(get_max_power2(usart_capacitance_message.cap_voltage_filte)-Max_Power_6020);
-
+	power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
+		power_mode=1;
+	}
+	else
+	{
+	max_chassis_power=get_max_power2(uart_cha_data.chassis_power_limit);
+	get_6020power();
+	power_limit_rate2=get_the_limite_rate((uart_cha_data.chassis_power_limit)-Max_Power_6020);
+		power_mode=2;
+	}
+	
 	VAL_LIMIT(power_limit_rate1,0,1);
 	VAL_LIMIT(power_limit_rate2,0,1);		 
 		
@@ -141,7 +152,7 @@ void power_limit_handle()
 ************************************************************************************************************************
 **///步兵功率限制
 
-int max_power=0;
+float max_power=0;
 
 float get_max_power2(float voltage)
 {

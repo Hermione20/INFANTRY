@@ -16,7 +16,7 @@ volatile can_capacitance_message_t can_capacitance_message;
  * */
 void POWER_Control(SuperCap_Send_t *S)
 {
-	if(uart_cha_data.RC_inputmode==STOP||uart_cha_data.RC_inputmode==0)
+	if(uart_cha_data.mains_power_chassis_output==0)
 		S->Stop_Control_Flag=0;
 	else 
 		S->Stop_Control_Flag=1;

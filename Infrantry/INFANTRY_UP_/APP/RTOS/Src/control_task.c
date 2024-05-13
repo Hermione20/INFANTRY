@@ -22,13 +22,14 @@ void control_task(void)
                         chassis.ChassisSpeed_Ref.rotate_ref,
                         judge_rece_mesg.power_heat_data.chassis_power,
                         judge_rece_mesg.power_heat_data.chassis_power_buffer,
-                        judge_rece_mesg.game_robot_state.chassis_power_limit);
+                        judge_rece_mesg.game_robot_state.chassis_power_limit,
+												judge_rece_mesg.game_robot_state.power_management_chassis_output);
        
 
 	}	
 	if(time_tick%2==0)
 	{
-		   	shoot_task();
+		  shoot_task();
 			bullet_hatch_task();
 	}
 	if(time_tick%3 == 0)

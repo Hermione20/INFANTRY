@@ -63,14 +63,14 @@ float pitch_max = 0;
 
 #if STANDARD == 3
 
-		#define INFANTRY_PITCH_MAX 25.0f
+		#define INFANTRY_PITCH_MAX 17.0f
 		#define INFANTRY_PITCH_MIN -21.5f
     float pitch_middle = 0;
     float Pitch_min = INFANTRY_PITCH_MIN;
     float Pitch_max = INFANTRY_PITCH_MAX;
 
     #define VISION_PITCH_MIN            -25
-    #define VISION_PITCH_MAX            35
+    #define VISION_PITCH_MAX            17
 
     #define YAW_INIT_ANGLE_FDB          -yaw_Encoder.ecd_angle   //步兵机械将电机反着装导致yaw轴电机向右编码器角度为负，与期望极性相反，需要加负号
     #define PITCH_INIT_ANGLE_FDB        gimbal_gyro.pitch_Angle

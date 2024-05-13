@@ -173,10 +173,8 @@ void infantry_mode_switch_task(void)
                     gimbal_data.ctrl_mode = GIMBAL_FOLLOW_ZGYRO;
                     chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
                 }
-								
 								if (RC_CtrlData.Key_Flag.Key_CTRL_TFlag)
 								{
-
                 chassis.ctrl_mode = CHASSIS_ROTATE;
 								}
 						    else
@@ -190,6 +188,10 @@ void infantry_mode_switch_task(void)
 								else
 								{
 										gimbal_data.auto_aim_rotate_flag=0;
+								}
+								if (RC_CtrlData.Key_Flag.Key_B_Flag)
+								{
+								draw_cnt=0;
 								}
 
 			}

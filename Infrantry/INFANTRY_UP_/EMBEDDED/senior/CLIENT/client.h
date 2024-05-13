@@ -13,6 +13,9 @@
 #define UI_BLACK  7
 #define UI_WHITE  8
 
+
+
+
 extern u8  draw_cnt;
 extern u8  draw_int;
 void Client_send_handle(void);

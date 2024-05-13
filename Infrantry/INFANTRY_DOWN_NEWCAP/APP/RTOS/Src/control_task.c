@@ -33,9 +33,14 @@ void control_task(void)
 		Set_C620andC610_IQ1(CAN2,chassis.current[0],chassis.current[1],chassis.current[2],chassis.current[3]);
 	}
 	
+	    if(time_tick%20 == 0)
+    { 
+			POWER_Control(&Super_Cap_Send);
+		}
+	
     if(time_tick%10 == 0)
     { 
-		POWER_Control(&Super_Cap_Send);
+
 //			CAN_POWER_Control(CAN1,&Super_Cap_Send);
 			Uart_down_to_up_send(&uart_cap_down_data);
     } 
