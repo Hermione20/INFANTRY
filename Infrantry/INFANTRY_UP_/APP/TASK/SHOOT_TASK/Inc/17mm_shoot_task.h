@@ -11,7 +11,7 @@
 
 #define FRICTION_SPEED_15  (-540)      //µ¯ËÙ
 #define FRICTION_SPEED_18  (-607)
-#define FRICTION_SPEED_30  (-1000)
+#define FRICTION_SPEED_30  (-950)
 
 #endif
 
@@ -83,8 +83,8 @@ typedef struct
 	uint8_t      bulletspead_level;
   uint8_t      fric_wheel_run; //run or not
   uint16_t     fric_wheel_spd;
-  uint16_t     will_time_shoot;
-  uint16_t     remain_bullets;
+  float         will_time_shoot;
+  float         remain_bullets;
 	uint8_t        single_angle;
 	float        shoot_frequency;
   float        total_speed;

@@ -27,13 +27,13 @@
 #define USART2_Data_Receive_Process_0				do{SuperCap_message_Process(&usart_down_capacitance_message,_USART2_DMA_RX_BUF);}while(0);
 #define USART2_Data_Receive_Process_1				do{}while(0);
 	
-#define USART3_Data_Receive_Process					do{CH100_getDATA(_USART3_RX_BUF,&gimbal_gyro);}while(0);
+#define USART3_Data_Receive_Process					do{}while(0);
 #define UART4_Data_Receive_Process					do{vision_process_general_message(&_UART4_DMA_RX_BUF[0],length);}while(0);
 	
 #define UART5_Data_Receive_Process_0				do{judgement_data_handle(_UART5_DMA_RX_BUF[0],this_time_rx_len5);}while(0);
 #define UART5_Data_Receive_Process_1				do{judgement_data_handle(_UART5_DMA_RX_BUF[1],this_time_rx_len5);}while(0);
 
-#define USART6_Data_Receive_Process					do{HI220_getDATA(_USART6_DMA_RX_BUF,&gimbal_gyro,this_time_rx_len6);}while(0);
+#define USART6_Data_Receive_Process					do{CH100_getDATA(_USART6_DMA_RX_BUF,&gimbal_gyro);}while(0);
 /*
 *********************************************************************************************************
 *                                          MACROS

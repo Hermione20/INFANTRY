@@ -193,6 +193,14 @@ void infantry_mode_switch_task(void)
 								{
 								draw_cnt=0;
 								}
+								if (RC_CtrlData.Key_Flag.Key_Q_TFlag)
+								{
+                chassis.climbing_mode = 1;
+								}
+						    else
+							  {
+                chassis.climbing_mode = 0;
+							  }
 
 			}
         

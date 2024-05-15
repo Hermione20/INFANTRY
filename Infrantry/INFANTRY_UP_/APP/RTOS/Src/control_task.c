@@ -23,7 +23,9 @@ void control_task(void)
                         judge_rece_mesg.power_heat_data.chassis_power,
                         judge_rece_mesg.power_heat_data.chassis_power_buffer,
                         judge_rece_mesg.game_robot_state.chassis_power_limit,
-												judge_rece_mesg.game_robot_state.power_management_chassis_output);
+												judge_rece_mesg.game_robot_state.power_management_chassis_output,
+												judge_rece_mesg.game_robot_state.robot_level,
+												chassis.climbing_mode);
        
 
 	}	
@@ -39,13 +41,14 @@ void control_task(void)
 	}
 		if(time_tick%5 == 0)
 	{
-		if(gimbal_data.auto_aim_rotate_flag==0)
-		send_protocol(-gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
-		else
+
+		if(gimbal_data.auto_aim_rotate_flag==1)	
 		{
 		auto_aim_rotate_yaw = convert_ecd_angle_to__pi_pi(gimbal_gyro.yaw_Angle,auto_aim_rotate_yaw);
 		send_protocol(auto_aim_rotate_yaw,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
 		}
+		else
+		{send_protocol(-gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);}
 		//send_protocol_New(gimbal_gyro.yaw_Angle,gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF); 
 	}//
 		if(time_tick%100==1)
