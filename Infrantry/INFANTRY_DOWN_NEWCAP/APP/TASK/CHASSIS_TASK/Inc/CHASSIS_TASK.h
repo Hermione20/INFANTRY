@@ -170,6 +170,8 @@ typedef struct
 		chassis_mode_e  			ctrl_mode;
 		chassis_mode_e  			last_ctrl_mode;
 		chassis_speed_mode_e  chassis_speed_mode;
+	
+		u8 climbing_mode;
 
 		ChassisSpeed_Ref_t  ChassisSpeed_Ref;
 	

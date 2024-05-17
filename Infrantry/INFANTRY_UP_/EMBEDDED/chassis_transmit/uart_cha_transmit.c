@@ -18,7 +18,9 @@ void uart_cha_task(u8 RC_inputmode,
                 int16_t chassis_power,
                 uint16_t chassis_power_buffer,
                 u8 chassis_power_limit,
-								u8 mains_power_chassis_output)
+								u8 mains_power_chassis_output,
+								u8 robot_level,
+								u8 climbing_mode)
 {
 	uart_cha_data.RC_inputmode = RC_inputmode;
 	uart_cha_data.if_follow_gim = if_follow_gim;
@@ -33,6 +35,8 @@ void uart_cha_task(u8 RC_inputmode,
 	uart_cha_data.chassis_power_buffer = chassis_power_buffer;
 	uart_cha_data.chassis_power_limit = chassis_power_limit;
   uart_cha_data.mains_power_chassis_output=mains_power_chassis_output;
+	uart_cha_data.robot_level=judge_rece_mesg.game_robot_state.robot_level;
+	uart_cha_data.climbing_mode=chassis.climbing_mode;
   USART2_dma_start(&uart_cha_data);
 }
 

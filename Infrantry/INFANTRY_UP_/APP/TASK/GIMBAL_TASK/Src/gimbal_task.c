@@ -129,9 +129,9 @@ void gimbal_parameter_Init(void)
 
     // 跟随陀螺仪下的参数
     PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 200, 8,
-                    16, 0.0f, 0); //15, 0.01f, 8
+                    10, 0.0f, 0); //16, 0.0f, 0
     PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 25000, 2000,
-                    180, 0.001f, 0); //170, 0.001f, 60
+                    160, 0.001f, 0); //180, 0.001f, 60
 //	 PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 300, 30,
 //                    20, 0.0f, 16); //15, 0.01f, 8
 //    PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 27000, 20000,
@@ -543,6 +543,7 @@ void gimbal_follow_gyro_handle(void)
  **/
 void auto_small_buff_handle(void)
 {
+	gimbal_data.auto_aim_rotate_flag=0;
      if(first_flag == 0)
 	{
 		last_pitch_angle=VISION_PITCH_ANGLE_FDB;
@@ -613,6 +614,7 @@ void auto_small_buff_handle(void)
  **/
 void auto_big_buff_handle(void)
 {
+	gimbal_data.auto_aim_rotate_flag=0;
     if(first_flag == 0)
 	{
 		last_pitch_angle=VISION_PITCH_ANGLE_FDB;
@@ -645,7 +647,7 @@ void auto_big_buff_handle(void)
 		last_pit=new_location.y1;
 
         gimbal_data.gim_ref_and_fdb.yaw_angle_ref = yaw_angle_ref_aim;
-        gimbal_data.gim_ref_and_fdb.pit_angle_ref = raw_data_to_pitch_angle(pit_angle_ref_aim)+Buff_pitch_remain;;
+        gimbal_data.gim_ref_and_fdb.pit_angle_ref = -raw_data_to_pitch_angle(pit_angle_ref_aim)+Buff_pitch_remain;;
     }
     VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
     if(ved==0)

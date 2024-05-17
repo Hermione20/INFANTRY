@@ -81,18 +81,25 @@ void hatch_state_mode_switch()
 					case KEY_MOUSE_INPUT:
 				{
 	 
-					if(RC_CtrlData.Key_Flag.Key_R_TFlag&&bullet_hatch.bullet_hatch_mode==CLOSE)
+//					if(RC_CtrlData.Key_Flag.Key_R_TFlag&&bullet_hatch.bullet_hatch_mode==CLOSE)
+//					{
+//						bullet_hatch.bullet_hatch_mode=OPEN;
+//					}
+//					else if(RC_CtrlData.Key_Flag.Key_R_Flag&&bullet_hatch.bullet_hatch_mode==OPEN)
+//					{
+//						key_R_cnt++;
+//						if(key_R_cnt>=100)
+//						{
+//						 bullet_hatch.bullet_hatch_mode=CLOSE;
+//						 key_R_cnt=0;
+//						}
+					if(RC_CtrlData.Key_Flag.Key_R_Flag&&bullet_hatch.bullet_hatch_mode==CLOSE)
 					{
 						bullet_hatch.bullet_hatch_mode=OPEN;
 					}
-					else if(RC_CtrlData.Key_Flag.Key_R_Flag&&bullet_hatch.bullet_hatch_mode==OPEN)
+					else if(RC_CtrlData.Key_Flag.Key_F_Flag&&bullet_hatch.bullet_hatch_mode==OPEN)
 					{
-						key_R_cnt++;
-						if(key_R_cnt>=100)
-						{
 						 bullet_hatch.bullet_hatch_mode=CLOSE;
-						 key_R_cnt=0;
-						}
 					}					
 				 }break;
 
