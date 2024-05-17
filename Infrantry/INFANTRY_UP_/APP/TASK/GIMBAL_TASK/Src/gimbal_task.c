@@ -588,14 +588,14 @@ void auto_small_buff_handle(void)
                                                                       &gimbal_data.pid_yaw_speed_small_buff,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
+																	&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
                                                                       0 )*YAW_MOTOR_POLARITY;
     gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_small_buff,
                                                                       &gimbal_data.pid_pit_speed_small_buff,
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
+																	&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
                                                                       0 )*PITCH_MOTOR_POLARITY;
 }
@@ -658,14 +658,14 @@ void auto_big_buff_handle(void)
                                                                       &gimbal_data.pid_yaw_speed_big_buff,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
+														&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
                                                                       0 )*YAW_MOTOR_POLARITY;
     gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_big_buff,
                                                                       &gimbal_data.pid_pit_speed_big_buff,
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
+												&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
                                                                       0 )*PITCH_MOTOR_POLARITY;
 }

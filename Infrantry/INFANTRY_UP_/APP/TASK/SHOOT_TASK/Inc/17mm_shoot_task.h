@@ -110,6 +110,8 @@ void shoot_friction_handle(void);
 void shoot_state_mode_switch(void);
 void heat_shoot_frequency_limit(void);
 void bullets_spilling(void);
+float First_Order_Kalman_Filter_Cal(First_Order_Kalman_Filter_t *_First_Order_Kalman_Filter,float _Z/*≤‚¡ø÷µ*/);
+
 extern shoot_t shoot;
 extern u8 press_l_state_switch;
 
