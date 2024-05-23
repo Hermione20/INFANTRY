@@ -85,16 +85,16 @@ void chassis_param_init()//底盘参数初始化
 //    20000, 3000, 150,1.0f,10);
 //    20000, 0, 40,0.0f,0);
     
-	PID_struct_init(&pid_cha_6020_angle[0], POSITION_PID, 8000, 10, 7,0.1f,5);//24, 0.2f,20);
+	PID_struct_init(&pid_cha_6020_angle[0], POSITION_PID, 8000, 10, 8,0.1f,5);//24, 0.2f,20);
 	PID_struct_init(&pid_cha_6020_speed[0], POSITION_PID, 15000, 500, 200,0.1f,10);//38,0.5f,20);
 
-	PID_struct_init(&pid_cha_6020_angle[1], POSITION_PID, 8000, 10, 7,0.1f,5);//25, 0.2f,15);
-	PID_struct_init(&pid_cha_6020_speed[1], POSITION_PID, 15000, 500, 180,0.1f,4);//39,0.5f,20);
+	PID_struct_init(&pid_cha_6020_angle[1], POSITION_PID, 8000, 10, 8,0.1f,5);//25, 0.2f,15);
+	PID_struct_init(&pid_cha_6020_speed[1], POSITION_PID, 15000, 500, 200,0.1f,4);//39,0.5f,20);
 
-	PID_struct_init(&pid_cha_6020_angle[2], POSITION_PID, 8000, 10, 7,0.1f,4);//20, 0.2f,20);
+	PID_struct_init(&pid_cha_6020_angle[2], POSITION_PID, 8000, 10, 8,0.1f,4);//20, 0.2f,20);
 	PID_struct_init(&pid_cha_6020_speed[2], POSITION_PID, 15000, 500, 200,0.5,8);//40,0.5f,20);
 
-	PID_struct_init(&pid_cha_6020_angle[3], POSITION_PID, 8000, 10, 7,0.4f,4);//23, 0.2f,15);
+	PID_struct_init(&pid_cha_6020_angle[3], POSITION_PID, 8000, 10, 8,0.4f,4);//23, 0.2f,15);
 	PID_struct_init(&pid_cha_6020_speed[3], POSITION_PID, 15000, 500, 200,0.1f,20);//42,0.5f,20);
 
 	for (int k = 0; k < 4; k++)
@@ -102,7 +102,7 @@ void chassis_param_init()//底盘参数初始化
 		PID_struct_init(&pid_cha_3508_speed[k], POSITION_PID,15000, 4000,90,0.0f, 0); //24 0.3 10    38.0f,3.0f, 40
     }
 //  PID_struct_init(&pid_chassis_angle, POSITION_PID, 600, 10, 150,0.05,50);//xisanhao
-    PID_struct_init(&pid_chassis_angle, POSITION_PID, 600, 10, 300,0,50);
+    PID_struct_init(&pid_chassis_angle, POSITION_PID, 4000, 10, 600,0,50);
 	
 	
 }
@@ -120,14 +120,14 @@ void chassis_param_init()//底盘参数初始化
 u8 power_mode=0;
 void power_limit_handle()
 {
-		if(uart_cha_data.climbing_mode==1)
-		{
-//			if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
-//			{
-//				if(usart_capacitance_message.cap_voltage_filte>1)
-						max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
-						get_6020power();
-						power_limit_rate2=get_the_limite_rate(520);
+//		if(uart_cha_data.climbing_mode==1)
+//		{
+////			if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
+////			{
+////				if(usart_capacitance_message.cap_voltage_filte>1)
+//						max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+//						get_6020power();
+//						power_limit_rate2=get_the_limite_rate(520);
 //				 else
 //				 {
 //					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
@@ -141,26 +141,50 @@ void power_limit_handle()
 //					get_6020power();
 //					power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
 //					power_mode=1;
-//			}
-		}
-		else
-		{
-				
-				if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
-				{				
-				max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
-				get_6020power();
-				power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
-				power_mode=1;
-				}
-				else
+////			}
+//		}
+//		else
+//		{
+//				if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
+//				{				
+//					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+//					get_6020power();
+//					power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
+//					power_mode=1;
+//				}
+//				else
+//				{
+//					
+//				if(chassis.ctrl_mode==CHASSIS_ROTATE)
+//				{
+//					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+//					get_6020power();
+//					power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
+//					power_mode=1;
+//				}
+//				else
+//				{
+//					max_chassis_power=get_max_power2(uart_cha_data.chassis_power_limit-2);
+//					get_6020power();
+//					power_limit_rate2=get_the_limite_rate((uart_cha_data.chassis_power_limit-2)-Max_Power_6020);
+//					power_mode=2;
+//				}
+//					
+//					
+//				}
+				if(usart_capacitance_message.cap_voltage_filte>15)
 				{
-				max_chassis_power=get_max_power2(uart_cha_data.chassis_power_limit-2);
-				get_6020power();
-				power_limit_rate2=get_the_limite_rate((uart_cha_data.chassis_power_limit-2)-Max_Power_6020);
-				power_mode=2;
-				}
-		}
+   					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+						get_6020power();
+						power_limit_rate2=get_the_limite_rate(420);
+					}
+				 else
+				 {
+					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+					get_6020power();
+					power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
+			   }
+//		}
 
 
 
@@ -184,11 +208,15 @@ float max_power=0;
 
 float get_max_power2(float voltage)
 {
-	max_power=voltage*16-30;//+uart_cha_data.chassis_power_limit;
+	if(uart_cha_data.chassis_power_limit>voltage*16)
+	{max_power=uart_cha_data.chassis_power_limit;}
+	else
+	{max_power=voltage*16;}
+	//+uart_cha_data.chassis_power_limit;
 //judge_rece_mesg.game_robot_state.chassis_power_limit+
 //(judge_rece_mesg.power_heat_data.chassis_power_buffer-5)*2;
 
-	VAL_LIMIT(max_power,0,voltage*16-30);//+uart_cha_data.chassis_power_limit);
+	VAL_LIMIT(max_power,0,voltage*16+uart_cha_data.chassis_power_limit);//+uart_cha_data.chassis_power_limit);
 	power_limit_rate1=1;
     return max_power;
 }
@@ -320,6 +348,31 @@ double convert_ecd_angle_to_0_2pi(double ecd_angle,float _0_2pi_angle)
 	return _0_2pi_angle;
 }
 
+/**********************
+*@Brief:正弦信号发生器
+*@Call:内部或外部
+*@Param:T:函数调用周期
+				f：正弦信号频率
+*@Note:范围-1~1
+*@RetVal:无
+**********************/
+float Sinusoidal_Waveform_Generator_1(float T,float f)
+{
+	float static t,CNT,Value,w;
+	
+	CNT++;
+	
+	w=2*3.14159*f;
+	
+	t=CNT*T;//时间
+	Value=sin(w*t);
+	
+	if(w*t>=2*3.14)
+		t=0;
+	
+	return Value;
+}
+
 /**
 ************************************************************************************************************************
 * @Name     : 
@@ -333,6 +386,8 @@ double convert_ecd_angle_to_0_2pi(double ecd_angle,float _0_2pi_angle)
 *             reverse_follow_gimbal_handle 小陀螺反转模式控制
 ************************************************************************************************************************
 **/
+
+u16 sin_k = 350;
 void chassis_stop_handle(void)
 {
   chassis.vy = 0;
@@ -380,14 +435,33 @@ void rotate_follow_gimbal_handle(void)
 	else
 	{	Chassis_angle.yaw_angle__pi_pi=Chassis_angle.yaw_angle_0_2pi;}
 
-	if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
-	{
-		gyro_speed=550;	//550
-	}
-	else
-	{
-		gyro_speed=450;		//200
-	}
+					if(uart_cha_data.speed_mode==HIGH_SPEED_MODE&&chassis.vx==0&&chassis.vy==0)
+					{
+						gyro_speed=(2.2-0.4*Sinusoidal_Waveform_Generator_1(0.002/*该函数执行周期*/,0.33/*生成正弦波频率*/))*sin_k;
+					}
+					else
+					{
+						if(judge_rece_mesg.game_robot_state.robot_level==1)
+						gyro_speed=500;		//200
+						if(judge_rece_mesg.game_robot_state.robot_level==2)
+						gyro_speed=500;
+						if(judge_rece_mesg.game_robot_state.robot_level==3)
+						gyro_speed=500;
+						if(judge_rece_mesg.game_robot_state.robot_level==4)
+						gyro_speed=550;
+						if(judge_rece_mesg.game_robot_state.robot_level==5)
+						gyro_speed=550;
+						if(judge_rece_mesg.game_robot_state.robot_level==6)
+						gyro_speed=600;
+						if(judge_rece_mesg.game_robot_state.robot_level==7)
+						gyro_speed=600;
+						if(judge_rece_mesg.game_robot_state.robot_level==8)
+						gyro_speed=650;
+						if(judge_rece_mesg.game_robot_state.robot_level==9)
+						gyro_speed=700;
+						if(judge_rece_mesg.game_robot_state.robot_level==10)
+						gyro_speed=700;
+					}
 
 	chassis.vy = uart_cha_data.y;
 	chassis.vx = uart_cha_data.x;

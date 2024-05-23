@@ -63,8 +63,8 @@ float pitch_max = 0;
 
 #if STANDARD == 3
 
-		#define INFANTRY_PITCH_MAX 17.0f
-		#define INFANTRY_PITCH_MIN -21.5f
+		#define INFANTRY_PITCH_MAX 20.0f
+		#define INFANTRY_PITCH_MIN -35.0f
     float pitch_middle = 0;
     float Pitch_min = INFANTRY_PITCH_MIN;
     float Pitch_max = INFANTRY_PITCH_MAX;
@@ -129,9 +129,9 @@ void gimbal_parameter_Init(void)
 
     // 跟随陀螺仪下的参数
     PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 200, 8,
-                    10, 0.0f, 0); //16, 0.0f, 0
+                    5, 0.0f, 0); //16, 0.0f, 0
     PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 25000, 2000,
-                    160, 0.001f, 0); //180, 0.001f, 60
+                    210, 0.001f, 0); //180, 0.001f, 60
 //	 PID_struct_init(&gimbal_data.pid_pit_Angle, POSITION_PID, 300, 30,
 //                    20, 0.0f, 16); //15, 0.01f, 8
 //    PID_struct_init(&gimbal_data.pid_pit_speed, POSITION_PID, 27000, 20000,
@@ -146,9 +146,9 @@ void gimbal_parameter_Init(void)
 //    PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 29000, 10000,
 //                    420, 0.5f, 0); 
 	PID_struct_init(&gimbal_data.pid_yaw_Angle, POSITION_PID, 600, 10,
-                    10, 0.1f, 20);
+                    5, 0.01f, 0);
     PID_struct_init(&gimbal_data.pid_yaw_speed, POSITION_PID, 4, 0,
-                    0.10f, 0.8f, 0);
+                    0.22f, 0.8f, 0.05);
 
     //自瞄下参数
     PID_struct_init ( &gimbal_data.pid_pit_follow, POSITION_PID, 200, 10, 
@@ -306,7 +306,7 @@ void gimbal_init_handle	( void )
     {
 			
         gimbal_data.if_finish_Init = 1;		//初始化标志位置1
-                pitch_middle = PITCH_ANGLE_FDB;	//初始化完默认转普通模式，获取普通模式下的pitch反馈中值（步兵为陀螺仪，丝杆英雄为5015编码器）
+                pitch_middle = 0;	//初始化完默认转普通模式，获取普通模式下的pitch反馈中值（步兵为陀螺仪，丝杆英雄为5015编码器）
 			//计算pitch轴软件限位
                 pitch_max = pitch_middle+Pitch_max;
                 pitch_min = pitch_middle+Pitch_min;
@@ -335,8 +335,8 @@ double convert_ecd_angle_to_0_2pi1(double ecd_angle,float _0_2pi_angle)
 	 =============================================================================
  **/
 
-float K_X = 2.8f;
-float K_Y = 2.8f;
+float K_X = 3.0f;
+float K_Y = 3.05f;
 //float K_X = 4.0;
 //float K_Y = 3.0f;
 
@@ -350,6 +350,8 @@ float K_yaw=0;
 float yaw_angle=0;
 float yaw_angle360=0;
 float get_speedw=-1.1f;
+float zheshiqiankui;
+float qiankuixianzhi=150;
 void gimbal_follow_gyro_handle(void)
 {
 	
@@ -508,6 +510,11 @@ void gimbal_follow_gyro_handle(void)
 		else
 		{
 			//pitch轴与yaw轴双环pid计算
+			zheshiqiankui = K_X*RC_CtrlData.mouse.x;
+			if(zheshiqiankui>qiankuixianzhi)
+			{zheshiqiankui = qiankuixianzhi;}
+			if(zheshiqiankui<-qiankuixianzhi)
+			{zheshiqiankui = -qiankuixianzhi;}
 			
     gimbal_data.gim_ref_and_fdb.yaw_motor_input = K_V*gimbal_data.gim_ref_and_fdb.yaw_speed_fdb+K_3*pow(Error_2,3)+K_S*pow(Error,2)+
 																																			pid_double_loop_cal(&gimbal_data.pid_yaw_Angle,
@@ -516,7 +523,7 @@ void gimbal_follow_gyro_handle(void)
                                                                       gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
 																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
                                                                       gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      K_X*RC_CtrlData.mouse.x+K_yaw*get_speedw *Pol)*YAW_MOTOR_POLARITY;
+                                                                    zheshiqiankui+K_yaw*get_speedw *Pol)*YAW_MOTOR_POLARITY;
     gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
                                                                       &gimbal_data.pid_pit_speed,
                                                                       gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     

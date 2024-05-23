@@ -20,8 +20,8 @@
 #define SMALL_GIMBAL_MOTOR 0X00
 #define SCOPE_MOTOR 0X00
 /*********************************Ä¦²ÁÂÖµç»úid**************************************/
-#define LEFT_FRICTION 0X203
-#define RIGHT_FRICTION 0X202
+#define LEFT_FRICTION 0X202
+#define RIGHT_FRICTION 0X203
 //ÉÚ±ø
 #define LEFT_UP_FRICTION 0X00
 #define RIGHT_UP_FRICTION 0X00

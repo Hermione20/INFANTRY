@@ -72,6 +72,6 @@ void can_bus_send_task(void)
 {
 	
 	Set_GM6020_IQ1(CAN2,gimbal_data.gim_ref_and_fdb.yaw_motor_input,gimbal_data.gim_ref_and_fdb.pitch_motor_input,0,0);
-		Set_C620andC610_IQ1(CAN1,shoot.poke_current[0],shoot.fric_current[1],shoot.fric_current[0],bullet_hatch.hatch_ref_and_fdb.bullet_hatch_motor_input);//
+		Set_C620andC610_IQ1(CAN1,shoot.poke_current,shoot.fric_current[0],shoot.fric_current[1],bullet_hatch.hatch_ref_and_fdb.bullet_hatch_motor_input);//
 }
 

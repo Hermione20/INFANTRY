@@ -511,14 +511,14 @@
               <FilePath>..\EMBEDDED\senior\Auto_Shoot\proto\Recieve.pb-c.c</FilePath>
             </File>
             <File>
-              <FileName>protobuf-c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMBEDDED\senior\Auto_Shoot\proto\protobuf-c.c</FilePath>
-            </File>
-            <File>
               <FileName>uart_cha_transmit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\chassis_transmit\uart_cha_transmit.c</FilePath>
+            </File>
+            <File>
+              <FileName>protobuf-c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMBEDDED\senior\Auto_Shoot\proto\protobuf-c.c</FilePath>
             </File>
             <File>
               <FileName>SuperCap.c</FileName>

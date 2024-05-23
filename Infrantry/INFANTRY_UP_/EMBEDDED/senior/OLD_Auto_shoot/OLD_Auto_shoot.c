@@ -135,11 +135,11 @@ void send_protocol(float x, float y, float r, int id, float ammo_speed, int gimb
 {
 	device_to_host__frame__init(&msg);
 
-	if(gimbal_mode == GIMBAL_FOLLOW_ZGYRO && gimbal_data.auto_aim_rotate_flag==1)
-	{
-		msg.mode_ = 3; 
-	}
-	else if (gimbal_mode == GIMBAL_AUTO_SMALL_BUFF)
+//	if(gimbal_mode == GIMBAL_FOLLOW_ZGYRO && gimbal_data.auto_aim_rotate_flag==1)
+//	{
+//		msg.mode_ = 3; 
+//	}
+	if (gimbal_mode == GIMBAL_AUTO_SMALL_BUFF)
 	{
 		msg.mode_ = 2;
 	}

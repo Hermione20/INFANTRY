@@ -39,11 +39,11 @@ void Can1ReceiveMsgProcess(CanRxMsg * msg)
 				M3508orM2006EncoderTask(&general_poke.poke,msg);
 			}
 			break;
-//			case BULLET_HATCH:
-//			{
-//				M3508orM2006EncoderTask(&bullet_hatch_encoder,msg);
-//			}
-//			break;
+			case BULLET_HATCH:
+			{
+				M3508orM2006EncoderTask(&bullet_hatch_encoder,msg);
+			}
+			break;
     default:
         break;
     }

@@ -14,7 +14,7 @@
 #define RIGHT_FRONT_REVERSE   1 
 #define LEFT_FRONT_REVERSE    -1
 #define LEFT_BEHIND_REVERSE   1
-#define RIGHT_BEHIND_REVERSE  -1
+#define RIGHT_BEHIND_REVERSE  1
 #define  WARNING_VOLTAGE       12.5
 #define STEERING_POLARITY      -1 //6020电机的输出极性 解算不考虑 故置-1
 
@@ -251,7 +251,7 @@ void buffer_power(void);
 float get_max_power(float voltage);
 void steering_wheel_calc(double Length,double Weight); 
 double convert_ecd_angle_to_0_2pi(double ecd_angle,float _0_2pi_angle);
-
+float Sinusoidal_Waveform_Generator_1(float T,float f);
 extern Chassis_angle_t 	 Chassis_angle;
 extern chassis_t 		 		 chassis;
 extern u16 Max_Power;

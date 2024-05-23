@@ -17,8 +17,10 @@
  
 /*************************************judge define********************************************/
 receive_judge_t judge_rece_mesg;
-
-
+uint16_t last_remain=0;
+uint16_t this_remain=0;
+uint16_t already_shoot=0;
+u8 armor_hurt=0;
 /***********************************    ↓    DJI提供的CRC校检函数   ↓  ***********************************/
 //crc8 generator polynomial:G(x)=x8+x5+x4+1
 const unsigned char CRC8_INIT = 0xff;
@@ -271,7 +273,17 @@ void judgement_data_handle(uint8_t *p_frame, u16 rec_len)
 					break;
 				case ROBOT_HURT_ID: // 伤害状态：0x0206。发送频率：伤害发生后发送
 				{
+					armor_hurt=0;
+					if(chassis.climbing_mode==2)
+					{chassis.climbing_mode=1;}
+						
 					memcpy(&judge_rece_mesg.robot_hurt, data_addr, data_length);
+					if(judge_rece_mesg.robot_hurt.HP_deduction_reason==0&&judge_rece_mesg.robot_hurt.armor_id!=0)
+					{ 
+						armor_hurt=1;
+						if(chassis.climbing_mode !=0)
+						{chassis.climbing_mode = 2;}
+					}	
 				}
 				break;
 				case SHOOT_DATA_ID: // 实时射击信息：0x0207。发送频率：射击后发送
@@ -290,11 +302,19 @@ void judgement_data_handle(uint8_t *p_frame, u16 rec_len)
 					}
 				}
 				break;
-				case BULLET_REMAINING_ID:
+
+			case BULLET_REMAINING_ID:
 				{
-					memcpy(&judge_rece_mesg.ext_bullet_remaining, data_addr, data_length);
+						memcpy(&judge_rece_mesg.ext_bullet_remaining, data_addr, data_length);
+						last_remain = this_remain;
+						this_remain = judge_rece_mesg.ext_bullet_remaining.bullet_remaining_num_17mm;
+						if(this_remain - last_remain > 0||this_remain==0)
+								break;
+						already_shoot+=last_remain-this_remain;
+						
 				}
 				break;
+
 				case STUDENT_INTERACTIVE_HEADER_DATA_ID: // 交互数据接收信息：0x0301。发送频率：上限 10Hz
 					memcpy(&judge_rece_mesg.student_interactive_header_data, data_addr, data_length);
 

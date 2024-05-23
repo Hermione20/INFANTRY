@@ -2,18 +2,20 @@
 #define __17MM_SHOOT_TASK
 #include "public.h"
 
-#define SHOOT_TYPE 3//3步兵 6无人机  7哨兵
 
-#define SHOOT_MOTOR_SPEED 200.0f //哨兵拨盘
-#define FRICTION_SPEED    900// 950
-
-#if  STANDARD == 3
-
-#define FRICTION_SPEED_15  (-540)      //弹速
-#define FRICTION_SPEED_18  (-607)
+#define FRICTION_BUF_SPEED_30  (-970)
 #define FRICTION_SPEED_30  (-950)
+#define BULLET_SPEED_TARGET     28
+#define BULLET_SPEED_SELF_ADAPTATION_K    100
 
-#endif
+typedef struct{
+        float Error_Mea;
+        float Error_Est;
+        float Error_Est_Last;
+        float Kalman_Gain;
+        float X_hat;
+        float X_hat_Last;
+}First_Order_Kalman_Filter_t;
 
 
 typedef enum
@@ -44,31 +46,21 @@ typedef enum
 
 typedef struct
 {
-	float speed_ref[4];
-	float speed_fdb[4];
-	float angle_ref[4];
-	float angle_fdb[4];
-	
-}shoot_pid_friction_t;
-
-typedef struct
-{
 	float speed_ref[2];
 	float speed_fdb[2];
 	float angle_ref[2];
 	float angle_fdb[2];
 	
-}shoot_pid_poke_t;
+}shoot_pid_friction_t;
 
 typedef struct
 {
-	float Error_Mea;
-	float Error_Est;
-	float Error_Est_Last;
-	float Kalman_Gain;
-	float X_hat;
-	float X_hat_Last;
-} First_Order_Kalman_Filter_t;
+	float speed_ref;
+	float speed_fdb;
+	float angle_ref;
+	float angle_fdb;
+	
+}shoot_pid_poke_t;
 
 typedef struct
 {
@@ -77,14 +69,14 @@ typedef struct
   shoot_mode_e 						ctrl_mode;
 	shoot_pid_poke_t        poke_pid;
 	shoot_pid_friction_t		friction_pid;
-	int16_t        poke_current[2];
-	int16_t        fric_current[4];
+	int16_t        poke_current;
+	int16_t        fric_current[2];
 	uint8_t      poke_run;
 	uint8_t      bulletspead_level;
   uint8_t      fric_wheel_run; //run or not
   uint16_t     fric_wheel_spd;
-  float         will_time_shoot;
-  float         remain_bullets;
+  float     will_time_shoot;
+  float     remain_bullets;
 	uint8_t        single_angle;
 	float        shoot_frequency;
   float        total_speed;
@@ -92,9 +84,8 @@ typedef struct
 	float        limit_heart1;
   uint16_t     max_heart0;
   uint16_t     cooling_ratio;
-	First_Order_Kalman_Filter_t Bullet_Speed_Kalman;
+    First_Order_Kalman_Filter_t Bullet_Speed_Kalman;
 } shoot_t;
-
 
 
 void shot_param_init(void);
@@ -105,12 +96,13 @@ void shoot_mode_switch(void);
 void speed_switch(void);
 void heat_switch(void);
 void shoot_bullet_handle(void);
-void shoot_bullet_handle1(void);
 void shoot_friction_handle(void);
 void shoot_state_mode_switch(void);
 void heat_shoot_frequency_limit(void);
 void bullets_spilling(void);
-float First_Order_Kalman_Filter_Cal(First_Order_Kalman_Filter_t *_First_Order_Kalman_Filter,float _Z/*测量值*/);
+float First_Order_Kalman_Filter_Cal
+        (First_Order_Kalman_Filter_t *_First_Order_Kalman_Filter
+        ,float _Z/*测量值*/);
 
 extern shoot_t shoot;
 extern u8 press_l_state_switch;

@@ -131,8 +131,8 @@ void infantry_mode_switch_task(void)
            /*******************************º¸ Û‘∆Ã®∏≥÷µ****************************************/
             if (gimbal_data.ctrl_mode == GIMBAL_FOLLOW_ZGYRO&&RC_CtrlData.mouse.press_r == 0)
             {
-                VAL_LIMIT(RC_CtrlData.mouse.x, -100, 100);
-                VAL_LIMIT(RC_CtrlData.mouse.y, -100, 100);
+                VAL_LIMIT(RC_CtrlData.mouse.x, -150,150);
+                VAL_LIMIT(RC_CtrlData.mouse.y, -150,150);
                 gimbal_data.gim_dynamic_ref.yaw_angle_dynamic_ref += RC_CtrlData.mouse.x * MOUSE_TO_YAW_ANGLE_INC_FACT;
                 gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref += RC_CtrlData.mouse.y * MOUSE_TO_PITCH_ANGLE_INC_FACT;
                 VAL_LIMIT(gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref, pitch_min, pitch_max);
@@ -163,10 +163,12 @@ void infantry_mode_switch_task(void)
 				if (RC_CtrlData.Key_Flag.Key_V_TFlag)
                 {
                     gimbal_data.ctrl_mode = GIMBAL_AUTO_BIG_BUFF;
+										chassis.ctrl_mode=CHASSIS_RELAX;
                 }
                 else if (RC_CtrlData.Key_Flag.Key_Z_TFlag)
                 {
                     gimbal_data.ctrl_mode = GIMBAL_AUTO_SMALL_BUFF;
+										chassis.ctrl_mode=CHASSIS_RELAX;
                 }
                 else
                 {

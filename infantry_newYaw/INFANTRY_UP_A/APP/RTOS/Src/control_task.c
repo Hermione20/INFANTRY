@@ -13,7 +13,7 @@ void control_task(void)
 	{
         uart_cha_task(RC_CtrlData.inputmode,
 												chassis.follow_gimbal,
-                        chassis.chassis_speed_mode ,
+                        chassis.chassis_speed_mode,
                         chassis.ctrl_mode,
                         OT_yaw_Encoder.OT_Pos,//0~360
                         OT_yaw_Encoder.OT_Speed,

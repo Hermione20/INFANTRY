@@ -5,7 +5,7 @@
 
 
 /*************************************************/
-#define HIGH_SPEED 2000
+#define HIGH_SPEED 1600
 #define NORMAL_SPEED 500
 
 
@@ -16,7 +16,7 @@ void infantry_mode_switch_task(void);
 
 
 extern chassis_t chassis;
-
+extern u8 armor_hurt;
 
 
 

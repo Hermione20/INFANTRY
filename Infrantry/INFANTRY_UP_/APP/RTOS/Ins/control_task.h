@@ -12,7 +12,7 @@ void control_task(void);
 void control_task_Init(void);
 
 extern uint8_t UART4_DMA_TX_BUF[100];
-
+extern int time_tick;
 
 
 
