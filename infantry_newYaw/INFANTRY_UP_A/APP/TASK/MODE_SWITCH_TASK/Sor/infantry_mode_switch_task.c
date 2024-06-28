@@ -5,7 +5,7 @@ int16_t chassis_speed = 0;
 
 u8 this_input_mode = 0;
 u8 last_input_mode = 0;
-
+u8 reset_flag=0;
 void infantry_mode_switch_task(void)
 {
 		//切换遥控模式的时候所有任务归位重新开始
@@ -62,14 +62,16 @@ void infantry_mode_switch_task(void)
 				
 				if (RC_CtrlData.RemoteSwitch.s3to2)
         {
-
-          chassis.ctrl_mode = CHASSIS_ROTATE;
-					chassis.ChassisSpeed_Ref.rotate_ref = 550;
+					gimbal_data .auto_aim_rotate_flag=1;
+					chassis.ctrl_mode = CHASSIS_STOP;
+//          chassis.ctrl_mode = CHASSIS_ROTATE;
+//					chassis.ChassisSpeed_Ref.rotate_ref = 550;
         }
         else
         {
+					gimbal_data .auto_aim_rotate_flag=0;
           chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
-					chassis.ChassisSpeed_Ref.rotate_ref = 0;
+//					chassis.ChassisSpeed_Ref.rotate_ref = 0;
         }
 			}
 			/*****************************************************************************************/
@@ -183,7 +185,7 @@ void infantry_mode_switch_task(void)
 							  {
                 chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
 							  }
-								if (RC_CtrlData.Key_Flag.Key_G_TFlag)
+								if (RC_CtrlData.mouse.press_r)
 								{
 										gimbal_data.auto_aim_rotate_flag=1;
 								}
@@ -193,7 +195,7 @@ void infantry_mode_switch_task(void)
 								}
 								if (RC_CtrlData.Key_Flag.Key_B_Flag)
 								{
-								draw_cnt=0;
+										draw_cnt=0;
 								}
 								if (RC_CtrlData.Key_Flag.Key_Q_TFlag)
 								{
@@ -210,7 +212,7 @@ void infantry_mode_switch_task(void)
     }
         break;
     case STOP:
-    {
+    {			
             gimbal_data.ctrl_mode = GIMBAL_RELAX;
             chassis.ctrl_mode = CHASSIS_RELAX;
     }
@@ -222,6 +224,15 @@ void infantry_mode_switch_task(void)
 }
 
 
+/**
+ * @brief 软件复位
+ * @call  内部调用
+ * */
+void SoftReset(void)
+{
+    __set_FAULTMASK(1);      	// 关闭所有中断
+    NVIC_SystemReset();			// 复位
+}
 
 
 

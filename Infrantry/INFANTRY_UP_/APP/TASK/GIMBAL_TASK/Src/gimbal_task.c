@@ -64,7 +64,7 @@ float pitch_max = 0;
 #if STANDARD == 3
 
 		#define INFANTRY_PITCH_MAX 17.0f
-		#define INFANTRY_PITCH_MIN -21.5f
+		#define INFANTRY_PITCH_MIN -25.5f
     float pitch_middle = 0;
     float Pitch_min = INFANTRY_PITCH_MIN;
     float Pitch_max = INFANTRY_PITCH_MAX;
@@ -163,15 +163,14 @@ void gimbal_parameter_Init(void)
                        300.0f, 0.8, 0 ); //160 0.8 40
 										
 		//打陀螺自瞄下参数	
-    PID_struct_init(&gimbal_data.pid_rotate_pit_Angle, POSITION_PID, 200, 8,
-                    16, 0.0f, 0); //15, 0.01f, 8
+    PID_struct_init(&gimbal_data.pid_rotate_pit_Angle, POSITION_PID, 200, 15,
+                    17, 0.1f, 40); //15, 0.01f, 8
     PID_struct_init(&gimbal_data.pid_rotate_pit_speed, POSITION_PID, 25000, 2000,
-                    180, 0.001f, 0); 
+                    180, 0.1f, 0); 
 	  PID_struct_init(&gimbal_data.pid_rotate_yaw_Angle, POSITION_PID, 260, 8,
-                    10, 0.0f, 5);
+                    13, 0.0f, 5);
     PID_struct_init(&gimbal_data.pid_rotate_yaw_speed, POSITION_PID, 29000, 3000,
-                    300, 0.01f, 0);
-	
+                    450, 0.0f, 0);
 
     //小幅下的参数
     PID_struct_init(&gimbal_data.pid_pit_small_buff, POSITION_PID, 70, 20,
@@ -339,7 +338,7 @@ float K_X = 2.8f;
 float K_Y = 2.8f;
 //float K_X = 4.0;
 //float K_Y = 3.0f;
-
+float Auto_Shoot_Yaw_Angle_Last=0;
 float Error;
 float Error_2;
 float Pol;
@@ -380,69 +379,66 @@ void gimbal_follow_gyro_handle(void)
 			gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref = PITCH_ANGLE_FDB;
 		}
 		//指定云台反馈
-    gimbal_data.gim_ref_and_fdb.pit_angle_fdb = PITCH_ANGLE_FDB;
-    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = YAW_ANGLE_FDB;
-    gimbal_data.gim_ref_and_fdb.pit_speed_fdb = PITCH_SPEED_FDB;
-    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = YAW_SPEED_FDB;
-    if(RC_CtrlData.mouse.press_r&&gimbal_data.auto_aim_rotate_flag==0&&new_location.flag==1)//鼠标右键按下  打平移自瞄
-    {
 
-//                if (My_Auto_Shoot.Auto_Aim.Flag_Get_Target)//视觉完成识别
-                {
-										//切换云台反馈
-									/**/
-//										float pitch,yaw;
-//										pitch = convert_ecd_angle_to__pi_pi(VISION_PITCH_ANGLE_FDB,pitch);
-//										yaw = convert_ecd_angle_to__pi_pi(VISION_YAW_ANGLE_FDB,yaw);
-//										gimbal_data.gim_ref_and_fdb.pit_angle_fdb = pitch;
-//                    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = yaw;
-									/**/
-									if(fabs(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb) < 2)
-									{
-										gimbal_data.if_auto_shoot = 1;
-									}else
-									{
-										gimbal_data.if_auto_shoot = 0;
-									}
-									
-                    gimbal_data.gim_ref_and_fdb.pit_angle_fdb = VISION_PITCH_ANGLE_FDB;
-                    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = VISION_YAW_ANGLE_FDB;
-                    gimbal_data.gim_ref_and_fdb.pit_speed_fdb = VISION_PITCH_SPEED_FDB;
-                    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = VISION_YAW_SPEED_FDB;
-										//切换云台输入
-                    gimbal_data.gim_ref_and_fdb.pit_angle_ref = -new_location.y + auto_aim_pitch_remain;
-                    gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.x + auto_aim_Yaw_remain;
-									
-									if(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb > 180.0)
-									{
-										gimbal_data.gim_ref_and_fdb.yaw_angle_ref-=360;
-									}else if(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb < -180.0)
-									{
-										gimbal_data.gim_ref_and_fdb.yaw_angle_ref+=360;
-									}
-										//视觉模式下云台限位
-                    VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
-                }
-				//pitch轴与yaw轴双环pid计算
-        gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_yaw_follow,
-                                                                      &gimbal_data.pid_yaw_speed_follow,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      0)*YAW_MOTOR_POLARITY;
-        gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_follow,
-                                                                      &gimbal_data.pid_pit_speed_follow,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
-                                                                      0 )*PITCH_MOTOR_POLARITY;
-    }
-		else if(RC_CtrlData.mouse.press_r&&gimbal_data.auto_aim_rotate_flag==1&&new_location.flag==1)//小陀螺自瞄
+//    if(RC_CtrlData.mouse.press_r&&gimbal_data.auto_aim_rotate_flag==0&&new_location.flag==1)//鼠标右键按下  打平移自瞄
+//    {
+
+////                if (My_Auto_Shoot.Auto_Aim.Flag_Get_Target)//视觉完成识别
+//                {
+//										//切换云台反馈
+//									/**/
+////										float pitch,yaw;
+////										pitch = convert_ecd_angle_to__pi_pi(VISION_PITCH_ANGLE_FDB,pitch);
+////										yaw = convert_ecd_angle_to__pi_pi(VISION_YAW_ANGLE_FDB,yaw);
+////										gimbal_data.gim_ref_and_fdb.pit_angle_fdb = pitch;
+////                    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = yaw;
+//									/**/
+//									if(fabs(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb) < 2)
+//									{
+//										gimbal_data.if_auto_shoot = 1;
+//									}else
+//									{
+//										gimbal_data.if_auto_shoot = 0;
+//									}
+//									
+//                    gimbal_data.gim_ref_and_fdb.pit_angle_fdb = VISION_PITCH_ANGLE_FDB;
+//                    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = VISION_YAW_ANGLE_FDB;
+//                    gimbal_data.gim_ref_and_fdb.pit_speed_fdb = VISION_PITCH_SPEED_FDB;
+//                    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = VISION_YAW_SPEED_FDB;
+//										//切换云台输入
+//                    gimbal_data.gim_ref_and_fdb.pit_angle_ref = -new_location.y + auto_aim_pitch_remain;
+//                    gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.x + auto_aim_Yaw_remain;
+//									
+//									if(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb > 180.0)
+//									{
+//										gimbal_data.gim_ref_and_fdb.yaw_angle_ref-=360;
+//									}else if(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb < -180.0)
+//									{
+//										gimbal_data.gim_ref_and_fdb.yaw_angle_ref+=360;
+//									}
+//										//视觉模式下云台限位
+//                    VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
+//                }
+//				//pitch轴与yaw轴双环pid计算
+//        gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_yaw_follow,
+//                                                                      &gimbal_data.pid_yaw_speed_follow,
+//                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
+//                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
+//																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
+//                                                                      gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
+//                                                                      0)*YAW_MOTOR_POLARITY;
+//        gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_follow,
+//                                                                      &gimbal_data.pid_pit_speed_follow,
+//                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
+//                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
+//																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
+//                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
+//                                                                      0 )*PITCH_MOTOR_POLARITY;
+//    }
+//		else if((RC_CtrlData.mouse.press_r&&gimbal_data.auto_aim_rotate_flag==1&&new_location.flag==1))//小陀螺自瞄
+		if(gimbal_data.auto_aim_rotate_flag==1&&New_Auto_Aim.if_receive_data!=0)
 		{
-				
-//                if (My_Auto_Shoot.Auto_Aim.Flag_Get_Target)//视觉完成识别
+                if (My_Auto_Shoot.Auto_Aim.Flag_Get_Target)//视觉完成识别
                 {
 										//切换云台反馈
 									/**/
@@ -459,14 +455,19 @@ void gimbal_follow_gyro_handle(void)
 									{
 										gimbal_data.if_auto_shoot = 0;
 									}
-									
 //                    gimbal_data.gim_ref_and_fdb.pit_angle_fdb = VISION_PITCH_ANGLE_FDB;
 //                    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = VISION_YAW_ANGLE_FDB;
                     gimbal_data.gim_ref_and_fdb.pit_speed_fdb = VISION_PITCH_SPEED_FDB;
                     gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = VISION_YAW_SPEED_FDB;
 										//切换云台输入
-                    gimbal_data.gim_ref_and_fdb.pit_angle_ref = -new_location.y + auto_aim_pitch_remain;
-                    gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.x + auto_aim_Yaw_remain;
+//                    gimbal_data.gim_ref_and_fdb.pit_angle_ref = -new_location.y + auto_aim_pitch_remain;
+//                    gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.x + auto_aim_Yaw_remain;
+									
+										if(New_Auto_Aim.Yaw_Angle!=0&&New_Auto_Aim.Pitch_Angle!=0)
+										{Auto_Shoot_Yaw_Angle_Last=New_Auto_Aim.Yaw_Angle;}
+									
+									  gimbal_data.gim_ref_and_fdb.pit_angle_ref = -New_Auto_Aim.Pitch_Angle + auto_aim_pitch_remain;
+                    gimbal_data.gim_ref_and_fdb.yaw_angle_ref = Auto_Shoot_Yaw_Angle_Last + auto_aim_Yaw_remain;
 									
 									if(gimbal_data.gim_ref_and_fdb.yaw_angle_ref - gimbal_data.gim_ref_and_fdb.yaw_angle_fdb > 180.0)
 									{
@@ -478,6 +479,16 @@ void gimbal_follow_gyro_handle(void)
 										//视觉模式下云台限位
                     VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
                 }
+								else
+								{
+				gimbal_data.gim_ref_and_fdb.pit_angle_fdb = PITCH_ANGLE_FDB;
+				gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = YAW_ANGLE_FDB;
+			  gimbal_data.gim_ref_and_fdb.pit_speed_fdb = PITCH_SPEED_FDB;
+		    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = YAW_SPEED_FDB;
+				gimbal_data.gim_ref_and_fdb.pit_angle_ref = PITCH_ANGLE_FDB;
+        gimbal_data.gim_ref_and_fdb.yaw_angle_ref = YAW_ANGLE_FDB;
+								
+								}
 				//pitch轴与yaw轴双环pid计算
         gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_rotate_yaw_Angle,
                                                                       &gimbal_data.pid_rotate_yaw_speed,
@@ -497,6 +508,11 @@ void gimbal_follow_gyro_handle(void)
 		}
 		else
     {
+			
+				gimbal_data.gim_ref_and_fdb.pit_angle_fdb = PITCH_ANGLE_FDB;
+				gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = YAW_ANGLE_FDB;
+			  gimbal_data.gim_ref_and_fdb.pit_speed_fdb = PITCH_SPEED_FDB;
+		    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = YAW_SPEED_FDB;
 			//普通模式下云台输入
         gimbal_data.gim_ref_and_fdb.pit_angle_ref = gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref;
         gimbal_data.gim_ref_and_fdb.yaw_angle_ref = gimbal_data.gim_dynamic_ref.yaw_angle_dynamic_ref;
@@ -571,13 +587,24 @@ void auto_small_buff_handle(void)
 				
 			yaw_angle_ref_aim=Delta_Dect_Angle_Yaw + new_location.x + Buff_Yaw_remain;
 			pit_angle_ref_aim=Delta_Dect_Angle_Pit + new_location.y + Buff_pitch_remain;
+					if(RC_CtrlData.mouse.press_r)
+			{
+				gimbal_data.gim_ref_and_fdb.yaw_angle_ref = yaw_angle_ref_aim;
+        gimbal_data.gim_ref_and_fdb.pit_angle_ref = raw_data_to_pitch_angle(pit_angle_ref_aim)+Buff_pitch_remain;;
+			}else
+			{        
+				gimbal_data.gim_ref_and_fdb.pit_angle_ref = gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref;
+        gimbal_data.gim_ref_and_fdb.yaw_angle_ref = gimbal_data.gim_dynamic_ref.yaw_angle_dynamic_ref;
+			}
         }
         last_yaw=new_location.x1;
 		last_pit=new_location.y1;
 
-        gimbal_data.gim_ref_and_fdb.yaw_angle_ref = yaw_angle_ref_aim;
-        gimbal_data.gim_ref_and_fdb.pit_angle_ref = raw_data_to_pitch_angle(pit_angle_ref_aim)+Buff_pitch_remain;;
-    }
+				
+
+    
+		
+		}
     VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
     if(ved==0)
     {
@@ -642,12 +669,18 @@ void auto_big_buff_handle(void)
 				
 			yaw_angle_ref_aim=Delta_Dect_Angle_Yaw + new_location.x + Buff_Yaw_remain;
 			pit_angle_ref_aim=Delta_Dect_Angle_Pit + new_location.y + Buff_pitch_remain;
+
         }
         last_yaw=new_location.x1;
-		last_pit=new_location.y1;
+		    last_pit=new_location.y1;
+		
 
-        gimbal_data.gim_ref_and_fdb.yaw_angle_ref = yaw_angle_ref_aim;
+				if(RC_CtrlData.mouse.press_r)
+			{
+				gimbal_data.gim_ref_and_fdb.yaw_angle_ref = -yaw_angle_ref_aim;
         gimbal_data.gim_ref_and_fdb.pit_angle_ref = -raw_data_to_pitch_angle(pit_angle_ref_aim)+Buff_pitch_remain;;
+			}
+
     }
     VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
     if(ved==0)
@@ -717,169 +750,3 @@ float raw_data_to_pitch_angle(float ecd_angle_pit)
 }
 
 #endif
-
-
-
-
-
-
-
-#if STANDARD == 7
- /**
-  ******************************************************************************
-																单头哨兵自动云台控制任务	
-	 =============================================================================
- **/
-void security_gimbal_handle(void)
-{
-    static int wait_tick = 0;//识别不到的时候多等两秒，确认看不到了进入巡逻
-		//视觉云台反馈
-    gimbal_data.gim_ref_and_fdb.pit_angle_fdb = VISION_PITCH_ANGLE_FDB;
-    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = VISION_YAW_ANGLE_FDB;
-    gimbal_data.gim_ref_and_fdb.pit_speed_fdb = VISION_PITCH_SPEED_FDB;
-    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = VISION_YAW_SPEED_FDB;
-    if(new_location.control_flag)//哨兵视觉确定识别到目标
-    {
-				//视觉云台给定与限幅
-        gimbal_data.gim_ref_and_fdb.pit_angle_ref = new_location.y;
-        gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.x;
-        VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
-				//pitch轴与yaw轴双环pid计算
-        gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_yaw_follow,
-                                                                      &gimbal_data.pid_yaw_speed_follow,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      new_location.yaw_speed)*YAW_MOTOR_POLARITY;
-        gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
-                                                                      &gimbal_data.pid_pit_speed,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
-                                                                      0 )*PITCH_MOTOR_POLARITY;
-    }else
-    {
-        wait_tick++;//开始计等待时间
-        if(wait_tick<=200)//若wait_tick<=2s，留在上一次识别位置
-        {
-					//云台输入与限幅
-            gimbal_data.gim_ref_and_fdb.pit_angle_ref = new_location.last_y;
-            gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.last_x;
-            VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
-					//pitch轴与yaw轴双环pid计算
-            gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_yaw_follow,
-                                                                      &gimbal_data.pid_yaw_speed_follow,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      0)*YAW_MOTOR_POLARITY;
-            gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
-                                                                      &gimbal_data.pid_pit_speed,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
-                                                                      0 )*PITCH_MOTOR_POLARITY;
-        }else//确认没识别到，开始巡逻
-        {
-					//低头转圈
-            gimbal_data.gim_ref_and_fdb.pit_angle_ref = -2;
-
-            gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
-                                                                      &gimbal_data.pid_pit_speed,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-																																			&gimbal_data.gim_ref_and_fdb.pit_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
-                                                                      0 )PITCH_MOTOR_POLARITY;
-            gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_calc(&gimbal_data.pid_yaw_speed_follow,gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,150)*YAW_MOTOR_POLARITY;
-
-        }
-    }
-}
-
-#endif
-
-
-
-
-
-
-#if STANDARD == 1
- /**
-  ******************************************************************************
-																英雄吊射控制任务		
-	 =============================================================================
- **/
-void gimbal_auto_angle_handle(void)
-{
-		//刚进该吊射模式，给定赋初值
-		if(gimbal_data.last_ctrl_mode != GIMBAL_AUTO_ANGLE)
-		{
-			gimbal_data.gim_dynamic_ref.yaw_angle_dynamic_ref = YAW_AUTO_ANGLE_FDB;
-			gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref = PITCH_AUTO_ANGLE_FDB;
-		}
-		//反馈更新
-    gimbal_data.gim_ref_and_fdb.pit_angle_fdb = PITCH_AUTO_ANGLE_FDB;
-    gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = YAW_AUTO_ANGLE_FDB;
-    gimbal_data.gim_ref_and_fdb.pit_speed_fdb = PITCH_AUTO_SPEED_FDB;
-    gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = YAW_AUTO_SPEED_FDB;
-    if(RC_CtrlData.mouse.press_r)//右键按下，开启视觉辅助吊射
-    {
-        if(new_location.flag)//视觉完成识别
-        {
-						//反馈更新
-            gimbal_data.gim_ref_and_fdb.pit_angle_fdb = VISION_PITCH_ANGLE_FDB;
-            gimbal_data.gim_ref_and_fdb.yaw_angle_fdb = VISION_YAW_ANGLE_FDB;
-            gimbal_data.gim_ref_and_fdb.pit_speed_fdb = VISION_PITCH_SPEED_FDB;
-            gimbal_data.gim_ref_and_fdb.yaw_speed_fdb = VISION_YAW_SPEED_FDB;
-						//给定赋值
-            gimbal_data.gim_ref_and_fdb.pit_angle_ref = new_location.y;
-            gimbal_data.gim_ref_and_fdb.yaw_angle_ref = new_location.x;
-						//软件pitch限幅
-            VAL_LIMIT(gimbal_data.gim_ref_and_fdb.pit_angle_ref, VISION_PITCH_MIN , VISION_PITCH_MAX );
-
-        }
-				//双环pid输入
-        gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_yaw_follow,
-                                                                      &gimbal_data.pid_yaw_speed_follow,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-                                                                      &gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      new_location.yaw_speed)*YAW_MOTOR_POLARITY;
-        gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_pit_Angle,
-                                                                      &gimbal_data.pid_pit_speed,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-                                                                      &gimbal_data.gim_ref_and_fdb.pit_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
-                                                                      0 )*PITCH_MOTOR_POLARITY;
-    }else//开始键盘微调模式
-    {
-				//给定赋值与双环pid输出
-        gimbal_data.gim_ref_and_fdb.pit_angle_ref = gimbal_data.gim_dynamic_ref.pitch_angle_dynamic_ref;
-        gimbal_data.gim_ref_and_fdb.yaw_angle_ref = gimbal_data.gim_dynamic_ref.yaw_angle_dynamic_ref;
-    gimbal_data.gim_ref_and_fdb.yaw_motor_input = pid_double_loop_cal(&gimbal_data.pid_auto_yaw_Angle,
-                                                                      &gimbal_data.pid_auto_yaw_speed,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_angle_fdb,
-                                                                      &gimbal_data.gim_ref_and_fdb.yaw_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.yaw_speed_fdb,
-                                                                      0 )*YAW_MOTOR_POLARITY;
-    gimbal_data.gim_ref_and_fdb.pitch_motor_input = pid_double_loop_cal(&gimbal_data.pid_auto_pit_Angle,
-                                                                      &gimbal_data.pid_auto_pit_speed,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_ref,                     
-                                                                      gimbal_data.gim_ref_and_fdb.pit_angle_fdb,
-                                                                      &gimbal_data.gim_ref_and_fdb.pit_speed_ref,
-                                                                      gimbal_data.gim_ref_and_fdb.pit_speed_fdb,
-                                                                      0 )*PITCH_MOTOR_POLARITY;
-    }
-	
-}
-
-#endif
-

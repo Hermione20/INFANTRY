@@ -60,7 +60,7 @@ CAN2_Mode_Init(CAN_BS2_4tq,CAN_BS1_9tq,3,CAN_Mode_Normal);//CAN初始化正常模式,波
 	#endif
 //	delay_ms(5000);
 
-//		OT_Mode_Set(CAN2,10,OT_CURRENT_MODE);
+		OT_Mode_Set(CAN2,1,OT_CURRENT_MODE);
 
 }
 	

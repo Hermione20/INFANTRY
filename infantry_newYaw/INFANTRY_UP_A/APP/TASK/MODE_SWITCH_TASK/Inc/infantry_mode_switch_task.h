@@ -13,8 +13,7 @@
 
 
 void infantry_mode_switch_task(void);
-
-
+void SoftReset(void);
 extern chassis_t chassis;
 
 

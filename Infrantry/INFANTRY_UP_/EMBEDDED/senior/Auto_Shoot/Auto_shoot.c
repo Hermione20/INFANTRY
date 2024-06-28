@@ -26,10 +26,7 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 {
 	
 	New_Auto_Aim_t New_Auto_Aim_Medium;
-	memcpy(&New_Auto_Aim_Medium.Header,&address[0],1);
-	memcpy(&New_Auto_Aim_Medium.Pitch_Angle,&address[0]+1,8);
-	memcpy(&New_Auto_Aim_Medium.Priority,&address[0]+9,3);
-	memcpy(&New_Auto_Aim_Medium.Check_Sum,&address[0]+12,2);
+	memcpy(&New_Auto_Aim_Medium,&address[0],sizeof(New_Auto_Aim_Medium));
 	
 	if(New_Auto_Aim_Medium.Header!=0xbe)
 	 return;
@@ -37,10 +34,7 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 	if(!Verify_CRC16_Check_Sum(address,length-1))
 		return;
 	
-	memcpy(&New_Auto_Aim.Header,&address[0],1);
-	memcpy(&New_Auto_Aim.Pitch_Angle,&address[0]+1,8);
-	memcpy(&New_Auto_Aim.Priority,&address[0]+9,3);
-	memcpy(&New_Auto_Aim.Check_Sum,&address[0]+12,2);
+	memcpy(&New_Auto_Aim,&address[0],sizeof(New_Auto_Aim));
 	
 	/**************************↓自瞄模式下的位置识别↓***************************/
 	float Auto_Aim_Yaw_Angle_Medium=New_Auto_Aim.Yaw_Angle;
@@ -54,8 +48,6 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 			Auto_Shoot->Auto_Aim.Pitch_Angle_Last = Auto_Shoot->Auto_Aim.Pitch_Angle;
 			Auto_Shoot->Auto_Aim.Yaw_Angle = New_Auto_Aim.Yaw_Angle;
 			Auto_Shoot->Auto_Aim.Pitch_Angle = New_Auto_Aim.Pitch_Angle;
-			Auto_Shoot->Auto_Aim.Priority=New_Auto_Aim.Priority;
-			Auto_Shoot->Auto_Aim.Attack_Choice=New_Auto_Aim.Attack_Choice;
 			Auto_Shoot->Auto_Aim.Flag_Get_Target = 1;
 			Auto_Shoot->Auto_Aim.enable_shoot = New_Auto_Aim.enable_shoot;
 			
@@ -63,19 +55,18 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 			//gimbal_gyro.yaw_Angle还没定义先注释
 //			if (fabs(new_location.x - gimbal_gyro.yaw_Angle) > 45 || fabs(new_location.y - gimbal_gyro.pitch_Angle) > 70)
 //			{
-
 //					new_location.flag = 0;
 //			}
 		}
 		else
 		{
-			if(Auto_Shoot->Auto_Aim.Lost_Cnt<100)
+			if(Auto_Shoot->Auto_Aim.Lost_Cnt<20)
 				Auto_Shoot->Auto_Aim.Lost_Cnt++;
 			else
 			{
 				Auto_Shoot->Auto_Aim.Flag_Get_Target = 0;
-				Auto_Shoot->Auto_Aim.Yaw_Angle = 0;
-				Auto_Shoot->Auto_Aim.Pitch_Angle = 0;
+				Auto_Shoot->Auto_Aim.Yaw_Angle = gimbal_gyro.yaw_Angle;
+				Auto_Shoot->Auto_Aim.Pitch_Angle = gimbal_gyro.pitch_Angle;
 			}
 			Auto_Shoot->Auto_Aim.enable_shoot = 0;
 		}
@@ -86,7 +77,7 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 
 
 float yaw_angle__pi_pi;
-void send_protocol_New(float Yaw, float Pitch, float Roll, int id, float ammo_speed, int Attack_Engineer_Flag, u8* data)
+void send_protocol_New(float Yaw, float Pitch, float Roll, int id, float ammo_speed, uint8_t mode, u8* data)
 {
 	
 	yaw_angle__pi_pi = convert_ecd_angle_to__pi_pi(Yaw,yaw_angle__pi_pi);
@@ -97,23 +88,22 @@ void send_protocol_New(float Yaw, float Pitch, float Roll, int id, float ammo_sp
 		New_Auto_Aim_Send.Current_Color=1;
 	else
 		New_Auto_Aim_Send.Current_Color=0;
-	New_Auto_Aim_Send.Another_Priority=1;
+	
+	if(gimbal_data.ctrl_mode==GIMBAL_AUTO_SMALL_BUFF)
+	New_Auto_Aim_Send.mode=2;
+	else if(gimbal_data.ctrl_mode==GIMBAL_AUTO_BIG_BUFF)
+	New_Auto_Aim_Send.mode=1;
+	else
+	New_Auto_Aim_Send.mode=0;
+	
+	
 	New_Auto_Aim_Send.Shoot_Speed=ammo_speed;
 	
-//	New_Auto_Aim_Send.Current_Color=Sentry_Decision_Data.Current_Color;
-//	New_Auto_Aim_Send.Enemy_Survical_State_1=Sentry_Decision_Data.Enemy_Survical_State_1;
-//	New_Auto_Aim_Send.Enemy_Survical_State_2=Sentry_Decision_Data.Enemy_Survical_State_2;
-//	New_Auto_Aim_Send.Enemy_Survical_State_3=Sentry_Decision_Data.Enemy_Survical_State_3;
-//	New_Auto_Aim_Send.Enemy_Survical_State_4=Sentry_Decision_Data.Enemy_Survical_State_4;
-//	New_Auto_Aim_Send.Enemy_Survical_State_5=Sentry_Decision_Data.Enemy_Survical_State_5;
-//	New_Auto_Aim_Send.Enemy_Survical_State_7=Sentry_Decision_Data.Enemy_Survical_State_7;
-	
-	
 	data[0]=0xbe;
-	memcpy(&data[1],&New_Auto_Aim_Send,25);
-	Append_CRC16_Check_Sum(&data[0],25+3);
+	memcpy(&data[1],&New_Auto_Aim_Send,sizeof(New_Auto_Aim_Send));
+	Append_CRC16_Check_Sum(&data[0],sizeof(New_Auto_Aim_Send)+3);
 //	data[52]=0xed;
-	Uart4SendBytesInfoProc(data, 25+3);
+	Uart4SendBytesInfoProc(data, sizeof(New_Auto_Aim_Send)+3);
 }
 
 

@@ -1,0 +1,8 @@
+--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -W -O0 --apcs=interwork -I ..\CORE -I ..\USER -I ..\README -I ..\HEADFILE -I ..\STLIB\inc -I ..\STLIB\src -I ..\APP\BAL\Ins -I ..\APP\RTOS\Ins -I ..\APP\TASK\CHASSIS_TASK\Inc -I ..\APP\TASK\GIMBAL_TASK\Ins -I ..\APP\TASK\SHOOT_TASK\Ins -I ..\BSP\can\Inc -I ..\BSP\delay\Inc -I ..\BSP\usart\Inc -I ..\BSP\sys\Inc -I ..\BSP\LED -I ..\EMBEDDED\CAN_BUS -I ..\EMBEDDED\senior\Auto_Shoot -I ..\EMBEDDED\senior\Auto_Shoot\proto -I ..\EMBEDDED\senior\Auto_Shoot\Protocol -I ..\EMBEDDED\senior\CH100 -I ..\EMBEDDED\senior\DJI_MOTOR -I ..\EMBEDDED\senior\HI220 -I ..\EMBEDDED\senior\HT430 -I ..\EMBEDDED\senior\JUDGE -I ..\EMBEDDED\senior\LK_TECH -I ..\EMBEDDED\senior\PM01 -I ..\EMBEDDED\senior_struct -I ..\EMBEDDED\senior\REMOTE -I ..\BSP\timer\Inc -I ..\APP\RTOS\Ins -I ..\EMBEDDED\senior\CAN_CHASSIS_TRANSMIT -I ..\EMBEDDED\chassis_transmit -I ..\EMBEDDED\senior\SuperCap -I ..\EMBEDDED\senior\OT7213 -I ..\APP\USER_LIB
+-I.\RTE\_Template
+-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\Include
+-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS-DSP\1.15.0\PrivateInclude
+-IT:\SoftWare\Keil5.39\keil_Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Include
+-IT:\SoftWare\Keil5.39\keil_Pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER
+-o ..\obj\sys.o --omf_browse ..\obj\sys.crf --depend ..\obj\sys.d --feedback "..\OBJ\Template.fed" "..\BSP\sys\Sor\sys.c"

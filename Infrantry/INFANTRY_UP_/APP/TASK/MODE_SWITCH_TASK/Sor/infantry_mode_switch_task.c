@@ -2,10 +2,10 @@
 
 chassis_t chassis;
 int16_t chassis_speed = 0;
-
+uint16_t press_X_cnt=0;
 u8 this_input_mode = 0;
 u8 last_input_mode = 0;
-
+u8 reset_flag=0;
 void infantry_mode_switch_task(void)
 {
 		//切换遥控模式的时候所有任务归位重新开始
@@ -52,7 +52,6 @@ void infantry_mode_switch_task(void)
 	    }
 			if( gimbal_data.ctrl_mode == GIMBAL_FOLLOW_ZGYRO)
 			{
-				
 				chassis.follow_gimbal = 1;
 			}
 			//遥控器模式的模式选择从这里开始
@@ -60,16 +59,19 @@ void infantry_mode_switch_task(void)
 			{
 				 gimbal_data.ctrl_mode = GIMBAL_FOLLOW_ZGYRO;
 				
-				if (RC_CtrlData.RemoteSwitch.s3to2)
+				if (RC_CtrlData.RemoteSwitch.s3to2)//遥控器小陀螺和自瞄切换
         {
 
-          chassis.ctrl_mode = CHASSIS_ROTATE;
-					chassis.ChassisSpeed_Ref.rotate_ref = 550;
+					gimbal_data .auto_aim_rotate_flag=1;
+					chassis.ctrl_mode = CHASSIS_STOP;
+//          chassis.ctrl_mode = CHASSIS_ROTATE;
+//					chassis.ChassisSpeed_Ref.rotate_ref = 550;
         }
         else
         {
+					gimbal_data .auto_aim_rotate_flag=0;
           chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
-					chassis.ChassisSpeed_Ref.rotate_ref = 0;
+//					chassis.ChassisSpeed_Ref.rotate_ref = 0;
         }
 			}
 			/*****************************************************************************************/
@@ -176,12 +178,34 @@ void infantry_mode_switch_task(void)
 								if (RC_CtrlData.Key_Flag.Key_CTRL_TFlag)
 								{
                 chassis.ctrl_mode = CHASSIS_ROTATE;
+								RC_CtrlData.Key_Flag.Key_Q_TFlag=0;
 								}
 						    else
 							  {
-                chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
+									
+										if(chassis.climbing_mode==2)
+										  {armor_hurt=1;}
+											
+										if(armor_hurt==1)	
+											{ 
+												chassis.climbing_mode=1;
+												static u32 DWT_temp=0;
+												
+												if(DWT_temp==0)DWT_temp=DWT->CYCCNT/168000;
+												
+												chassis.ctrl_mode = CHASSIS_ROTATE;				
+												if((u32)(DWT->CYCCNT/168000)-DWT_temp>2000)
+												{
+													chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
+													DWT_temp=0;
+												  armor_hurt=0;
+												}												 
+											}
+											else
+											{chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;}
+									
 							  }
-								if (RC_CtrlData.Key_Flag.Key_G_TFlag)
+								if (RC_CtrlData.mouse.press_r)
 								{
 										gimbal_data.auto_aim_rotate_flag=1;
 								}
@@ -201,6 +225,19 @@ void infantry_mode_switch_task(void)
 							  {
                 chassis.climbing_mode = 0;
 							  }
+								
+
+//								 if(RC_CtrlData.Key_Flag.Key_X_Flag)
+//                   {
+//                       press_X_cnt++;
+//                       if(press_X_cnt > 2000)
+//                       {
+//													SoftReset();
+//                       }
+//                   }else
+//                   {
+//                      press_X_cnt = 0;
+//                   }
 
 			}
         
@@ -219,7 +256,15 @@ void infantry_mode_switch_task(void)
 	chassis.last_ctrl_mode = chassis.ctrl_mode;
 }
 
-
+/**
+ * @brief 软件复位
+ * @call  内部调用
+ * */
+void SoftReset(void)
+{
+    __set_FAULTMASK(1);      	// 关闭所有中断
+    NVIC_SystemReset();			// 复位
+}
 
 
 

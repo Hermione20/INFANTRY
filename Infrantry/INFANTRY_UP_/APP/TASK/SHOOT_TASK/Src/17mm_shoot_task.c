@@ -363,32 +363,50 @@ void shoot_state_mode_switch()
 					if(RC_CtrlData.RemoteSwitch.s3to1)
 					{
 						shoot.fric_wheel_run=1;
-						LASER_ON();
+						if(gimbal_data .auto_aim_rotate_flag==1)
+						{ LASER_OFF();}
+						else
+						{ LASER_ON();}
 					}
 					 else
 					{	
 						shoot.fric_wheel_run=0;
 						LASER_OFF();
 					}
-					if(RC_CtrlData.rc.ch4>1500)
-							shoot.poke_run=1;
-					 else
-							shoot.poke_run=0;
-				}break;
+					
+					if(gimbal_data.auto_aim_rotate_flag==1)
+					{if(RC_CtrlData.rc.ch4>1500)
+					{
+						if(New_Auto_Aim.enable_shoot==1) 
+						{shoot.poke_run=1;}
+						else
+						{shoot.poke_run=0;}
+					}
+					else
+						{shoot.poke_run=0;}
+
+					}
+					else
+					{if(RC_CtrlData.rc.ch4>1500)
+						{shoot.poke_run=1;}
+						else
+							{shoot.poke_run=0;}
+					}
+			}break;
 					case KEY_MOUSE_INPUT:
 				{
 					if(RC_CtrlData.mouse.press_r==1)
 					{
-						if(RC_CtrlData.mouse.press_l==1&&new_location.flag)
-							shoot.poke_run=1;
+						if(RC_CtrlData.mouse.press_l==1&&New_Auto_Aim.enable_shoot==1)
+						{shoot.poke_run=1;}
 					else
-							shoot.poke_run=0;
+					{shoot.poke_run=0;}
 					}else
 					{
 						if(RC_CtrlData.mouse.press_l==1)
-							shoot.poke_run=1;
-					else
-							shoot.poke_run=0;
+						{shoot.poke_run=1;}
+					  else
+						{	shoot.poke_run=0;}
 					}
 					
                    if(RC_CtrlData.Key_Flag.Key_C_Flag)
@@ -397,7 +415,10 @@ void shoot_state_mode_switch()
                        if(press_C_cnt < 1000)
                        {
                            shoot.fric_wheel_run=1;
-                           LASER_ON();
+												  if(gimbal_data .auto_aim_rotate_flag==1)
+                          { LASER_OFF();}
+													else
+													{ LASER_ON();}
                        }else
                        {
                            shoot.fric_wheel_run=0;
@@ -407,17 +428,6 @@ void shoot_state_mode_switch()
                    {
                       press_C_cnt = 0;
                    }
-//					if(RC_CtrlData.Key_Flag.Key_C_TFlag)
-//					{
-//							shoot.fric_wheel_run=1;
-//						LASER_ON();
-//					}
-//					else
-//					{
-//						shoot.fric_wheel_run=0;
-//						LASER_OFF();
-//					}
-							
 					 
 					if(RC_CtrlData.Key_Flag.Key_Q_TFlag)
 						 {shoot.bulletspead_level=1;}
@@ -428,8 +438,8 @@ void shoot_state_mode_switch()
 				{
 					shoot.fric_wheel_run=0;
 					shoot.poke_run=0;
-                    buff_time = 0;
-                    single_shoot_cnt = 0;
+          buff_time = 0;
+          single_shoot_cnt = 0;
 				}break;
 
 					default:

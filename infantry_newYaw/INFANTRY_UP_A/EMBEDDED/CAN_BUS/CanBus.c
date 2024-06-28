@@ -68,10 +68,12 @@ void Can2ReceiveMsgProcess(CanRxMsg * msg)
 
 
 float test_a=0;
+float Angle_Ref_Test=0;
 
 void can_bus_send_task(void)
 {
 	OT_T_Control(CAN2,1,gimbal_data.gim_ref_and_fdb.yaw_motor_input);//
+//	OT_Control(CAN2,1,Angle_Ref_Test,0,0,10,0);
 	Set_GM6020_IQ1(CAN2,gimbal_data.gim_ref_and_fdb.yaw_motor_input,gimbal_data.gim_ref_and_fdb.pitch_motor_input,0,0);
 	Set_C620andC610_IQ1(CAN1,shoot.fric_current[1],shoot.poke_current[0],shoot.fric_current[0],bullet_hatch.hatch_ref_and_fdb.bullet_hatch_motor_input);//
 }

@@ -33,7 +33,7 @@ void control_task(void)
 	if(time_tick%70==0)
 	{ OT_Position_Increment_Mode(CAN2,1);}
 	
-		 if(time_tick%800==0)
+		 if(time_tick%80==0)
 	 {
 		 OT_Init_And_Heartbeating(CAN2,1,&OT_yaw_Encoder,OT_POWER_ON);
 	 }
@@ -55,14 +55,14 @@ void control_task(void)
 		if(time_tick%5 == 0)
 	{
 
-		if(gimbal_data.auto_aim_rotate_flag==1)	
-		{
-		auto_aim_rotate_yaw = convert_ecd_angle_to__pi_pi(gimbal_gyro.yaw_Angle,auto_aim_rotate_yaw);
-		send_protocol(auto_aim_rotate_yaw,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
-		}
-		else
-		{send_protocol(-gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);}
-		//send_protocol_New(gimbal_gyro.yaw_Angle,gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF); 
+//		if(gimbal_data.auto_aim_rotate_flag==1)	
+//		{
+//		auto_aim_rotate_yaw = convert_ecd_angle_to__pi_pi(gimbal_gyro.yaw_Angle,auto_aim_rotate_yaw);
+//		send_protocol(auto_aim_rotate_yaw,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);
+//		}
+//		else
+//		{send_protocol(-gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);}
+		send_protocol_New(gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,shoot.Bullet_Speed_Kalman.X_hat,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF); 
 	}//
 		if(time_tick%100==1)
 	{

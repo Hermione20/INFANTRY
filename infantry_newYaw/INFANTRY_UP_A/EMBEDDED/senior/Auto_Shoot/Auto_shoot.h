@@ -54,33 +54,25 @@ typedef struct
 	Buff_t Buff;
 }Auto_Shoot_t;
 
-typedef struct
+typedef __packed struct
 {
 	uint8_t Header;
 	float Pitch_Angle;
 	float Yaw_Angle; 
-	uint8_t Priority;
-	uint8_t Attack_Choice;
 	uint8_t enable_shoot;
+  uint8_t if_receive_data;
 	uint16_t Check_Sum;
 	uint8_t Tail;
 }New_Auto_Aim_t;
 
-typedef struct
+typedef __packed struct
 {
 	float Pitch;
 	float Yaw;
 	float Roll;
 	float Shoot_Speed;
 	uint8_t 	Current_Color;//¿∂£∫1£¨∫Ï0£ª
-	uint8_t Enemy_Survical_State_1;//¥ÊªÓ£∫1£¨À¿Õˆ£∫0£ª
-	uint8_t Enemy_Survical_State_2;
-	uint8_t Enemy_Survical_State_3;
-	uint8_t Enemy_Survical_State_4;
-	uint8_t Enemy_Survical_State_5;
-	uint8_t Enemy_Survical_State_7;
-	uint8_t Enemy_Output;
-	uint8_t Another_Priority;
+  uint8_t  mode;
 }New_Auto_Aim_Send_t;	
 
 typedef struct
@@ -102,7 +94,7 @@ extern Visual_Data_Need_t Visual_Data_Need;
 void Vision_Process_General_Message(unsigned char* address, unsigned int length, Auto_Shoot_t *Auto_Shoot);
 void Vision_Process_General_Message_New(unsigned char* address, unsigned int length, Auto_Shoot_t *Auto_Shoot);
 void send_protocol(float x, float y, float r, int id, float ammo_speed, int gimbal_mode, uint8_t *data);
-void send_protocol_New(float Yaw, float Pitch, float Roll, int id, float ammo_speed, int Attack_Engineer_Flag, uint8_t* data);
+void send_protocol_New(float Yaw, float Pitch, float Roll, int id, float ammo_speed, uint8_t mode, u8* data);
 void AUTO_Shoot_CAN_Send_Handle(CAN_TypeDef *CANx, uint8_t *address_1,uint8_t *address_2,uint8_t *address_3,uint8_t *address_4,uint8_t *address_5);
 void AUTO_Shoot_CAN_Send_Handle_2_1(CAN_TypeDef *CANx, uint8_t *address_1);
 

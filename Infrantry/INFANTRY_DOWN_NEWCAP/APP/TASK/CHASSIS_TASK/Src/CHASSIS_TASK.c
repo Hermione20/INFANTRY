@@ -56,6 +56,7 @@ float power_limit_rate2;
 float power_limit_rate1;	
 
 float  max_chassis_power =35;
+float  max_chassis_power1=0;
 float I6020[4],sdpower,shpower,dpower[4],hpower[4],all_power1[4],all_power2[4],
 	all_power,a6020[4],b6020[4],m6020,n6020,l6020,i6020,kall6020[4];
 
@@ -94,8 +95,8 @@ void chassis_param_init()//底盘参数初始化
 	PID_struct_init(&pid_cha_6020_angle[2], POSITION_PID, 8000, 10, 8,0.1f,4);//20, 0.2f,20);
 	PID_struct_init(&pid_cha_6020_speed[2], POSITION_PID, 15000, 500, 200,0.5,8);//40,0.5f,20);
 
-	PID_struct_init(&pid_cha_6020_angle[3], POSITION_PID, 8000, 10, 8,0.4f,4);//23, 0.2f,15);
-	PID_struct_init(&pid_cha_6020_speed[3], POSITION_PID, 15000, 500, 200,0.1f,20);//42,0.5f,20);
+	PID_struct_init(&pid_cha_6020_angle[3], POSITION_PID, 8000, 10, 8,0.1f,4);//23, 0.2f,15);
+	PID_struct_init(&pid_cha_6020_speed[3], POSITION_PID, 15000, 500, 200,0.1f,10);//42,0.5f,20);
 
 	for (int k = 0; k < 4; k++)
     {
@@ -169,24 +170,43 @@ void power_limit_handle()
 //					power_limit_rate2=get_the_limite_rate((uart_cha_data.chassis_power_limit-2)-Max_Power_6020);
 //					power_mode=2;
 //				}
-//					
-//					
-//				}
+
+
+
+
+
+
+
 				if(usart_capacitance_message.cap_voltage_filte>15)
 				{
    					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
 						get_6020power();
 						power_limit_rate2=get_the_limite_rate(420);
 					}
-				 else
+				else
 				 {
 					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
 					get_6020power();
 					power_limit_rate2=get_the_limite_rate(max_chassis_power-Max_Power_6020);
 			   }
-//		}
 
-
+//				if(usart_capacitance_message.cap_voltage_filte>15)
+//				{
+//   					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+//						get_6020power();
+//						power_limit_rate2=get_the_limite_rate(420);
+//					}
+//				else
+//				 {
+//					max_chassis_power=get_max_power2(usart_capacitance_message.cap_voltage_filte);//(float)((usart_capacitance_message.cap_voltage_filte)-Max_Power_6020)
+//					get_6020power();
+//					power_limit_rate2=get_the_limite_rate(max_chassis_power);
+//			   }
+				 
+				 
+				 
+				 
+				 
 
 	VAL_LIMIT(power_limit_rate1,0,1);
 	VAL_LIMIT(power_limit_rate2,0,1);		 
@@ -208,15 +228,15 @@ float max_power=0;
 
 float get_max_power2(float voltage)
 {
-	if(uart_cha_data.chassis_power_limit>voltage*16)
-	{max_power=uart_cha_data.chassis_power_limit;}
-	else
-	{max_power=voltage*16;}
+//	if(uart_cha_data.chassis_power_limit>voltage*16)
+//	{max_power=uart_cha_data.chassis_power_limit;}
+//	else
+	{max_power=voltage*16-25;}
 	//+uart_cha_data.chassis_power_limit;
 //judge_rece_mesg.game_robot_state.chassis_power_limit+
 //(judge_rece_mesg.power_heat_data.chassis_power_buffer-5)*2;
 
-	VAL_LIMIT(max_power,0,voltage*16+uart_cha_data.chassis_power_limit);//+uart_cha_data.chassis_power_limit);
+	VAL_LIMIT(max_power,0,voltage*16);//+uart_cha_data.chassis_power_limit);
 	power_limit_rate1=1;
     return max_power;
 }
@@ -284,15 +304,15 @@ float get_6020power()
 	all_power = all_power1[0]+all_power1[1]+all_power1[2]+all_power1[3];
 	VAL_LIMIT(all_power,0,1000);
 	Max_Power_6020=all_power;
-	VAL_LIMIT(Max_Power_6020,0,max_chassis_power);
-	Max_Power_3508 = Max_Power-Max_Power_6020;
+	VAL_LIMIT(Max_Power_6020,0,max_chassis_power1);
+	Max_Power_3508 = max_chassis_power-Max_Power_6020;
 
 	float a[4],b[4],c[4];
-	if(all_power>max_chassis_power)
+	if(all_power>max_chassis_power1)
 	{	
 		for(int i = 0; i < 4; i++)
 		{
-			all_power2[i]=all_power1[i]*max_chassis_power/all_power;
+			all_power2[i]=all_power1[i]*max_chassis_power1/all_power;
 			if(all_power1[i]>k0_6020&&all_power1[i]>all_power2[i])//或许all_power2>k0_6020更好
 			{
 				a[i]=k2_6020;
@@ -553,9 +573,9 @@ void steering_wheel_calc2(void)
 	if(chassis.ctrl_mode==CHASSIS_ROTATE)
 	{
 		if(get_speedw_flag == 1)
-			relative_angle += 15.0f *ANGLE_TO_RAD;		//13 6.5
+			relative_angle += 5.0f *ANGLE_TO_RAD;		//13 6.5
 		else if(get_speedw_flag == 0)
-			relative_angle -= 15.0f *ANGLE_TO_RAD;		//13 6.5
+			relative_angle -= 20.0f *ANGLE_TO_RAD;		//13 6.5
 	}
 	for(uint8_t i = 0; i < 4; i++)
 	{
