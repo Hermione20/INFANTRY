@@ -106,6 +106,7 @@ typedef __packed struct
 typedef __packed struct
 {
 	float power_limit_rate;
+    float power_T_limlit_rate;
 	float Cap_V;
 	float Max_Chassis_Power;
 	float Max_Steering_Power;
@@ -218,7 +219,8 @@ float get_6020power(void);
 void start_chassis_3508(void);
 float get_max_power2(float voltage);
 float get_max_power1(float voltage);
-static float get_the_limite_rate(float max_power);
+static float get_the_V_limite_rate(float max_power);
+static float get_T_limit_rate(float max_power);
 void cap_limit_mode_switch(void);
 void chassis_mode_select(chassis_t *chassis);
 void chassis_stop_handle(chassis_t *chassis);

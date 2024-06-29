@@ -158,37 +158,42 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>chassis,0x0A</ItemText>
+          <ItemText>usart_capacitance_message</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>uart_cha_data,0x0A</ItemText>
+          <ItemText>time_tick,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>usart_capacitance_message</ItemText>
+          <ItemText>chassis,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>kall6020</ItemText>
+          <ItemText>steering_wheel_chassis,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>time_tick,0x0A</ItemText>
+          <ItemText>pid_cha_6020_angle,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>can_capacitance_message</ItemText>
+          <ItemText>pid_cha_6020_speed,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>steering_wheel_chassis,0x0A</ItemText>
+          <ItemText>chassis.chassis_power.power_limit_rate * chassis.cha_pid_3508.speed_ref,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>chassis.chassis_power.power_limit_rate * chassis.cha_pid_3508.speed_ref[0]</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
