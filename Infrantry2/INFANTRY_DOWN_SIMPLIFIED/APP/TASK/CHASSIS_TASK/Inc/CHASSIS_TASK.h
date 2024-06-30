@@ -15,11 +15,19 @@
 #define  WARNING_VOLTAGE       12.5
 #define STEERING_POLARITY      -1 //底盘四个6020电机的输出极性 解算不考虑 故置-1
 /*******************************CONFIG********************************/
+//M3508
 #define  I_TIMES_V_TO_WATT    0.0000225f    //I -16384~+16384 V .filter_rate
 //电机发热计算 p=i^2*FACTOR_2+i*FACTOR_1+FACTOR0; i是直接发给电调的数-16384~16384 使用虚拟示波器读值后matlab拟合
 #define FACTOR_2	0.000000161f
 #define FACTOR_1	-0.0000229f
 #define FACTOR_0  0.458f
+
+//GM6020(西交模型)
+#define CURRENT_TO_T 0.741*(3.0f/16384) //转矩常数*（最大电流/最大转矩电流值）
+#define K_WT         1/9.55f         //伺服电机系数
+#define K1           0.0003723//0.0003723
+#define K2           31.99//33.14    
+#define K3           1.304//0.5071
 
 #define CHASSIS_DEFAULT { \
 				.vx=0, \
@@ -107,11 +115,15 @@ typedef __packed struct
 {
 	float power_limit_rate;
     float power_T_limlit_rate;
+    float power_6020_limlit_rate;
 	float Cap_V;
 	float Max_Chassis_Power;
 	float Max_Steering_Power;
 	float Max_Power_3508;
 	float Max_Power_6020;
+    
+    float steer_prepower;
+    float driving_prepower;
 } chassis_power_t;
 /**
 ************************************************************************************************************************
@@ -148,7 +160,7 @@ typedef __packed struct
 * @Note    		: 					
 ************************************************************************************************************************
 **/
-typedef __packed struct chassis_t
+typedef struct chassis_t
 {
 		float           vx,vy,vw,vx_ramp,vy_ramp; 
 		float           get_speedw;							///*给定机体转动角速度*/	
@@ -158,8 +170,18 @@ typedef __packed struct chassis_t
 		chassis_flag_t         chassis_flag;
 		cha_pid_t       				 cha_pid_6020;
 		cha_pid_t			 				 cha_pid_3508;
+        
+        pid_t pid_cha_6020_angle[4];
+        pid_t pid_cha_3508_angle[4];
+        pid_t pid_cha_6020_speed[4];
+        pid_t pid_cha_3508_speed[4];
+        
+        pid_t pid_cha_6020c_angle[4];
+        pid_t pid_cha_6020c_speed[4];
+
 		int16_t         				 current[4];
-		int16_t				 				 voltage[4];
+        int16_t                         GM_current[4];                
+		int16_t				 		 voltage[4];
 
 		void (*Init)	 (struct chassis_t *chassis);
 		void (*STOP_) (struct chassis_t *chassis);
@@ -216,6 +238,7 @@ void get_remote_set(Chassis_angle_t *chassis_angle);
 void start_angle_handle(void);
 void start_chassis_6020(void);
 float get_6020power(void);
+float get_6020_T_limit_rate(float max_power);
 void start_chassis_3508(void);
 float get_max_power2(float voltage);
 float get_max_power1(float voltage);
@@ -228,6 +251,7 @@ void follow_gimbal_handle(chassis_t *chassis);
 void rotate_follow_gimbal_handle(chassis_t *chassis);
 void buffer_power(void);
 float get_max_power(float voltage);
+void start_chassis_6020C(void);
 void steering_wheel_calc(Chassis_angle_t *chassis_angle); 
 #endif
 

@@ -158,7 +158,7 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>usart_capacitance_message</ItemText>
+          <ItemText>usart_capacitance_message,0x10</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
@@ -194,6 +194,16 @@
           <count>7</count>
           <WinNumber>1</WinNumber>
           <ItemText>chassis.chassis_power.power_limit_rate * chassis.cha_pid_3508.speed_ref[0]</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DWT</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DWT_Cnt,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -662,7 +672,7 @@
 
   <Group>
     <GroupName>BSP</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

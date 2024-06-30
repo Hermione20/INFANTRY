@@ -120,7 +120,7 @@ void GM6020EncoderTask(volatile Encoder *v, CanRxMsg * msg,int offset)
 	}
 }
 
-void Set_GM6020_IQ1(CAN_TypeDef *CANx, int16_t motor1_iq, int16_t motor2_iq, int16_t motor3_iq, int16_t motor4_iq)
+void Set_GM6020_V1(CAN_TypeDef *CANx, int16_t motor1_iq, int16_t motor2_iq, int16_t motor3_iq, int16_t motor4_iq)
 {
     CanTxMsg tx_message;
     tx_message.StdId = 0x1FF;
@@ -148,7 +148,7 @@ void Set_GM6020_IQ1(CAN_TypeDef *CANx, int16_t motor1_iq, int16_t motor2_iq, int
     CAN_Transmit(CANx,&tx_message);
 }
 
-void Set_GM6020_IQ2(CAN_TypeDef *CANx, int16_t motor5_iq, int16_t motor6iq, int16_t motor7_iq, int16_t motor8_iq)
+void Set_GM6020_V2(CAN_TypeDef *CANx, int16_t motor5_iq, int16_t motor6iq, int16_t motor7_iq, int16_t motor8_iq)
 {
     CanTxMsg tx_message;
     tx_message.StdId = 0x2FF;
@@ -163,6 +163,62 @@ void Set_GM6020_IQ2(CAN_TypeDef *CANx, int16_t motor5_iq, int16_t motor6iq, int1
     tx_message.Data[5] = (uint8_t)motor7_iq;
     tx_message.Data[6] = (uint8_t)(motor8_iq >> 8);
     tx_message.Data[7] = (uint8_t)motor8_iq;
+    CAN_Transmit(CANx,&tx_message);
+}
+
+void Set_GM6020_IQ1(CAN_TypeDef *CANx, int16_t motor1_iq, int16_t motor2_iq, int16_t motor3_iq, int16_t motor4_iq)
+{
+    CanTxMsg tx_message;
+    tx_message.StdId = 0x1FE;
+    tx_message.IDE = CAN_Id_Standard;
+    tx_message.RTR = CAN_RTR_Data;
+    tx_message.DLC = 0x08;
+    tx_message.Data[0] = (uint8_t)(motor1_iq >> 8);
+    tx_message.Data[1] = (uint8_t)motor1_iq;
+    tx_message.Data[2] = (uint8_t)(motor2_iq >> 8);
+    tx_message.Data[3] = (uint8_t)motor2_iq;
+    tx_message.Data[4] = (uint8_t)(motor3_iq >> 8);
+    tx_message.Data[5] = (uint8_t)motor3_iq;
+    tx_message.Data[6] = (uint8_t)(motor4_iq >> 8);
+    tx_message.Data[7] = (uint8_t)motor4_iq;
+    while( (CANx->TSR & CAN_TSR_TME) == 0)
+	{
+		static uint32_t TMNE_time = 0;
+		TMNE_time ++;
+		if(TMNE_time == 3000)
+		{
+			TMNE_time = 0;
+			break;
+		}
+	}
+    CAN_Transmit(CANx,&tx_message);
+}
+
+void Set_GM6020_IQ2(CAN_TypeDef *CANx, int16_t motor5_iq, int16_t motor6_iq, int16_t motor7_iq, int16_t motor8_iq)
+{
+    CanTxMsg tx_message;
+    tx_message.StdId = 0x2FE;
+    tx_message.IDE = CAN_Id_Standard;
+    tx_message.RTR = CAN_RTR_Data;
+    tx_message.DLC = 0x08;
+    tx_message.Data[0] = (uint8_t)(motor5_iq >> 8);
+    tx_message.Data[1] = (uint8_t)motor5_iq;
+    tx_message.Data[2] = (uint8_t)(motor6_iq >> 8);
+    tx_message.Data[3] = (uint8_t)motor6_iq;
+    tx_message.Data[4] = (uint8_t)(motor7_iq >> 8);
+    tx_message.Data[5] = (uint8_t)motor7_iq;
+    tx_message.Data[6] = (uint8_t)(motor8_iq >> 8);
+    tx_message.Data[7] = (uint8_t)motor8_iq;
+    while( (CANx->TSR & CAN_TSR_TME) == 0)
+	{
+		static uint32_t TMNE_time = 0;
+		TMNE_time ++;
+		if(TMNE_time == 3000)
+		{
+			TMNE_time = 0;
+			break;
+		}
+	}
     CAN_Transmit(CANx,&tx_message);
 }
 

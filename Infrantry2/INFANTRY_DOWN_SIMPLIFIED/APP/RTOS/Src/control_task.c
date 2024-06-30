@@ -4,6 +4,7 @@ int time_tick=0;
 
 void control_task(void)
   {
+START
 	  time_tick++;
 		test_out=Test_Ramp.Calc(&Test_Ramp,test_in,test_in,test_in);
 		
@@ -14,8 +15,11 @@ void control_task(void)
 	
 	if(time_tick%3 == 0)
 	{
-		Set_GM6020_IQ1(CAN2,chassis.voltage[0],chassis.voltage[1],chassis.voltage[2],chassis.voltage[3]); // 2us
-    Set_GM6020_IQ1(CAN1, 0 ,0 ,0, chassis.voltage[3]);
+//	Set_GM6020_V1(CAN2,chassis.voltage[0],chassis.voltage[1],chassis.voltage[2],chassis.voltage[3]); // 2us
+//    Set_GM6020_V1(CAN1, 0 ,0 ,0, chassis.voltage[3]);
+        
+    Set_GM6020_IQ1(CAN2,chassis.GM_current[0],chassis.GM_current[1],chassis.GM_current[2],chassis.GM_current[3]);
+    Set_GM6020_IQ1(CAN1, 0 ,0 ,0, chassis.GM_current[3]);
 	}
 	
 	if(time_tick%2 == 1)
@@ -40,7 +44,7 @@ void control_task(void)
   } 
 	if(time_tick%2000 == 1)
   { LED1_OFF; } 
-
+END
 }
 
 void control_task_init()
