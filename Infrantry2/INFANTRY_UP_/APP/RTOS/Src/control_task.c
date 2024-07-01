@@ -38,7 +38,7 @@ void control_task(void)
 			gimbal_task();
 			can_bus_send_task();
 	}
-		if(time_tick%5 == 0)
+	if(time_tick%5 == 0)
 	{
 
 //		if(gimbal_data.auto_aim_rotate_flag==1)	

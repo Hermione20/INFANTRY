@@ -525,7 +525,7 @@ void start_chassis_6020C()
         
 		}
       #if POWER_LIMIT_HANDLE
-        chassis.chassis_power.power_6020_limlit_rate = get_6020_T_limit_rate(20);
+        chassis.chassis_power.power_6020_limlit_rate = get_6020_T_limit_rate(25);
       #else
         chassis.chassis_power.power_6020_limlit_rate = 1;
       #endif
@@ -589,15 +589,47 @@ void start_chassis_3508(void)
 		#endif
 	}
     #if POWER_LIMIT_HANDLE
-    
-    /*50W*/
-//    if(fabs(chassis.cha_pid_3508.speed_fdb[0])<450&&
-//       fabs(chassis.cha_pid_3508.speed_fdb[2])<450)
-//	{chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(100);}
-//    else
-    {chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(60);}
-    
-    
+  if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
+	{		if(usart_capacitance_message.cap_voltage_filte>15)
+				{
+					chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(400);
+				}
+			else
+				{
+					chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(get_max_power2(usart_capacitance_message.cap_voltage_filte));
+				}
+	}
+	else
+	{
+		if(usart_capacitance_message.cap_voltage_filte>8)
+		{ /*60W £¨450£© 80W(550) 100W (650)  *///5*x+150 
+			if(fabs(chassis.cha_pid_3508.speed_fdb[0])<(5*uart_cha_data.chassis_power_limit+150+80)&&
+				 fabs(chassis.cha_pid_3508.speed_fdb[2])<(5*uart_cha_data.chassis_power_limit+150+80))
+			{
+					for (int k = 0; k < 4; k++)
+					{
+						chassis.pid_cha_3508_speed[k].p=60;
+					}		
+				chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(uart_cha_data.chassis_power_limit+60);
+			}
+			else
+			{
+					for (int k = 0; k < 4; k++)
+					{
+						chassis.pid_cha_3508_speed[k].p=20;
+					}
+				chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(uart_cha_data.chassis_power_limit);
+			}
+		}
+		else
+		{
+			if(fabs(chassis.cha_pid_3508.speed_fdb[0])<(5*uart_cha_data.chassis_power_limit+150)&&
+				 fabs(chassis.cha_pid_3508.speed_fdb[2])<(5*uart_cha_data.chassis_power_limit+150))
+			{chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(uart_cha_data.chassis_power_limit+30);}
+			else
+			{chassis.chassis_power.power_T_limlit_rate = get_T_limit_rate(uart_cha_data.chassis_power_limit);}
+		}
+	}
     
     
     #else

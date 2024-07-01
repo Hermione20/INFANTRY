@@ -3,10 +3,10 @@
 #include "public.h"
 
 
-#define FRICTION_BUF_SPEED_30  (-970)
-#define FRICTION_SPEED_30  (-970)
-#define BULLET_SPEED_TARGET     28
-#define BULLET_SPEED_SELF_ADAPTATION_K    100
+#define FRICTION_BUF_SPEED_30  (-1000)
+#define FRICTION_SPEED_30  (-1000)
+#define BULLET_SPEED_TARGET     27
+#define BULLET_SPEED_SELF_ADAPTATION_K    20
 
 typedef struct{
         float Error_Mea;

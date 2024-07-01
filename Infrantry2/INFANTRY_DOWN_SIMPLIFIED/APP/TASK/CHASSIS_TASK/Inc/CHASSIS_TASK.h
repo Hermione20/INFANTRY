@@ -5,6 +5,7 @@
 #include "public.h"
 /*----------------------------------------------------------------------------*/
 #define POWER_LIMIT_HANDLE   1
+#define P3508 60//judge_rece_mesg.game_robot_state.chassis_power_limit
 /*******************************CONFIG********************************/
 #define YAW_POLARITY 					-1 //逆正      Yaw轴电机极性 舵轮要顺正，改-1；麦轮1
 

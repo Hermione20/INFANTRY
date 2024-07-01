@@ -421,7 +421,7 @@ void Client_send_handle()
         }
       else if(usart_down_capacitance_message.cap_voltage>5.0f)
         {
-          client_custom_graphic_seven.grapic_data_struct[0].end_x=735+((usart_down_capacitance_message.cap_voltage-5.0f)*725/24);
+          client_custom_graphic_seven.grapic_data_struct[0].end_x=735+((usart_down_capacitance_message.cap_voltage-5.0f)*725/30);
           client_custom_graphic_seven.grapic_data_struct[0].color=UI_YELLOW;//UI_PINK;
         }
 
@@ -666,7 +666,7 @@ void Client_send_handle()
         }
       else if(usart_down_capacitance_message.cap_voltage>5.0f)
         {
-          client_custom_graphic_seven.grapic_data_struct[0].end_x=(u32)(735+(usart_down_capacitance_message.cap_voltage-5.0f)*725/24);
+          client_custom_graphic_seven.grapic_data_struct[0].end_x=(u32)(735+(usart_down_capacitance_message.cap_voltage-5.0f)*725/30);
           client_custom_graphic_seven.grapic_data_struct[0].color=UI_YELLOW;//UI_PINK;
         }
 

@@ -5,7 +5,7 @@
 
 
 /*************************************************/
-#define HIGH_SPEED 900
+#define HIGH_SPEED 1200
 #define NORMAL_SPEED 500
 
 
