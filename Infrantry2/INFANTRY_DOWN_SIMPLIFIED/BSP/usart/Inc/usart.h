@@ -29,7 +29,7 @@
 #define USART2_Data_Receive_Process_1				do{}while(0);
 	
 #define USART3_Data_Receive_Process					do{SuperCap_message_Process(&usart_capacitance_message,_USART3_RX_BUF);}while(0);//CH100_getDATA(_USART3_RX_BUF,&gimbal_gyro);
-#define UART4_Data_Receive_Process					do{}while(0);
+#define UART4_Data_Receive_Process					do{SuperCap_message_Process(&usart_capacitance_message,_UART4_DMA_RX_BUF);}while(0);
 	
 #define UART5_Data_Receive_Process_0				do{judgement_data_handle(_UART5_DMA_RX_BUF[0],this_time_rx_len5);}while(0);
 #define UART5_Data_Receive_Process_1				do{judgement_data_handle(_UART5_DMA_RX_BUF[1],this_time_rx_len5);}while(0);

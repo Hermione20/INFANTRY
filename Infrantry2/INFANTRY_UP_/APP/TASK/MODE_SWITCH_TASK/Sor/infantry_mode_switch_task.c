@@ -215,7 +215,7 @@ void infantry_mode_switch_task(void)
 								}
 								if (RC_CtrlData.Key_Flag.Key_B_Flag)
 								{
-								draw_cnt=0;
+								UI.cnt=0;
 								}
 								if (RC_CtrlData.Key_Flag.Key_Q_TFlag)
 								{

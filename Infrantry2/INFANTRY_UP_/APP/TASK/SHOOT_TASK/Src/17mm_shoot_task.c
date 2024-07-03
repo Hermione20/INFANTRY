@@ -327,7 +327,7 @@ void shoot_friction_handle()
 	if(shoot.fric_wheel_run==1)
 	{
 		pid_rotate[0].set= shoot.friction_pid.speed_ref[0] - Shooter_Bullet_Speed_Self_Adaptation(shoot.Bullet_Speed_Kalman.X_hat) ;
-        pid_rotate[1].set= -shoot.friction_pid.speed_ref[0] + Shooter_Bullet_Speed_Self_Adaptation(shoot.Bullet_Speed_Kalman.X_hat) ;	
+    pid_rotate[1].set= -shoot.friction_pid.speed_ref[0] + Shooter_Bullet_Speed_Self_Adaptation(shoot.Bullet_Speed_Kalman.X_hat) ;	
 	}
 	else
 	{
@@ -397,7 +397,7 @@ void shoot_state_mode_switch()
                    if(RC_CtrlData.Key_Flag.Key_C_Flag)
                    {
                        press_C_cnt++;
-                       if(press_C_cnt < 1000)
+                       if(press_C_cnt < 500)
                        {
                            shoot.fric_wheel_run=1;
 												  if(gimbal_data .auto_aim_rotate_flag==1)

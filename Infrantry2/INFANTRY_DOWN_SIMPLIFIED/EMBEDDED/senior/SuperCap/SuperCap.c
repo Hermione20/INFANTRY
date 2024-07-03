@@ -32,7 +32,7 @@ void POWER_Control(SuperCap_Send_t *S)
  * */
 void SuperCap_message_Process(volatile usart_capacitance_message_t *v,uint8_t *data)
 {
-	memcpy((uint8_t *)v,data,sizeof(usart_capacitance_message));
+	  	memcpy((uint8_t *)v,data,sizeof(usart_capacitance_message));
 }
 
 /************************************* CAN м╗пе  ************************************************/

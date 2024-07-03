@@ -54,7 +54,8 @@ void control_task(void)
 	}//
 		if(time_tick%100==1)
 	{
-		Client_send_handle();
+//		Client_send_handle();
+	Client_Send_Handle();
 	}
 	
 	
