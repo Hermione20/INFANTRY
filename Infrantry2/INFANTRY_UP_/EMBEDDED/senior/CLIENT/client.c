@@ -445,4 +445,33 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 }
 
 
+uint8_t* protocol_packet_pack(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf)  
+{
+  uint16_t frame_length = HEADER_LEN + CMD_LEN + len + CRC_LEN;
+  frame_header_t *p_header = (frame_header_t*)tx_buf;           //??frame_header?????????tx_buf??
+  p_header->sof          = sof;
+  p_header->data_length  = len;
+  p_header->seq          = 0;
+
+  Append_CRC8_Check_Sum(tx_buf, HEADER_LEN);
+  memcpy(&tx_buf[HEADER_LEN], (uint8_t*)&cmd_id, CMD_LEN);      //??ID????tx_buf??
+  memcpy(&tx_buf[HEADER_LEN + CMD_LEN], p_data, len);           //?????????tx_buf?§µ??????¦Ë??16¦Ëcrc§µ??
+  Append_CRC16_Check_Sum(tx_buf, frame_length);
+
+  return tx_buf;                                                //?????tx_buf????????????
+}
+
+void data_upload_handle(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf)
+{
+  uint16_t frame_length = HEADER_LEN + CMD_LEN + len + CRC_LEN;
+  
+  protocol_packet_pack(cmd_id, p_data, len, sof, tx_buf);   //crc§µ??
+  if (sof == UP_REG_ID)
+  // write_uart_blocking(&COMPUTER_HUART, tx_buf, frame_length);
+	 {}
+  else if (sof == DN_REG_ID)
+	{
+		usart5.Send_bytes(&usart5,tx_buf,frame_length);			
+	}
+}
 	

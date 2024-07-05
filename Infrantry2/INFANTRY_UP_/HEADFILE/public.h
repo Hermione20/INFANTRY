@@ -76,11 +76,10 @@ else if(val>=max)\
 /****************BSP**********************/
 #include "BSP.h"
 #include "can.h"
-#include "usart.h"
 #include "led.h"
 #include "timer.h"
 #include "dwt.h"
-
+#include "serial.h"
 
 /***************TASK*********************/
 #include "gimbal_task.h"
