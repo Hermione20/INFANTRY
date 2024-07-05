@@ -34,10 +34,10 @@ void uart_cha_task(u8 RC_inputmode,
 	uart_cha_data.chassis_power = chassis_power;
 	uart_cha_data.chassis_power_buffer = chassis_power_buffer;
 	uart_cha_data.chassis_power_limit = chassis_power_limit;
-  uart_cha_data.mains_power_chassis_output=mains_power_chassis_output;
+    uart_cha_data.mains_power_chassis_output=mains_power_chassis_output;
 	uart_cha_data.robot_level=judge_rece_mesg.game_robot_state.robot_level;
 	uart_cha_data.climbing_mode=chassis.climbing_mode;
-  USART2_dma_start(&uart_cha_data);
+    usart2.Send_bytes(&usart2,(uint8_t *)&uart_cha_data,sizeof(uart_cha_data_t));
 }
 
 
