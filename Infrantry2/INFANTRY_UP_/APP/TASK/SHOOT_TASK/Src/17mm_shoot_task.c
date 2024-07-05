@@ -2,7 +2,7 @@
 
 /* Variables_definination-----------------------------------------------------------------------------------------------*/
   shoot_t shoot = {
-        .Bullet_Speed_Kalman.X_hat=28,
+        .Bullet_Speed_Kalman.X_hat=27,
         .Bullet_Speed_Kalman.Error_Mea=0.2,
         .Bullet_Speed_Kalman.Error_Est=5,
 };
@@ -19,12 +19,12 @@
 void shot_param_init()
 {
 
-    PID_struct_init(&pid_trigger_angle, POSITION_PID, 6000, 1000,20,0.2,10);//20 0.2 0
-	PID_struct_init(&pid_trigger_speed,POSITION_PID,29000,10000,30,0,0);//100 0.1 4
+    PID_struct_init(&pid_trigger_angle, POSITION_PID,6000, 1000,20,0.2,10 );//20 0.2 0//
+	PID_struct_init(&pid_trigger_speed,POSITION_PID,10000,10000,30,0,0);//100 0.1 4
 
 	
-	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 2000 , 50    ,  15.6, 0.01f  ,0);
-	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,  20 , 0  , 0 );
+	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 500 , 10  ,20 ,0.01f,0);
+	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,50 , 0   ,0);
 	
     PID_struct_init(&pid_rotate[1], POSITION_PID,15500,500,50,0,0);
     PID_struct_init(&pid_rotate[0], POSITION_PID,15500,500,50,0,0);
@@ -174,8 +174,10 @@ void shoot_bullet_handle(void)
 {	
 	static uint32_t start_shooting_count = 0;//正转计时
 	static uint32_t start_reversal_count1 = 0;//反转计时
+	static uint32_t rectify_reversal_count = 0;//反转计时
 	static uint8_t lock_rotor1 = 0;//堵转标志位
 	static u8  press_l_flag;
+	static u8 rectify_ready;
 	shoot.single_angle=45;
 
 	heat_shoot_frequency_limit();//步兵射频限制
@@ -186,6 +188,45 @@ void shoot_bullet_handle(void)
 //        if(0)
 	  {
           //热量限制
+			
+//			if(shoot.rectify_flag)/*C键修正弹道部分*/
+//				  {
+//						 shoot.poke_pid.angle_fdb = general_poke.poke.ecd_angle/36.109f;/*更新拨盘反馈*/
+//						 shoot.poke_pid.speed_fdb = general_poke.poke.rate_rpm;
+//             rectify_reversal_count++;
+//             if(rectify_reversal_count<400)/*反转堵转*/
+//             {
+//                shoot.poke_pid.angle_ref = shoot.poke_pid.angle_fdb-shoot.single_angle;	 
+//             }
+//						 else if(rectify_reversal_count>=400&&rectify_reversal_count<500)/*稳定期*/
+//             {  
+//                shoot.poke_pid.angle_ref = shoot.poke_pid.angle_fdb;
+//							  rectify_ready = 1;
+//             }
+//						 else/*补偿修正部分*/
+//						 {
+//							 if(rectify_ready)
+//							 {
+//								 shoot.poke_pid.angle_ref += 16;
+//								 rectify_ready = 0;
+//							 }
+// 
+//							 if(fabs(shoot.poke_pid.angle_ref-shoot.poke_pid.angle_fdb)<0.3f)
+//							 {
+//								 shoot.rectify_flag = 0;
+//							   rectify_reversal_count = 0;
+//							 }
+//						 }								
+//						 shoot.poke_current=pid_double_loop_cal(&pid_trigger_angle_buf,&pid_trigger_speed_buf,
+//																												    shoot.poke_pid.angle_ref,
+//																												    shoot.poke_pid.angle_fdb,
+//																												    &shoot.poke_pid.speed_ref,
+//																											    	shoot.poke_pid.speed_fdb,0); 
+//      }else
+/**/					
+//			{
+				 
+				 
 		  if(shoot.will_time_shoot>0&&
 				 shoot.fric_wheel_run==1&&
 							 shoot.poke_run==1&&				
@@ -236,7 +277,7 @@ void shoot_bullet_handle(void)
     start_reversal_count1 = 0;//清零反转计时
             
 		}
-
+//	}
             buff_time = 0;
             single_shoot_cnt = 0;
 }
@@ -288,18 +329,24 @@ void shoot_bullet_handle(void)
              {
                  shoot.poke_pid.angle_ref-=shoot.single_angle;
                  
-             }else
+             }else if(buff_reversal_count>=400&&buff_reversal_count<600)
              {
-                buff_reversal_count = 0;
-                shoot.poke_pid.angle_ref = shoot.poke_pid.angle_fdb;
-                 buff_check_flag = 0;
+                 
+                 shoot.poke_pid.angle_ref = shoot.poke_pid.angle_fdb;
+                 
                  single_shoot_cnt++;
              }
+						 else
+						 {
+								 shoot.poke_pid.angle_ref += 18;	   
+								 buff_check_flag = 0;
+							   buff_reversal_count = 0;
+						 }
          }else
          {
              if(shoot.poke_run==1)
              {
-				shoot.poke_pid.angle_ref+=shoot.single_angle;
+								 shoot.poke_pid.angle_ref+=shoot.single_angle;
                  single_shoot_cnt++;
              }
              
@@ -400,6 +447,7 @@ void shoot_state_mode_switch()
                        if(press_C_cnt < 500)
                        {
                            shoot.fric_wheel_run=1;
+													 shoot.rectify_flag=1;
 												  if(gimbal_data .auto_aim_rotate_flag==1)
                           { LASER_OFF();}
 													else

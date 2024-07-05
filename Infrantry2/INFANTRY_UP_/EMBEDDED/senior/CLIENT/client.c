@@ -1,11 +1,26 @@
 #include "client.h"
-u16 draw_data_ID=0x0101;
-u16 data_ID=0xD180;
+
+/**
+  ******************************************************************************
+  * @file    client.c
+  * @date    2024.7.5
+  * @brief    各图形定义及引用方法见client.h，除字符外共用结构体interaction_figure_t
+	*	@introduction UI绘制步骤
+			静态UI ：1.创建interaction_figure_t图形对象或client_custom_character_t字符对象
+							 2.调用UI.结构体中ADD函数进行绘制 如UI.ADD_7Graph（入口参数）
+			动态UI ：前两步同静态UI
+							 3.调用UI.结构体中相应modify函数进行动态自定义更新
+							 4.自行调整case和UI.cnt
+ ===============================================================================
+ **/
+#define WIDTH    3
 u16 client_custom_ID=0;
 uint8_t dddata[120];
 uint8_t  tx_buf[150];
-#define WIDTH    3
+
 UI_t UI=UI_DEFAULT;
+
+
 
 /*创建图形对象*/
 interaction_figure_t _0=ARC(ADD,0,0,1,960,540,140*3-30,140*3-30,0,359,3,1,UI_YELLOW);
@@ -39,7 +54,7 @@ interaction_figure_t _12=ARC(ADD,0,2,5,880,75,20,20,0,359,10,0,UI_ORANGE);/*big 
 interaction_figure_t _13=ARC(ADD,0,2,6,960,75,20,20,0,359,5,0,UI_YELLOW);/*small buff*/
 interaction_figure_t _14=ARC(ADD,0,2,7,1040,75,20,20,0,359,2,0,UI_CYAN);/*auto shoot*/
 interaction_figure_t _15=FLOAT_NUM(ADD,0,2,8,1350+20,540,0,15,WIDTH,1,UI_WHITE);/*电压数字*/
-interaction_figure_t _16=FLOAT_NUM(ADD,0,2,8,1350,735,0,15,WIDTH,1,UI_WHITE);/*累计发弹量*/
+interaction_figure_t _16=FLOAT_NUM(ADD,0,2,9,1350,735,0,15,WIDTH,1,UI_WHITE);/*累计发弹量*/
 
 /*创建 组合图形对象*/
 interaction_figure_4_t A;
@@ -57,13 +72,7 @@ client_custom_character_t H;
 
 /*UI刷新主函数*/
 void Client_Send_Handle()
-{
-
-	if(UI.circle_360<360)
-	{UI.circle_360+=40;}
-	else
-	{UI.circle_360-=360;}
-	
+{	
   UI.id=judge_rece_mesg.game_robot_state.robot_id;
   switch(UI.id)
     {
@@ -129,6 +138,12 @@ void Client_Send_Handle()
 		default:
      break;
     }
+		
+	
+	if(UI.circle_360<360)
+	  {UI.circle_360+=40;}
+	else
+	  {UI.circle_360-=360;}
 		
 	UI.cnt++;
   if(UI.cnt>9)/*在需要刷新的图层刷新*/
