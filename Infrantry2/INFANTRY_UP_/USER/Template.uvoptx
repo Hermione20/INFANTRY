@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>3</nTsel>
+        <nTsel>4</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -114,7 +114,7 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>BIN\CMSIS_AGDI.dll</pMon>
+        <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
@@ -203,127 +203,137 @@
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>RC_CtrlData.Key_Flag.Key_Q_TFlag,0x0A</ItemText>
+          <ItemText>judge_rece_mesg,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>judge_rece_mesg,0x0A</ItemText>
+          <ItemText>time_tick,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>1</WinNumber>
-          <ItemText>time_tick,0x0A</ItemText>
+          <ItemText>gimbal_gyro</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>gimbal_gyro</ItemText>
+          <ItemText>gimbal_data</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>1</WinNumber>
-          <ItemText>gimbal_data</ItemText>
+          <ItemText>Pitch_Encoder,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Pitch_Encoder,0x0A</ItemText>
+          <ItemText>yaw_Encoder,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
           <WinNumber>1</WinNumber>
-          <ItemText>yaw_Encoder,0x0A</ItemText>
+          <ItemText>general_friction,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>15</count>
           <WinNumber>1</WinNumber>
-          <ItemText>general_friction,0x0A</ItemText>
+          <ItemText>general_poke,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>16</count>
           <WinNumber>1</WinNumber>
-          <ItemText>general_poke,0x0A</ItemText>
+          <ItemText>uart_cha_data,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>17</count>
           <WinNumber>1</WinNumber>
-          <ItemText>uart_cha_data,0x0A</ItemText>
+          <ItemText>sizeof(&amp;data0),0x0A</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sizeof(&amp;data0),0x0A</ItemText>
+          <ItemText>sizeof(&amp;data0)</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sizeof(&amp;data0)</ItemText>
+          <ItemText>aaa</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>1</WinNumber>
-          <ItemText>aaa</ItemText>
+          <ItemText>A,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
           <WinNumber>1</WinNumber>
-          <ItemText>A,0x0A</ItemText>
+          <ItemText>sizeof(UI_data.id_data)</ItemText>
         </Ww>
         <Ww>
           <count>22</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sizeof(UI_data.id_data)</ItemText>
+          <ItemText>UI_data</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>1</WinNumber>
-          <ItemText>UI_data</ItemText>
+          <ItemText>bbb,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>24</count>
           <WinNumber>1</WinNumber>
-          <ItemText>bbb,0x0A</ItemText>
+          <ItemText>ccc,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>25</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ccc,0x0A</ItemText>
+          <ItemText>dddata,0x10</ItemText>
         </Ww>
         <Ww>
           <count>26</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dddata,0x10</ItemText>
+          <ItemText>ddata</ItemText>
         </Ww>
         <Ww>
           <count>27</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ddata</ItemText>
+          <ItemText>_7</ItemText>
         </Ww>
         <Ww>
           <count>28</count>
           <WinNumber>1</WinNumber>
-          <ItemText>_7</ItemText>
+          <ItemText>draw_cnt</ItemText>
         </Ww>
         <Ww>
           <count>29</count>
           <WinNumber>1</WinNumber>
-          <ItemText>draw_cnt</ItemText>
+          <ItemText>_6,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>30</count>
           <WinNumber>1</WinNumber>
-          <ItemText>_6,0x0A</ItemText>
+          <ItemText>\\Template\../EMBEDDED/senior/CLIENT/client.c\A</ItemText>
         </Ww>
         <Ww>
           <count>31</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\Template\../EMBEDDED/senior/CLIENT/client.c\A</ItemText>
+          <ItemText>\\Template\../EMBEDDED/senior_struct/senior.c\gimbal_gyro.yaw_Gyro</ItemText>
         </Ww>
         <Ww>
           <count>32</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\Template\../EMBEDDED/senior_struct/senior.c\gimbal_gyro.yaw_Gyro</ItemText>
+          <ItemText>shoot,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>33</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>general_poke,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>34</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>general_friction,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

@@ -50,7 +50,6 @@ void control_task(void)
 //		{send_protocol(-gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,27,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF);}
    send_protocol_New(gimbal_gyro.yaw_Angle,-gimbal_gyro.pitch_Angle,gimbal_gyro.roll_Angle,judge_rece_mesg.game_robot_state.robot_id,shoot.Bullet_Speed_Kalman.X_hat,gimbal_data.ctrl_mode,UART4_DMA_TX_BUF); 
 	
-	
 	}//
 		if(time_tick%100==1)
 	{
