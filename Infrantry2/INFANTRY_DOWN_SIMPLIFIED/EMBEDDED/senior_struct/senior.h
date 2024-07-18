@@ -8,10 +8,10 @@
 #define  GMYawEncoder_Offset   6013
 //底盘航向轴电机初始位置
 //电机倒放，顺时针为正
-#define  GM1Encoder_Offset   406////1370-1024//
-#define  GM2Encoder_Offset   2011////1298+1024//
-#define  GM3Encoder_Offset   3366////1231-1024//
-#define  GM4Encoder_Offset   3744////3964+1024//
+#define  GM1Encoder_Offset   3179////1370-1024//
+#define  GM2Encoder_Offset   2319////1298+1024//
+#define  GM3Encoder_Offset   3173////1231-1024//
+#define  GM4Encoder_Offset   3741////3964+1024//
 
 
 #ifndef STRUCT_MOTOR

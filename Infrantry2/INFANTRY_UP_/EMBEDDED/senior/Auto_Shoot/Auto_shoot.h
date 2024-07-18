@@ -34,17 +34,25 @@ typedef struct
 
 typedef struct
 {
-	int Yaw_Angle;//目标yaw轴位置
-	int Pitch_Angle;//目标Pitch轴位置
+	float Yaw_Angle;//目标yaw轴位置
+	float Pitch_Angle;//目标Pitch轴位置
 	
-	int Yaw_Angle_Last;//上一时刻目标yaw轴位置
-	int Pitch_Angle_Last;//上一时刻Pitch轴位置
+	float Yaw_Delta_Point;
+	float Pitch_Delta_Point;
+	
+	float Yaw_Angle_Last;//上一时刻目标yaw轴位置
+	float Pitch_Angle_Last;//上一时刻Pitch轴位置
 	
 	float Yaw_Speed;//目标yaw轴速度
 	float Pitch_Speed;//目标pitch轴速度
 	
 	uint8_t  Flag_Get_Target;//目标锁定标志位，1：锁定目标，0：未识别到目标
 	uint16_t Lost_Cnt;//目标丢失计数器
+	
+	uint16_t xy_o_time;
+	u8 xy_0_flag;
+	u8 buff_kf_flag;
+	
 }Buff_t;
 
 
@@ -59,6 +67,8 @@ typedef __packed struct
 	uint8_t Header;
 	float Pitch_Angle;
 	float Yaw_Angle; 
+	float buff_X;
+	float buff_Y;
 	uint8_t enable_shoot;
   uint8_t if_receive_data;
 	uint16_t Check_Sum;

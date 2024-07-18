@@ -10,8 +10,8 @@
       <TargetName>Template</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>5060422::V5.06 update 4 (build 422)::ARMCC</pArmCC>
-      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <pArmCC>5060422::V5.06 update 4 (build 422)::.\ARM_Compiler_5.06u4_</pArmCC>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::.\ARM_Compiler_5.06u4_</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -539,11 +539,6 @@
               <FileName>uart_cha_transmit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\chassis_transmit\uart_cha_transmit.c</FilePath>
-            </File>
-            <File>
-              <FileName>OLD_Auto_shoot.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMBEDDED\senior\OLD_Auto_shoot\OLD_Auto_shoot.c</FilePath>
             </File>
             <File>
               <FileName>client.c</FileName>

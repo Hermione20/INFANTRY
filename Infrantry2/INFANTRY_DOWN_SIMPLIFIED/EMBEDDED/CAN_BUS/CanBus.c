@@ -11,13 +11,6 @@ void Can1ReceiveMsgProcess(CanRxMsg * msg)
 	#endif
 //		PM01_message_Process(&capacitance_message,msg);
 	 Can_SuperCap_message_Process(&can_capacitance_message,msg);
-    if(msg->StdId == GM4Encoder_MOTOR)
-		{
-			cnt[3]++;
-			GM6020EncoderTask(&steering_wheel_chassis.Heading_Encoder[3],msg,GM4Encoder_Offset);
-		}
-	
-    
 }
 
 void Can2ReceiveMsgProcess(CanRxMsg * msg)
@@ -64,7 +57,11 @@ void Can2ReceiveMsgProcess(CanRxMsg * msg)
 		}
 			break;
 		
-		
+		case GM4Encoder_MOTOR:
+		{
+			cnt[3]++;
+			GM6020EncoderTask(&steering_wheel_chassis.Heading_Encoder[3],msg,GM4Encoder_Offset);
+		}
 		
     default:
         break;

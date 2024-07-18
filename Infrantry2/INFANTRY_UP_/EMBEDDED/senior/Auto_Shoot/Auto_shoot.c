@@ -52,6 +52,15 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 			Auto_Shoot->Auto_Aim.enable_shoot = New_Auto_Aim.enable_shoot;
 			
 			Auto_Shoot->Auto_Aim.Lost_Cnt=0;
+			
+			
+			Auto_Shoot->Buff.Yaw_Angle_Last = Auto_Shoot->Buff.Yaw_Angle;
+			Auto_Shoot->Buff.Pitch_Angle_Last = Auto_Shoot->Buff.Pitch_Angle;
+			Auto_Shoot->Buff.Yaw_Angle = New_Auto_Aim.Yaw_Angle;
+			Auto_Shoot->Buff.Pitch_Angle = New_Auto_Aim.Pitch_Angle;
+			Auto_Shoot->Buff.Flag_Get_Target = 1;
+			
+			Auto_Shoot->Buff.Lost_Cnt=0;
 			//gimbal_gyro.yaw_Angle还没定义先注释
 //			if (fabs(new_location.x - gimbal_gyro.yaw_Angle) > 45 || fabs(new_location.y - gimbal_gyro.pitch_Angle) > 70)
 //			{
@@ -67,8 +76,29 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 				Auto_Shoot->Auto_Aim.Flag_Get_Target = 0;
 				Auto_Shoot->Auto_Aim.Yaw_Angle = gimbal_gyro.yaw_Angle;
 				Auto_Shoot->Auto_Aim.Pitch_Angle = gimbal_gyro.pitch_Angle;
+				
+				Auto_Shoot->Buff.Flag_Get_Target = 0;
+				Auto_Shoot->Buff.Yaw_Angle = gimbal_gyro.yaw_Angle;
+				Auto_Shoot->Buff.Pitch_Angle = gimbal_gyro.pitch_Angle;
 			}
 			Auto_Shoot->Auto_Aim.enable_shoot = 0;
+		}
+	}
+	
+	float flagg_x = New_Auto_Aim.buff_X;
+	float flagg_y = New_Auto_Aim.buff_Y;
+	if (flagg_x == New_Auto_Aim.buff_X && flagg_y == New_Auto_Aim.buff_Y)
+	{
+		if (flagg_x != 0 && flagg_y != 0)
+		{
+			Auto_Shoot->Buff.xy_0_flag = 0;
+			Auto_Shoot->Buff.buff_kf_flag = 1;
+			Auto_Shoot->Buff.Yaw_Delta_Point = New_Auto_Aim.buff_X;
+			Auto_Shoot->Buff.Pitch_Delta_Point = New_Auto_Aim.buff_Y;
+		}
+		else
+		{
+			Auto_Shoot->Buff.xy_0_flag = 1;
 		}
 	}
 	

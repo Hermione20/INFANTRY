@@ -62,14 +62,17 @@ void infantry_mode_switch_task(void)
 				if (RC_CtrlData.RemoteSwitch.s3to2)//Ò£¿ØÆ÷Ð¡ÍÓÂÝºÍ×ÔÃéÇÐ»»
         {
 
-//					gimbal_data .auto_aim_rotate_flag=1;
+					gimbal_data .auto_aim_rotate_flag=1;
 //					chassis.ctrl_mode = CHASSIS_STOP;
-          chassis.ctrl_mode = CHASSIS_ROTATE;
-					chassis.ChassisSpeed_Ref.rotate_ref = 550;
+//          chassis.ctrl_mode = CHASSIS_ROTATE;
+//					chassis.ChassisSpeed_Ref.rotate_ref = 550;
+//					gimbal_data.ctrl_mode = GIMBAL_AUTO_SMALL_BUFF;
+					chassis.ctrl_mode = CHASSIS_RELAX;
         }
         else
         {
-//					gimbal_data .auto_aim_rotate_flag=0;
+					gimbal_data.ctrl_mode = GIMBAL_FOLLOW_ZGYRO;
+					gimbal_data .auto_aim_rotate_flag=0;
           chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
 					chassis.ChassisSpeed_Ref.rotate_ref = 0;
         }

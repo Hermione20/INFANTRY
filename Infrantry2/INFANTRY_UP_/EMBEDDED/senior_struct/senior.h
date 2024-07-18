@@ -3,9 +3,9 @@
 #include "public.h"
 
 
-#define  GMPitchEncoder_Offset 1290
+#define  GMPitchEncoder_Offset 8088
 //yaw轴电机初始位置
-#define  GMYawEncoder_Offset   50
+#define  GMYawEncoder_Offset   2690
 //底盘航向轴电机初始位置
 #define  GM1Encoder_Offset   1370-1024
 #define  GM2Encoder_Offset   1298+1024

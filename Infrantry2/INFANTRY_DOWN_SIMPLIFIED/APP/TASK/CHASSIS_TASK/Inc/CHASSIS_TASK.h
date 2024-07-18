@@ -9,10 +9,10 @@
 /*******************************CONFIG********************************/
 #define YAW_POLARITY 					-1 //逆正      Yaw轴电机极性 舵轮要顺正，改-1；麦轮1
 
-#define RIGHT_FRONT_REVERSE   1 
+#define RIGHT_FRONT_REVERSE   -1 
 #define LEFT_FRONT_REVERSE    -1
-#define LEFT_BEHIND_REVERSE   -1
-#define RIGHT_BEHIND_REVERSE  -1
+#define LEFT_BEHIND_REVERSE   1
+#define RIGHT_BEHIND_REVERSE  1
 #define  WARNING_VOLTAGE       12.5
 #define STEERING_POLARITY      -1 //底盘四个6020电机的输出极性 解算不考虑 故置-1
 /*******************************CONFIG********************************/

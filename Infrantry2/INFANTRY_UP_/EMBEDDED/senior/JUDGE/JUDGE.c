@@ -304,10 +304,10 @@ void judgement_data_handle(uint8_t *p_frame, u16 rec_len)
 				{
 						memcpy(&judge_rece_mesg.ext_bullet_remaining, data_addr, data_length);
 						last_remain = this_remain;
-						this_remain = judge_rece_mesg.ext_bullet_remaining.bullet_remaining_num_17mm;
-						if(this_remain - last_remain > 0||this_remain==0)
+						this_remain = judge_rece_mesg.shoot_data.bullet_speed;
+						if(this_remain == last_remain)
 								break;
-						already_shoot+=last_remain-this_remain;
+						already_shoot+=1;
 						
 				}
 				break;

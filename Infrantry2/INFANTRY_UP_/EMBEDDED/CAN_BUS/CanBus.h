@@ -21,7 +21,7 @@
 #define SCOPE_MOTOR 0X00
 /*********************************摩擦轮电机id**************************************/
 #define LEFT_FRICTION 0X201
-#define RIGHT_FRICTION 0X203
+#define RIGHT_FRICTION 0X202
 //哨兵
 #define LEFT_UP_FRICTION 0X00
 #define RIGHT_UP_FRICTION 0X00
@@ -32,7 +32,7 @@
 #define UP_POKE 0X205
 #define LEFT_POKE 0X00			//右一左二，只有一个用一
 #define RIGHT_POKE 0X00
-#define POKE 0X202
+#define POKE 0X203
 
 #define BULLET_HATCH 0x204
 /*********************************舵轮上下板通信id*********************************/

@@ -7,10 +7,10 @@ bullet_hatch_t bullet_hatch;
 
 void bullet_hatch_param_init()
 {
-	PID_struct_init(&bullet_hatch.pid_hatch_speed_init, POSITION_PID, 10000, 10, 15,0,0); 
+	PID_struct_init(&bullet_hatch.pid_hatch_speed_init, POSITION_PID, 5000, 10, 15,0,0); 
 	PID_struct_init(&bullet_hatch.pid_hatch_angle_init, POSITION_PID, 300, 10, 4,0,0); 
 	PID_struct_init(&bullet_hatch.pid_hatch_speed, 			 POSITION_PID, 10000, 10, 8,0,0);
-	PID_struct_init(&bullet_hatch.pid_hatch_angle, 			 POSITION_PID, 300, 10, 4,0,0);
+	PID_struct_init(&bullet_hatch.pid_hatch_angle, 			 POSITION_PID, 300, 10, 0.8,0,0);
 }
 
 
@@ -85,7 +85,7 @@ void hatch_state_mode_switch()
 					{
 						bullet_hatch.bullet_hatch_mode=OPEN;
 					}
-					else if(RC_CtrlData.Key_Flag.Key_F_Flag&&bullet_hatch.bullet_hatch_mode==OPEN)
+					else if(RC_CtrlData.Key_Flag.Key_G_Flag&&bullet_hatch.bullet_hatch_mode==OPEN)
 					{
 						 bullet_hatch.bullet_hatch_mode=CLOSE;
 					}					
