@@ -360,7 +360,7 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 		_7.interaction_figure[6].operate_tpye=MODIFY;
 		
 /*第1个图形 累计发弹数*/
-			uint32_t  shoot_temp=(already_shoot*1000.0f);
+			uint32_t  shoot_temp=((500-already_shoot)*1000.0f);
 			_7.interaction_figure[0].details_c=shoot_temp;
 		  _7.interaction_figure[0].details_d=shoot_temp>>10;
 			_7.interaction_figure[0].details_e=shoot_temp>>21;

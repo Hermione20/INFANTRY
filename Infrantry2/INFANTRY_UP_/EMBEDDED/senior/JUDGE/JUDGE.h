@@ -365,7 +365,7 @@ void judgement_data_handle(uint8_t *p_frame,u16 rec_len);
 extern receive_judge_t judge_rece_mesg;
 extern uint16_t last_remain;
 extern uint16_t this_remain;
-extern uint16_t already_shoot;
+extern int16_t already_shoot;
 
 
 

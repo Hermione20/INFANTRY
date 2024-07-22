@@ -181,8 +181,8 @@ typedef struct chassis_t
         pid_t pid_cha_6020c_speed[4];
 
 		int16_t         				 current[4];
-        int16_t                         GM_current[4];                
-		int16_t				 		 voltage[4];
+    int16_t                 GM_current[4];                
+		int16_t				 		     voltage[4];
 
 		void (*Init)	 (struct chassis_t *chassis);
 		void (*STOP_) (struct chassis_t *chassis);

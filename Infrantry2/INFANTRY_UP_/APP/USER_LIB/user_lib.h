@@ -16,6 +16,13 @@
 #define RAD_TO_ANGLE 57.295779513082320876798154814105f
 #endif
 
+/*为什么使用宏？在宏中定义的静态变量是相互独立的！*/
+#define EXE_ONCE(control_flag,statements) do{static int flag = 1; \
+																									if(flag){statements;} \
+																									flag = 0; \
+																									if(control_flag==0){flag=1;} \
+																						  	 }while(0); /*考虑到计数作为控制标志位会归零的情况*/
+
 typedef struct RampFunc_t
 {
     float input;        //输入数据

@@ -19,7 +19,9 @@
 receive_judge_t judge_rece_mesg;
 uint16_t last_remain=0;
 uint16_t this_remain=0;
-uint16_t already_shoot=0;
+int16_t already_shoot=0;
+uint16_t bullet_supply_num=0;
+u8 bullet_supply_flag=0;
 u8 armor_hurt=0;
 /***********************************    ↓    DJI提供的CRC校检函数   ↓  ***********************************/
 //crc8 generator polynomial:G(x)=x8+x5+x4+1
@@ -302,13 +304,24 @@ void judgement_data_handle(uint8_t *p_frame, u16 rec_len)
 
 			case BULLET_REMAINING_ID:
 				{
-						memcpy(&judge_rece_mesg.ext_bullet_remaining, data_addr, data_length);
+						if(judge_rece_mesg.game_state.game_progress == 3)
+						{bullet_supply_num=0;}
+							
+						already_shoot = bullet_supply_num - this_remain;
 						last_remain = this_remain;
-						this_remain = judge_rece_mesg.shoot_data.bullet_speed;
-						if(this_remain == last_remain)
-								break;
-						already_shoot+=1;
+						memcpy(&judge_rece_mesg.ext_bullet_remaining, data_addr, data_length);
+						this_remain = judge_rece_mesg.ext_bullet_remaining.bullet_remaining_num_17mm;
+					
 						
+						if(this_remain > last_remain)
+						{
+							bullet_supply_flag = 0;
+							EXE_ONCE(bullet_supply_flag,{bullet_supply_num+=(this_remain-last_remain);})
+						}
+						else
+						{
+						  bullet_supply_flag = 1;
+						}
 				}
 				break;
 
