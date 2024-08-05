@@ -496,11 +496,6 @@
               <FilePath>..\EMBEDDED\senior\CH100\CH100.c</FilePath>
             </File>
             <File>
-              <FileName>DJI_MOTOR.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMBEDDED\senior\DJI_MOTOR\DJI_MOTOR.c</FilePath>
-            </File>
-            <File>
               <FileName>HI220.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\senior\HI220\HI220.c</FilePath>
@@ -544,6 +539,11 @@
               <FileName>client.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\EMBEDDED\senior\CLIENT\client.c</FilePath>
+            </File>
+            <File>
+              <FileName>DJI_MOTOR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMBEDDED\senior\DJI_MOTOR\DJI_MOTOR.c</FilePath>
             </File>
             <File>
               <FileName>OT7213.c</FileName>

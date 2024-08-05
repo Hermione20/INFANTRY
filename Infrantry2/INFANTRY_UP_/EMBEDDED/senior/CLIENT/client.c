@@ -20,11 +20,14 @@ uint8_t  tx_buf[150];
 
 UI_t UI=UI_DEFAULT;
 
-
+#define WHEEL_WIDTH  50
+#define CIRCLE_R			sqrt(2)/2*WHEEL_WIDTH
+#define CIRCLE_X     1350+WHEEL_WIDTH/2
+#define CIRCLE_Y     750-WHEEL_WIDTH/2
 
 /*创建图形对象*/
 interaction_figure_t _0=ARC(ADD,0,0,1,960,540,140*3-30,140*3-30,0,359,3,1,UI_YELLOW);
-interaction_figure_t _1=CIRCLE(ADD,0,0,2,960,505,3,5,1,UI_YELLOW);
+interaction_figure_t _1=CIRCLE(ADD,0,0,2,980,475,3,5,1,UI_YELLOW);
 interaction_figure_t _2=CHARACTER(ADD,0,0,3,200,740,20,20,WIDTH,0,UI_GREEN);/*ROTATE*/
 interaction_figure_t _3=CHARACTER(ADD,0,0,4,200,690,20,20,WIDTH,1,UI_GREEN);/*DOOR*/
 interaction_figure_t _4=CHARACTER(ADD,0,0,5,200,640,20,20,WIDTH,1,UI_GREEN);/*FRICTION*/
@@ -35,7 +38,7 @@ interaction_figure_t _00=CIRCLE(ADD,0,0,8,380,680,7,8,1,UI_ORANGE);/*DOOR*/
 interaction_figure_t _01=CIRCLE(ADD,0,0,9,380,730,7,8,1,UI_ORANGE);/*ROTATE*/
 interaction_figure_t _02=CIRCLE(ADD,0,1,0,380,675,7,8,1,UI_ORANGE);/*DEFEND*/
 interaction_figure_t _03=CIRCLE(ADD,0,1,1,380,630,7,8,1,UI_ORANGE);/*FRICTION*/
-interaction_figure_t _04=CIRCLE(ADD,0,1,2,960,505,3,5,1,UI_RB);
+interaction_figure_t _04=CIRCLE(ADD,0,1,2,980,475,3,5,1,UI_RB);
 interaction_figure_t _05=CHARACTER(ADD,0,1,3,200,600 ,10,30,WIDTH,1,UI_WHITE);/*电压数字*/
 interaction_figure_t _06=CHARACTER(ADD,0,1,4,200,540 ,20,40,WIDTH,1,UI_CYAN);/*累计发弹量*/
 
@@ -56,6 +59,14 @@ interaction_figure_t _14=ARC(ADD,0,2,7,1040,75,20,20,0,359,2,0,UI_CYAN);/*auto s
 interaction_figure_t _15=FLOAT_NUM(ADD,0,2,8,1350+20,540,0,15,WIDTH,1,UI_WHITE);/*电压数字*/
 interaction_figure_t _16=FLOAT_NUM(ADD,0,2,9,1350,735,0,15,WIDTH,1,UI_WHITE);/*累计发弹量*/
 
+interaction_figure_t _20=LINE(ADD,0,3,0,1350,750,1350+WHEEL_WIDTH,750-WHEEL_WIDTH,WIDTH,1,UI_WHITE); /*斜向下辅助线*/
+interaction_figure_t _21=LINE(ADD,0,3,1,1350+WHEEL_WIDTH,750,1350,750-WHEEL_WIDTH,WIDTH,1,UI_WHITE); /*斜向下辅助线*/
+interaction_figure_t _22=RECTANGLE(ADD,0,3,2,670,1300,346,830,WIDTH,1,UI_WHITE); /*自瞄框*/
+
+interaction_figure_t _big=CHARACTER(ADD,0,3,3,870,25,10,30,WIDTH,1,UI_CYAN);/*累计发弹量*/
+interaction_figure_t _small=CHARACTER(ADD,0,3,4,950,25 ,10,20,WIDTH,1,UI_CYAN);/*累计发弹量*/
+
+
 /*创建 组合图形对象*/
 interaction_figure_4_t A;
 interaction_figure_4_t AA;
@@ -69,6 +80,10 @@ client_custom_character_t E;uint8_t dataE[]="DEFEND:";
 client_custom_character_t F;uint8_t dataF[]="VOTAGE:";
 client_custom_character_t G;
 client_custom_character_t H;
+client_custom_character_t I;uint8_t dataI[]="大符";
+client_custom_character_t J;uint8_t dataJ[]="小符";
+client_custom_character_t K;uint8_t dataK[]="自瞄";
+
 
 /*UI刷新主函数*/
 void Client_Send_Handle()
@@ -120,19 +135,27 @@ void Client_Send_Handle()
 		}break;
 		case 6:
 		{
-			UI.ADD_7Graph(AB,_11,_12,_13,_14,_15,_16,_10);
-		}break;
+			UI.ADD_Char(I,_big,dataI,2);
+		}
 		case 7:
 		{
-			UI.ADD_7Graph(AA,_002,_003,_004,_005,_006,_007,_008);
-		}break;
-		case 8:/*动态显示*/
+			UI.ADD_Char(J,_small,dataJ,2);
+		}
+		case 8:
 		{
-			UI.MODIFY_7Graph_0(A,_0,_1,_00,_01,_001,_03,_04);
+			UI.ADD_7Graph(AB,_22,_12,_13,_14,_15,_16,_10);
 		}break;
 		case 9:
 		{
-			UI.MODIFY_7Graph_1(AA,_002,_003,_004,_005,_006,_007,_008);
+			UI.ADD_7Graph(AA,_002,_003,_11,_005,_007,_006,_008);
+		}break;
+		case 10:/*动态显示*/
+		{
+			UI.MODIFY_7Graph_0(A,_0,_1,_00,_01,_001,_03,_04);
+		}break;
+		case 11:
+		{
+			UI.MODIFY_7Graph_1(AA,_002,_003,_22,_005,_007,_006,_008);
 		}break;
 		
 		default:
@@ -146,8 +169,9 @@ void Client_Send_Handle()
 	  {UI.circle_360-=360;}
 		
 	UI.cnt++;
-  if(UI.cnt>9)/*在需要刷新的图层刷新*/
-     UI.cnt=8;
+  if(UI.cnt>11)/*在需要刷新的图层刷新*/
+     UI.cnt=10;
+	
 }
 
 
@@ -261,7 +285,7 @@ void MODIFY_7_Graph_DIY(interaction_figure_4_t _7,interaction_figure_t _0,intera
 		_7.interaction_figure[5].operate_tpye=MODIFY;
 		_7.interaction_figure[6].operate_tpye=MODIFY;
 /*第1个图形*/
-		_7.interaction_figure[0].details_b=usart_down_capacitance_message.cap_voltage*359.8f/28.0f;
+		_7.interaction_figure[0].details_b=usart_down_capacitance_message.cap_voltage*359.8f/24.0f;
 		if(usart_down_capacitance_message.cap_voltage<=0)
 			{
 					_7.interaction_figure[0].color=UI_YELLOW;
@@ -287,7 +311,7 @@ void MODIFY_7_Graph_DIY(interaction_figure_4_t _7,interaction_figure_t _0,intera
 			{
 				_7.interaction_figure[1].color=UI_YELLOW;
 			}
-/*第3个图形*/			
+/*第3个图形*/	
 		if(bullet_hatch.bullet_hatch_mode==OPEN)
 			{
 				_7.interaction_figure[2].color=UI_ORANGE;
@@ -296,6 +320,7 @@ void MODIFY_7_Graph_DIY(interaction_figure_4_t _7,interaction_figure_t _0,intera
 			{
 				_7.interaction_figure[2].color=UI_PURPLE;
 			}
+
 /*第4个图形*/			
 		if(chassis.ctrl_mode==CHASSIS_ROTATE)
 			{
@@ -306,7 +331,7 @@ void MODIFY_7_Graph_DIY(interaction_figure_4_t _7,interaction_figure_t _0,intera
 				_7.interaction_figure[3].color=UI_PURPLE;
 			}
 /*第5个图形 电容值*/			
-			uint32_t  cap_temp=(usart_down_capacitance_message.cap_voltage*1000.0f)*100/28;
+			uint32_t  cap_temp=(usart_down_capacitance_message.cap_voltage*1000.0f)*100/24;
 			_7.interaction_figure[4].details_c=cap_temp;
 		  _7.interaction_figure[4].details_d=cap_temp>>10;
 			_7.interaction_figure[4].details_e=cap_temp>>21;
@@ -358,7 +383,7 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 		_7.interaction_figure[4].operate_tpye=MODIFY;
 		_7.interaction_figure[5].operate_tpye=MODIFY;
 		_7.interaction_figure[6].operate_tpye=MODIFY;
-		
+		  
 /*第1个图形 累计发弹数*/
 			uint32_t  shoot_temp=((500-already_shoot)*1000.0f);
 			_7.interaction_figure[0].details_c=shoot_temp;
@@ -376,9 +401,13 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 				_7.interaction_figure[1].color=UI_RB;
 		  }
 			
-/*第3个图形 pitch*/	
-		_7.interaction_figure[2].details_a=90-3+gimbal_gyro .pitch_Angle;			
-		_7.interaction_figure[2].details_b=90+3+gimbal_gyro .pitch_Angle;
+/*第3个图形 自瞄框更新*/	
+			if(My_Auto_Shoot.Auto_Aim.Flag_Get_Target)
+			_7.interaction_figure[2].color = UI_YELLOW;
+			else
+			_7.interaction_figure[2].color = UI_WHITE;	
+//		_7.interaction_figure[2].details_a=90-3+gimbal_gyro .pitch_Angle;			
+//		_7.interaction_figure[2].details_b=90+3+gimbal_gyro .pitch_Angle;
 			
 /*第4个图形 yaw*/	
 			float yaw__180_180;
@@ -392,7 +421,7 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 		_7.interaction_figure[3].details_a=yaw_0_360+15;//gimbal_gyro.yaw_Angle+15;		
 
 		if(yaw_0_360+345>360)
-			yaw_0_360=yaw_0_360-360;
+			yaw_0_360=yaw_0_360-360;  
 		_7.interaction_figure[3].details_b=yaw_0_360+345;//gimbal_gyro.yaw_Angle+345;
 		
 /*第5个图形 big buff*/			
@@ -417,7 +446,7 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 				_7.interaction_figure[5].details_a=UI.circle_360;
 				_7.interaction_figure[5].details_b=UI.circle_360-50;						
 		 }
-		else
+		else 
 		 {
 			  _7.interaction_figure[5].width=5;
 				_7.interaction_figure[5].details_a=0;
@@ -444,6 +473,57 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
       data_upload_handle(STUDENT_INTERACTIVE_HEADER_DATA_ID, dddata,sizeof(UI_data.id_data)+sizeof(interaction_figure_4_t),DN_REG_ID,tx_buf);
 }
 
+id_data_t send_to_aerial;
+void Send_bullet_remaining_num(void)
+{
+    send_to_aerial.sender_id = judge_rece_mesg.game_robot_state.robot_id;    
+		  switch(judge_rece_mesg.game_robot_state.robot_id)
+    {
+    case 3:
+		{
+      send_to_aerial.receiver_id = 6;
+			send_to_aerial.data_cmd_id = 0x0203;//按兵种标号向后顺序排 0x0202 0x0203 0x0204----0x02FF
+		}
+      break;
+    case 4:
+		{
+      send_to_aerial.receiver_id = 6;
+			send_to_aerial.data_cmd_id = 0x0204;//按兵种标号向后顺序排 0x0202 0x0203 0x0204----0x02FF
+		}
+      break;
+    case 5:
+		{
+      send_to_aerial.receiver_id = 6;
+			send_to_aerial.data_cmd_id = 0x0205;//按兵种标号向后顺序排 0x0202 0x0203 0x0204----0x02FF
+		}
+      break;
+    case 103://蓝色
+		{
+      send_to_aerial.receiver_id = 106;
+			send_to_aerial.data_cmd_id = 0x0203;//按兵种标号向后顺序排 0x0202 0x0203 0x0204----0x02FF
+		}
+      break;
+    case 104:
+		{
+      send_to_aerial.receiver_id = 106;
+			send_to_aerial.data_cmd_id = 0x0204;//按兵种标号向后顺序排 0x0202 0x0203 0x0204----0x02FF
+		}
+  		break;
+    case 105:
+		{
+      send_to_aerial.receiver_id = 106;
+			send_to_aerial.data_cmd_id = 0x0205;//按兵种标号向后顺序排 0x0202 0x0203 0x0204----0x02FF
+		}
+      break;
+    }
+		
+   
+    memcpy((uint8_t *)dddata,(uint8_t *)&send_to_aerial,sizeof(send_to_aerial));
+    dddata[6] = (uint8_t)judge_rece_mesg.ext_bullet_remaining.bullet_remaining_num_17mm;
+    dddata[7] = (uint8_t)(judge_rece_mesg.ext_bullet_remaining.bullet_remaining_num_17mm >> 8);
+    data_upload_handle(ROBOT_INTERACTIVE_DATA_ID,dddata,sizeof(send_to_aerial)+sizeof(judge_rece_mesg.ext_bullet_remaining.bullet_remaining_num_17mm),DN_REG_ID,tx_buf);
+
+}
 
 uint8_t* protocol_packet_pack(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf)  
 {

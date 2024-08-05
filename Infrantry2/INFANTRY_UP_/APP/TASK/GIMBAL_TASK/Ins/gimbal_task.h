@@ -146,7 +146,7 @@ extern gimbal_t gimbal_data;
 extern float yaw_angle_ref_aim,pit_angle_ref_aim;
 extern float pitch_max,pitch_min;
 extern float yaw_angle360;
-
+void auto_big_buff(void);
 
 
 

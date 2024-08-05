@@ -3,8 +3,8 @@
 #include "public.h"
 
 
-#define FRICTION_BUF_SPEED_30  (-970)
-#define FRICTION_SPEED_30  (-970)
+#define FRICTION_BUF_SPEED_30  (-960)
+#define FRICTION_SPEED_30  (-960)
 #define BULLET_SPEED_TARGET     27
 #define BULLET_SPEED_SELF_ADAPTATION_K    10
 
@@ -107,7 +107,7 @@ float First_Order_Kalman_Filter_Cal
 
 extern shoot_t shoot;
 extern u8 press_l_state_switch;
-
+extern u8 single_shoot_mode;
 extern pid_t pid_trigger_speed_buf;
 extern pid_t pid_trigger_angle_buf;
 #endif

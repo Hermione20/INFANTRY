@@ -244,6 +244,6 @@ void MODIFY_7_Graph_DIY1(interaction_figure_4_t _7,interaction_figure_t _0,inter
 void Client_Send_Handle(void);
 uint8_t* protocol_packet_pack(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf);
 void data_upload_handle(uint16_t cmd_id, uint8_t *p_data, uint16_t len, uint8_t sof, uint8_t *tx_buf);
-
+void Send_bullet_remaining_num(void);
 extern uint8_t  tx_buf[150];
 #endif

@@ -19,12 +19,12 @@
 void shot_param_init()
 {
 
-    PID_struct_init(&pid_trigger_angle, POSITION_PID,6000, 1000,20,0.2,10 );//20 0.2 0//
+  PID_struct_init(&pid_trigger_angle, POSITION_PID,6000, 1000,20,0.2,10 );//20 0.2 0//
 	PID_struct_init(&pid_trigger_speed,POSITION_PID,10000,10000,30,0,0);//100 0.1 4
 
 	
-	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 500 , 10  ,20 ,0.01f,0);
-	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,10000 , 5500 ,50 , 0   ,0);
+	PID_struct_init(&pid_trigger_angle_buf,POSITION_PID, 1000 , 0  ,120 ,0,10);
+	PID_struct_init(&pid_trigger_speed_buf,POSITION_PID,29000 , 5500 ,25 , 0   ,0);
 	
     PID_struct_init(&pid_rotate[1], POSITION_PID,15500,500,50,0,0);
     PID_struct_init(&pid_rotate[0], POSITION_PID,15500,500,50,0,0);
@@ -113,13 +113,13 @@ void heat_shoot_frequency_limit()//步兵射频限制部分
 			case 6:
 			{shoot.will_time_shoot=(shoot.remain_bullets-4.6)*1000/shoot.shoot_frequency;}break;
 			case 7:
-			{shoot.will_time_shoot=(shoot.remain_bullets-5.0)*1000/shoot.shoot_frequency;}break;
+			{shoot.will_time_shoot=(shoot.remain_bullets-5.3)*1000/shoot.shoot_frequency;}break;
 			case 8:
-			{shoot.will_time_shoot=(shoot.remain_bullets-5.8)*1000/shoot.shoot_frequency;}break;
+			{shoot.will_time_shoot=(shoot.remain_bullets-5.9)*1000/shoot.shoot_frequency;}break;
 			case 9:
-			{shoot.will_time_shoot=(shoot.remain_bullets-6.8)*1000/shoot.shoot_frequency;}break;
+			{shoot.will_time_shoot=(shoot.remain_bullets-6.9)*1000/shoot.shoot_frequency;}break;
 			case 10:
-			{shoot.will_time_shoot=(shoot.remain_bullets-7.4)*1000/shoot.shoot_frequency;}break;
+			{shoot.will_time_shoot=(shoot.remain_bullets-7.5)*1000/shoot.shoot_frequency;}break;
 			default :
 			{shoot.will_time_shoot=(shoot.remain_bullets-4)*1000/shoot.shoot_frequency;} break;
         }
@@ -167,6 +167,7 @@ void heat0_limit(void)           //热量限制
 int buff_reversal_count;
 int buff_time;
 u8 buff_check_flag;
+u8 single_shoot_mode = 0;
 int single_shoot_cnt;
 int press_l_cnt;
 
@@ -183,8 +184,7 @@ void shoot_bullet_handle(void)
 	heat_shoot_frequency_limit();//步兵射频限制
 
 	
-	if(gimbal_data.ctrl_mode!=GIMBAL_AUTO_SMALL_BUFF&&
-		 gimbal_data.ctrl_mode!=GIMBAL_AUTO_BIG_BUFF)//正常模式
+	if(single_shoot_mode == 0)//正常模式
 //        if(0)
 	  {
           //热量限制
@@ -207,7 +207,7 @@ void shoot_bullet_handle(void)
 //						 {
 //							 if(rectify_ready)
 //							 {
-//								 shoot.poke_pid.angle_ref += 16;
+//								 shoot.poke_pid.angle_ref += 2.5;
 //								 rectify_ready = 0;
 //							 }
 // 
@@ -224,7 +224,7 @@ void shoot_bullet_handle(void)
 //																											    	shoot.poke_pid.speed_fdb,0); 
 //      }else
 /**/					
-//			{
+			{
 				 
 				 
 		  if(shoot.will_time_shoot>0&&
@@ -277,11 +277,12 @@ void shoot_bullet_handle(void)
     start_reversal_count1 = 0;//清零反转计时
             
 		}
-//	}
+/**/		
+	}
             buff_time = 0;
             single_shoot_cnt = 0;
 }
-	else//打幅单发模式
+	else if(single_shoot_mode == 1)//打幅单发模式
 	{
         if(buff_time==0)
         {
@@ -338,7 +339,7 @@ void shoot_bullet_handle(void)
              }
 						 else
 						 {
-								 shoot.poke_pid.angle_ref += 18;	   
+								 shoot.poke_pid.angle_ref += 1.5;	   
 								 buff_check_flag = 0;
 							   buff_reversal_count = 0;
 						 }
@@ -400,8 +401,14 @@ void shoot_friction_handle()
 ************************************************************************************************************************
 **/
 int press_C_cnt;
+u8  C_flag=0;
+int shoot_control_cnt = 3000;
 void shoot_state_mode_switch()
 {
+	if(shoot_control_cnt>=0)
+	shoot_control_cnt++;
+	if(shoot_control_cnt>=10000)
+	shoot_control_cnt-=1000;
 	 /****************************键鼠射击状态更新**********************************************/		
 		switch(RC_CtrlData.inputmode)
 			{
@@ -427,46 +434,85 @@ void shoot_state_mode_switch()
 				}break;
 					case KEY_MOUSE_INPUT:
 				{
+					
 					if(RC_CtrlData.mouse.press_r==1)
 					{
 						if(RC_CtrlData.mouse.press_l==1)
-							shoot.poke_run=1;
+							{
+								if(shoot_control_cnt>=0)
+								shoot_control_cnt = 0;
+								if(fabs(pid_rotate[0].get)>=0.7*fabs(pid_rotate[0].set))
+							  shoot.poke_run=1;
+							}
+						else
+							{shoot.poke_run=0;}
+						
+					}
 					else
-							shoot.poke_run=0;
-					}else
 					{
 						if(RC_CtrlData.mouse.press_l==1)
-							shoot.poke_run=1;
-					  else
-							shoot.poke_run=0;
+							{
+								if(shoot_control_cnt>=0)
+								shoot_control_cnt = 0;
+								if(fabs(pid_rotate[0].get)>=0.7*fabs(pid_rotate[0].set))
+							  shoot.poke_run=1;
+							}
+						else
+							{shoot.poke_run=0;}
 					}
 					
-                   if(RC_CtrlData.Key_Flag.Key_C_Flag)
-                   {
-                       press_C_cnt++;
-                       if(press_C_cnt < 500)
-                       {
-                           shoot.fric_wheel_run=1;
-													 shoot.rectify_flag=1;
-												  if(gimbal_data .auto_aim_rotate_flag==1)
-                          { LASER_OFF();}
-													else
-													{ LASER_ON();}
-                       }else
-                       {
-                           shoot.fric_wheel_run=0;
-                           LASER_OFF();
-                       }
-                   }else
-                   {
-                      press_C_cnt = 0;
-                   }
-					 
-					if(RC_CtrlData.Key_Flag.Key_Q_TFlag)
-						 {shoot.bulletspead_level=1;}
-					else
-						 {shoot.bulletspead_level=0;}
+			if(gimbal_data.ctrl_mode==GIMBAL_AUTO_BIG_BUFF||gimbal_data.ctrl_mode==GIMBAL_AUTO_SMALL_BUFF)	
+			{
+				shoot.rectify_flag=1;
+
+					if(shoot_control_cnt>=0&&shoot_control_cnt <15000)
+					shoot_control_cnt = 0;
+
+				
+			}
+			
+			
+					
+					 if(gimbal_data .auto_aim_rotate_flag==1)
+					 { LASER_OFF();}
+					 else
+					 {
+						if(shoot.fric_wheel_run==1)
+							LASER_ON();
+						else
+							LASER_OFF();
+					 }
+
+				if(RC_CtrlData.Key_Flag.Key_C_Flag)
+				{
+				 press_C_cnt++;
+				
+				 if(press_C_cnt < 500)
+				 {
+					shoot_control_cnt = -1;
+					shoot.rectify_flag=  1;
+				 }else
+				 {
+						 shoot_control_cnt = 20000;
+						 LASER_OFF();
+				 }
+				 }
+				else
+				{
+				  	press_C_cnt = 0;
+				}
+
+							if(shoot_control_cnt < 2000)
+						 {
+								shoot.fric_wheel_run=1;
+						 }
+						 else if(shoot_control_cnt >= 2000)
+						 {
+								shoot.fric_wheel_run=0;
+						 }
+				
 				 }break;
+				
 				case STOP:
 				{
 					shoot.fric_wheel_run=0;

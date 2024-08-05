@@ -43,29 +43,31 @@ void chassis_param_init(chassis_t *chassis)//底盘参数初始化
 	PID_struct_init(&chassis->pid_cha_6020_angle[3], POSITION_PID, 8000, 10, 7,0.1f,4);//23, 0.2f,15);
 	PID_struct_init(&chassis->pid_cha_6020_speed[3], POSITION_PID, 14000, 500, 200,0.1f,10);//42,0.5f,20);
 
-    PID_struct_init(&chassis->pid_cha_6020c_angle[0], POSITION_PID, 8000, 10, 4,0.1f,5);//24, 0.2f,20);
-	PID_struct_init(&chassis->pid_cha_6020c_speed[0], POSITION_PID, 14000, 500, 100,0.1f,10);//38,0.5f,20);
-    
-    PID_struct_init(&chassis->pid_cha_6020c_angle[1], POSITION_PID, 8000, 10, 4,0.1f,5);//25, 0.2f,15);
-	PID_struct_init(&chassis->pid_cha_6020c_speed[1], POSITION_PID, 14000, 500, 100,0.1f,4);//39,0.5f,20);
-    
-    PID_struct_init(&chassis->pid_cha_6020c_angle[2], POSITION_PID, 8000, 10, 4,0.1f,4);//20, 0.2f,20);
-	PID_struct_init(&chassis->pid_cha_6020c_speed[2], POSITION_PID, 14000, 500, 100,0.5,8);//40,0.5f,20);
-    
-    PID_struct_init(&chassis->pid_cha_6020c_angle[3], POSITION_PID, 8000, 10, 4,0.1f,4);//23, 0.2f,15);
-	PID_struct_init(&chassis->pid_cha_6020c_speed[3], POSITION_PID, 14000, 500, 100,0.1f,10);//42,0.5f,20);
+//    PID_struct_init(&chassis->pid_cha_6020c_angle[0], POSITION_PID, 8000, 10, 4,0.1f,5);//24, 0.2f,20);
+//	PID_struct_init(&chassis->pid_cha_6020c_speed[0], POSITION_PID, 14000, 500, 100,0.1f,10);//38,0.5f,20);
+//    
+//    PID_struct_init(&chassis->pid_cha_6020c_angle[1], POSITION_PID, 8000, 10, 4,0.1f,5);//25, 0.2f,15);
+//	PID_struct_init(&chassis->pid_cha_6020c_speed[1], POSITION_PID, 14000, 500, 100,0.1f,4);//39,0.5f,20);
+//    
+//    PID_struct_init(&chassis->pid_cha_6020c_angle[2], POSITION_PID, 8000, 10, 4,0.1f,4);//20, 0.2f,20);
+//	PID_struct_init(&chassis->pid_cha_6020c_speed[2], POSITION_PID, 14000, 500, 100,0.5,8);//40,0.5f,20);
+//    
+//    PID_struct_init(&chassis->pid_cha_6020c_angle[3], POSITION_PID, 8000, 10, 4,0.1f,4);//23, 0.2f,15);
+//	PID_struct_init(&chassis->pid_cha_6020c_speed[3], POSITION_PID, 14000, 500, 100,0.1f,10);//42,0.5f,20);
     
 	for (int k = 0; k < 4; k++)
     {
+		PID_struct_init(&chassis->pid_cha_6020c_angle[k], POSITION_PID, 8000, 10, 5,0.01f,4);//23, 0.2f,15);
+	  PID_struct_init(&chassis->pid_cha_6020c_speed[k], POSITION_PID, 14000, 500, 80,0.1f,10);//42,0.5f,20);
 		PID_struct_init(&chassis->pid_cha_3508_speed[k], POSITION_PID,15000, 6000,60,0.0f, 0); //24 0.3 10    38.0f,3.0f, 40
     }
-    PID_struct_init(&pid_chassis_angle, POSITION_PID, 5000, 10, 800,0,8000);
+    PID_struct_init(&pid_chassis_angle, POSITION_PID, 5000, 10, 750,0,0);
 	
 	ChassisSpeedRamp0.Init(&ChassisSpeedRamp0,0.01,Chassis_angle.handle_speed_lim[0],Chassis_angle.handle_speed_lim[0]);
 	ChassisSpeedRamp1.Init(&ChassisSpeedRamp1,0.01,Chassis_angle.handle_speed_lim[1],Chassis_angle.handle_speed_lim[1]);
 	ChassisSpeedRamp2.Init(&ChassisSpeedRamp2,0.001,Chassis_angle.handle_speed_lim[2],Chassis_angle.handle_speed_lim[2]);
 	ChassisSpeedRamp3.Init(&ChassisSpeedRamp3,0.001,Chassis_angle.handle_speed_lim[3],Chassis_angle.handle_speed_lim[3]);
-	Test_Ramp.Init(&Test_Ramp,0.5,test_in,test_in);
+	Test_Ramp.Init(&Test_Ramp,0.8,test_in,test_in);
 
 }
 //主要功率控制部分
@@ -121,7 +123,7 @@ float max_power=0;
 float get_max_power2(float voltage)
 {
 
-	{max_power=voltage*16-25;}
+	{max_power=voltage*16;}
 
 	VAL_LIMIT(max_power,0,voltage*16);
   return max_power;
@@ -385,6 +387,8 @@ void steering_wheel_calc(Chassis_angle_t *chassis_angle)
 {
 	float vx = 0;
 	float vy = 0;
+	float vx_ramp = 0;
+	float vy_ramp = 0;
 	float relative_angle = -chassis_angle->yaw_angle__pi_pi;
 	
 	/* 小陀螺角度补偿 */
@@ -401,12 +405,12 @@ void steering_wheel_calc(Chassis_angle_t *chassis_angle)
 	
 	for(uint8_t i = 0; i < 4; i++)
 	{
-		vx = chassis.vx_ramp*cosf(relative_angle) - chassis.vy_ramp*sinf(relative_angle) + chassis.get_speedw*cosf(-1.0f*PI/4.0f + i*PI/2.0f);
-		vy = chassis.vx_ramp*sinf(relative_angle) + chassis.vy_ramp*cosf(relative_angle) + chassis.get_speedw*sinf(-1.0f*PI/4.0f + i*PI/2.0f);
-//		vx = chassis.vx*cosf(relative_angle) - chassis.vy*sinf(relative_angle) + chassis.get_speedw*cosf(-1.0f*PI/4.0f + i*PI/2.0f);
-//		vy = chassis.vx*sinf(relative_angle) + chassis.vy*cosf(relative_angle) + chassis.get_speedw*sinf(-1.0f*PI/4.0f + i*PI/2.0f);
-		chassis_angle->handle_speed_lim[i] = sqrt(vx*vx + vy*vy);
-		chassis_angle->deviation_angle[i]  = (float)atan2(vy, vx)*RAD_TO_ANGLE;
+		vx_ramp = chassis.vx_ramp*cosf(relative_angle) - chassis.vy_ramp*sinf(relative_angle) + chassis.get_speedw*cosf(-1.0f*PI/4.0f + i*PI/2.0f);
+		vy_ramp = chassis.vx_ramp*sinf(relative_angle) + chassis.vy_ramp*cosf(relative_angle) + chassis.get_speedw*sinf(-1.0f*PI/4.0f + i*PI/2.0f);
+		vx = chassis.vx*cosf(relative_angle) - chassis.vy*sinf(relative_angle) + chassis.get_speedw*cosf(-1.0f*PI/4.0f + i*PI/2.0f);
+		vy = chassis.vx*sinf(relative_angle) + chassis.vy*cosf(relative_angle) + chassis.get_speedw*sinf(-1.0f*PI/4.0f + i*PI/2.0f);
+		chassis_angle->handle_speed_lim[i] = sqrt(vx_ramp*vx_ramp + vy_ramp*vy_ramp);
+		chassis_angle->deviation_angle[i]  = (float)atan2(vy_ramp, vx_ramp )*RAD_TO_ANGLE;
 	}
 	
 }
@@ -462,53 +466,53 @@ void steer_optimizing(void)
 * @retval   : void 
 * @Note     : 
 ************************************************************************************************************************
-**/
-void start_chassis_6020()
-{		
+//**/
+//void start_chassis_6020()
+//{		
 
-	for(int i=0;i<4;i++)
-		pid_calc(&chassis.pid_cha_6020_angle[i],chassis.cha_pid_6020.angle_fdb[i],chassis .cha_pid_6020.angle_ref[i]);
+//	for(int i=0;i<4;i++)
+//		pid_calc(&chassis.pid_cha_6020_angle[i],chassis.cha_pid_6020.angle_fdb[i],chassis .cha_pid_6020.angle_ref[i]);
 
-	if(chassis .ctrl_mode==MANUAL_FOLLOW_GIMBAL||chassis.ctrl_mode==CHASSIS_ROTATE)
-	{
-		for(int j=0;j<4;j++)
-		{chassis.cha_pid_6020.speed_fdb[j]=steering_wheel_chassis.Heading_Encoder[j].filter_rate * STEERING_POLARITY;
-		
-		chassis.cha_pid_6020.speed_ref[j]=chassis.pid_cha_6020_angle[j].out;
-		
-		#if POWER_LIMIT_HANDLE
-		pid_calc(&chassis.pid_cha_6020_speed[j],chassis.cha_pid_6020.speed_fdb[j], kall6020[j] * chassis.cha_pid_6020.speed_ref[j]);//
-		#else
-		pid_calc(&chassis.pid_cha_6020_speed[j],chassis.cha_pid_6020.speed_fdb[j],chassis.cha_pid_6020.speed_ref[j]);
-		#endif
-		}
-	}
-		/* 去除急刹 */		
-	  static u32 DWT_stop_cnt=0;
-		if(chassis.vx == 0 && chassis.vy == 0  && fabs(chassis.get_speedw) < 50)
-		{
-			if(DWT_stop_cnt==0){DWT_stop_cnt=DWT->CYCCNT;}
-			if((u32)(DWT->CYCCNT/168000)-DWT_stop_cnt<1000)
-			{	/*1000ms后自锁*/
-				for(uint8_t i = 0; i < 4; i++)
-				{
-					chassis.pid_cha_6020_speed[i].out = 0;
-				}
-			}
-		}
-		else if(!(chassis.vx == 0 && chassis.vy == 0 ))
-		{
-			DWT_stop_cnt = 0;
-		}
-						
-		for (int i = 0; i < 4; i++)
-		{   
-			if((chassis.ctrl_mode==MANUAL_FOLLOW_GIMBAL||chassis.ctrl_mode==CHASSIS_ROTATE))
-			{chassis.voltage[i]=1.0f*(int16_t)chassis.pid_cha_6020_speed[i].out*STEERING_POLARITY;	}
-			else
-			{chassis.voltage[i]=0;}
-		}	
-}
+//	if(chassis .ctrl_mode==MANUAL_FOLLOW_GIMBAL||chassis.ctrl_mode==CHASSIS_ROTATE)
+//	{
+//		for(int j=0;j<4;j++)
+//		{chassis.cha_pid_6020.speed_fdb[j]=steering_wheel_chassis.Heading_Encoder[j].filter_rate * STEERING_POLARITY;
+//		
+//		chassis.cha_pid_6020.speed_ref[j]=chassis.pid_cha_6020_angle[j].out;
+//		
+//		#if POWER_LIMIT_HANDLE
+//		pid_calc(&chassis.pid_cha_6020_speed[j],chassis.cha_pid_6020.speed_fdb[j], kall6020[j] * chassis.cha_pid_6020.speed_ref[j]);//
+//		#else
+//		pid_calc(&chassis.pid_cha_6020_speed[j],chassis.cha_pid_6020.speed_fdb[j],chassis.cha_pid_6020.speed_ref[j]);
+//		#endif
+//		}
+//	}
+//		/* 去除急刹 */		
+//	  static u32 DWT_stop_cnt=0;
+//		if(chassis.vx == 0 && chassis.vy == 0  && fabs(chassis.get_speedw) < 50)
+//		{
+//			if(DWT_stop_cnt==0){DWT_stop_cnt=DWT->CYCCNT;}
+//			if((u32)(DWT->CYCCNT/168000)-DWT_stop_cnt<1000)
+//			{	/*1000ms后自锁*/
+//				for(uint8_t i = 0; i < 4; i++)
+//				{
+//					chassis.pid_cha_6020_speed[i].out = 0;
+//				}
+//			}
+//		}
+//		else if(!(chassis.vx == 0 && chassis.vy == 0 ))
+//		{
+//			DWT_stop_cnt = 0;
+//		}
+//						
+//		for (int i = 0; i < 4; i++)
+//		{   
+//			if((chassis.ctrl_mode==MANUAL_FOLLOW_GIMBAL||chassis.ctrl_mode==CHASSIS_ROTATE))
+//			{chassis.voltage[i]=1.0f*(int16_t)chassis.pid_cha_6020_speed[i].out*STEERING_POLARITY;	}
+//			else
+//			{chassis.voltage[i]=0;}
+//		}	
+//}
 
 void start_chassis_6020C()
 {		
@@ -527,20 +531,29 @@ void start_chassis_6020C()
         
 		}
       #if POWER_LIMIT_HANDLE
-        chassis.chassis_power.power_6020_limlit_rate = get_6020_T_limit_rate(60);
+        chassis.chassis_power.power_6020_limlit_rate = get_6020_T_limit_rate(80);
       #else
         chassis.chassis_power.power_6020_limlit_rate = 1;
       #endif
-	}
+	} 
 		/* 去除急刹 */		
 
+	
 		if(chassis.vx == 0 && chassis.vy == 0  && fabs(chassis.get_speedw) < 100)
 		{
-			pid_chassis_angle.p=600;
-			pid_chassis_angle.d=50;
 			
-//			DELAY_EXE(DWT_stop_cnt,300,{for(uint8_t i = 0; i < 4; i++){chassis.pid_cha_6020c_speed[i].out = 0;}})
-			
+			/*脱战省功率*/
+			DELAY_EXE(DWT_stop_cnt,800,{for(uint8_t i = 0; i < 4; i++){chassis.pid_cha_6020c_speed[i].out = 0;}})
+//			EXE_ONCE(DWT_stop_cnt,DWT_START_CNT(DWT_stop_cnt));
+//			if(DWT_END_CNT(DWT_stop_cnt)>=(2000))
+//			{
+//			for(uint8_t i = 0; i < 4; i++)
+//			{
+//			chassis.pid_cha_6020c_speed[i].out = 0;
+//			chassis.current[i]=0;
+//			}
+//			}
+																								
 			
 //			if(DWT_stop_cnt==0){DWT_stop_cnt=DWT->CYCCNT;}
 //			if((DWT->CYCCNT/168000)-(DWT_stop_cnt/168000) < 400)
@@ -550,15 +563,14 @@ void start_chassis_6020C()
 //					chassis.pid_cha_6020c_speed[i].out = 0;
 //				}
 //			}
+			
 		}
 		else if(!(chassis.vx == 0 && chassis.vy == 0 ))
 		{
-			pid_chassis_angle.p=800;
-			pid_chassis_angle.d=8000;
 			DWT_stop_cnt = 0;
 		}
 			
-						
+				
 		for (int i = 0; i < 4; i++)
 		{   
 			if((chassis.ctrl_mode==MANUAL_FOLLOW_GIMBAL||chassis.ctrl_mode==CHASSIS_ROTATE))
@@ -602,7 +614,7 @@ void start_chassis_3508(void)
 	}
     #if POWER_LIMIT_HANDLE
   if(uart_cha_data.speed_mode==HIGH_SPEED_MODE)
-	{		if(usart_capacitance_message.cap_voltage_filte>12)
+	{		if(usart_capacitance_message.cap_voltage_filte>8)
 				{
 					chassis.chassis_power.Max_Chassis_Power=380;
 				}
@@ -613,7 +625,7 @@ void start_chassis_3508(void)
 	}
 	else
 	{
-		if(usart_capacitance_message.cap_voltage_filte>6)
+		if(usart_capacitance_message.cap_voltage_filte>5)
 		{ /*60W （450） 80W(550) 100W (650)  *///5*x+150 
 			if(fabs(chassis.cha_pid_3508.speed_fdb[0])>(5*uart_cha_data.chassis_power_limit+150+110)&&
 				 fabs(chassis.cha_pid_3508.speed_fdb[3])>(5*uart_cha_data.chassis_power_limit+150+110))
@@ -689,6 +701,11 @@ void get_remote_set(Chassis_angle_t *chassis_angle)
 		}
 		else
 		{chassis_angle->Remote_speed = 0;}
+		
+//		if(fabs(pid_chassis_angle.err[NOW])<0.5)
+//		PID_struct_init(&pid_chassis_angle, POSITION_PID, 5000, 10, 100,0,0);
+//		else
+		PID_struct_init(&pid_chassis_angle, POSITION_PID, 5000, 10, 600,0,200);
 }
 /**
 ************************************************************************************************************************

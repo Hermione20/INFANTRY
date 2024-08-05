@@ -134,7 +134,7 @@ void infantry_mode_switch_task(void)
             
 					 
            /*******************************键鼠云台赋值****************************************/
-            if (gimbal_data.ctrl_mode == GIMBAL_FOLLOW_ZGYRO&&RC_CtrlData.mouse.press_r == 0)
+//            if (gimbal_data.ctrl_mode == GIMBAL_FOLLOW_ZGYRO||)//&&My_Auto_Shoot.Auto_Aim.Flag_Get_Target == 0
             {
                 VAL_LIMIT(RC_CtrlData.mouse.x, -100, 100);
                 VAL_LIMIT(RC_CtrlData.mouse.y, -100, 100);
@@ -165,19 +165,37 @@ void infantry_mode_switch_task(void)
       //键鼠模式的模式选择从这里开始
 			if(gimbal_data.if_finish_Init == 1)
 			{
-				if (RC_CtrlData.Key_Flag.Key_V_TFlag)
+							if(gimbal_data.ctrl_mode == GIMBAL_FOLLOW_ZGYRO)
+							{
+								if (RC_CtrlData.mouse.press_r)
+								{
+										gimbal_data.auto_aim_rotate_flag=1;
+								}
+								else
+								{
+										gimbal_data.auto_aim_rotate_flag=0;
+								}
+							}
+								if (RC_CtrlData.Key_Flag.Key_V_TFlag)
                 {
+										RC_CtrlData.Key_Flag.Key_Z_TFlag = 0;
+										single_shoot_mode = 1;
                     gimbal_data.ctrl_mode = GIMBAL_AUTO_BIG_BUFF;
                 }
                 else if (RC_CtrlData.Key_Flag.Key_Z_TFlag)
                 {
+										RC_CtrlData.Key_Flag.Key_V_TFlag = 0;
+										single_shoot_mode = 1;
                     gimbal_data.ctrl_mode = GIMBAL_AUTO_SMALL_BUFF;
                 }
                 else
                 {
                     gimbal_data.ctrl_mode = GIMBAL_FOLLOW_ZGYRO;
+										big_buf_init_flag = 0;
+										single_shoot_mode = 0;
                     chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;
                 }
+								
 								if (RC_CtrlData.Key_Flag.Key_CTRL_TFlag)
 								{
                 chassis.ctrl_mode = CHASSIS_ROTATE;
@@ -208,14 +226,7 @@ void infantry_mode_switch_task(void)
 											{chassis.ctrl_mode = MANUAL_FOLLOW_GIMBAL;}
 									
 							  }
-								if (RC_CtrlData.mouse.press_r)
-								{
-										gimbal_data.auto_aim_rotate_flag=1;
-								}
-								else
-								{
-										gimbal_data.auto_aim_rotate_flag=0;
-								}
+
 								if (RC_CtrlData.Key_Flag.Key_B_Flag)
 								{
 								UI.cnt=0;
@@ -228,19 +239,6 @@ void infantry_mode_switch_task(void)
 							  {
                 chassis.climbing_mode = 0;
 							  }
-								
-
-//								 if(RC_CtrlData.Key_Flag.Key_X_Flag)
-//                   {
-//                       press_X_cnt++;
-//                       if(press_X_cnt > 2000)
-//                       {
-//													SoftReset();
-//                       }
-//                   }else
-//                   {
-//                      press_X_cnt = 0;
-//                   }
 
 			}
         

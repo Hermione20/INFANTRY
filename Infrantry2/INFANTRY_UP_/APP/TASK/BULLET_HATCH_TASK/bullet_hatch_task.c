@@ -59,8 +59,14 @@ void bullet_hatch_task()
 																																															&bullet_hatch.hatch_ref_and_fdb.hatch_speed_ref,\
 																																															bullet_hatch.hatch_ref_and_fdb.hatch_speed_fdb,0);
 			}
-			
-			
+									
+		if(judge_rece_mesg.game_state.game_progress == 3)/*ÎåÃë×Ô¼ì*/
+		{
+			if(bullet_hatch.bullet_hatch_mode==OPEN)
+			{
+				bullet_hatch.bullet_hatch_mode=CLOSE;
+			}
+		}
 			
 }
 			

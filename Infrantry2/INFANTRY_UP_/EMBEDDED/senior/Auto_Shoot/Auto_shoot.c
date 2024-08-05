@@ -53,7 +53,6 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 			
 			Auto_Shoot->Auto_Aim.Lost_Cnt=0;
 			
-			
 			Auto_Shoot->Buff.Yaw_Angle_Last = Auto_Shoot->Buff.Yaw_Angle;
 			Auto_Shoot->Buff.Pitch_Angle_Last = Auto_Shoot->Buff.Pitch_Angle;
 			Auto_Shoot->Buff.Yaw_Angle = New_Auto_Aim.Yaw_Angle;
@@ -61,6 +60,7 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 			Auto_Shoot->Buff.Flag_Get_Target = 1;
 			
 			Auto_Shoot->Buff.Lost_Cnt=0;
+			
 			//gimbal_gyro.yaw_Angle还没定义先注释
 //			if (fabs(new_location.x - gimbal_gyro.yaw_Angle) > 45 || fabs(new_location.y - gimbal_gyro.pitch_Angle) > 70)
 //			{
@@ -69,11 +69,9 @@ void Vision_Process_General_Message_New(unsigned char* address, unsigned int len
 		}
 		else
 		{
-			if(Auto_Shoot->Auto_Aim.Lost_Cnt<200)
-				Auto_Shoot->Auto_Aim.Lost_Cnt++;
-			else
 			{
 				Auto_Shoot->Auto_Aim.Flag_Get_Target = 0;
+
 				Auto_Shoot->Auto_Aim.Yaw_Angle = gimbal_gyro.yaw_Angle;
 				Auto_Shoot->Auto_Aim.Pitch_Angle = gimbal_gyro.pitch_Angle;
 				

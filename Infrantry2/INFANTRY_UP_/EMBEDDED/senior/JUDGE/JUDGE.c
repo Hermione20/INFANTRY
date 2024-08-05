@@ -304,7 +304,7 @@ void judgement_data_handle(uint8_t *p_frame, u16 rec_len)
 
 			case BULLET_REMAINING_ID:
 				{
-						if(judge_rece_mesg.game_state.game_progress == 3)
+						if(judge_rece_mesg.game_state.game_progress == 3)/*ÎåÃë×Ô¼ì*/
 						{bullet_supply_num=0;}
 							
 						already_shoot = bullet_supply_num - this_remain;
